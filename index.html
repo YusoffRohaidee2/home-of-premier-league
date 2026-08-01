@@ -1,0 +1,1727 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home of Premier League | Sports Hub Official</title>
+    <link rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3jvhee0-_V6RWnWEIbtMRcAcorU9PqoRSI3vhTi0ugis7VSsUj9i3xaA&s=10" type="image/x-icon">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --pl-purple: #38003c;
+            --pl-dark: #0f0017;
+            --pl-card-bg: #120817;
+            --pl-green: #00ff85;
+            --pl-cyan: #00f2fe;
+            --pl-pink: #e90052;
+            --text-main: #ffffff;
+            --text-sub: #b3a2be;
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --card-inner-bg: rgba(0, 0, 0, 0.35);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: radial-gradient(circle at top, #28002c 0%, #0f0017 100%);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--pl-dark);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #520058;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--pl-green);
+        }
+
+        /* HEADER */
+        header {
+            background: rgba(56, 0, 60, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 2px solid var(--pl-green);
+            padding: 12px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .logo-bezel {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 6px 14px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 15px rgba(0, 255, 133, 0.3), inset 0 0 5px rgba(0,0,0,0.2);
+            border: 2px solid var(--pl-green);
+            transition: transform 0.3s ease;
+        }
+
+        .logo-bezel:hover {
+            transform: scale(1.03);
+            box-shadow: 0 0 20px rgba(0, 255, 133, 0.6);
+        }
+
+        .logo-bezel img {
+            height: 38px;
+            width: auto;
+            display: block;
+        }
+
+        .brand-titles {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .brand h1 {
+            font-size: 1.3rem;
+            font-weight: 800;
+            line-height: 1.1;
+            background: linear-gradient(90deg, #ffffff, var(--pl-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .brand-sub {
+            font-size: 0.75rem;
+            color: var(--pl-cyan);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .live-badge {
+            background: linear-gradient(45deg, var(--pl-pink), #ff5252);
+            color: #fff;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 0 15px rgba(233, 0, 82, 0.5);
+            animation: pulse 2s infinite;
+        }
+
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #fff;
+            border-radius: 50%;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(233, 0, 82, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(233, 0, 82, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(233, 0, 82, 0); }
+        }
+
+        /* NAVIGATION TABS */
+        nav {
+            background: rgba(15, 0, 23, 0.7);
+            backdrop-filter: blur(8px);
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 12px 20px;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .nav-tab {
+            background: transparent;
+            border: 1px solid transparent;
+            color: var(--text-sub);
+            font-size: 0.95rem;
+            font-weight: 600;
+            padding: 10px 24px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-tab:hover {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-tab.active {
+            background: var(--pl-green);
+            color: var(--pl-purple);
+            font-weight: 700;
+            box-shadow: 0 0 20px rgba(0, 255, 133, 0.4);
+        }
+
+        /* MAIN CONTAINER */
+        .container {
+            max-width: 1500px;
+            width: 100%;
+            margin: 25px auto;
+            padding: 0 20px;
+            flex: 1;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* LIVE STREAM SECTION */
+        .stream-layout-single {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .player-wrapper {
+            background: rgba(36, 0, 41, 0.65);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 16px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+        }
+
+        .player-container {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%;
+            background-color: #000;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .player-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .player-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 10px 5px 10px;
+        }
+
+        .player-info h3 {
+            font-size: 1.2rem;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .player-info h3 i {
+            color: var(--pl-green);
+        }
+
+        /* MATCH CARDS GRID LAYOUT */
+        .match-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+            gap: 25px;
+        }
+
+        @media (max-width: 480px) {
+            .match-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* MATCH CARD UI DESIGN */
+        .match-card {
+            background: var(--pl-card-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+            backdrop-filter: blur(10px);
+            position: relative;
+        }
+
+        .match-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .match-stage {
+            color: var(--pl-cyan);
+            font-size: 0.85rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .match-status {
+            background: rgba(0, 255, 133, 0.15);
+            color: var(--pl-green);
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            border: 1px solid rgba(0, 255, 133, 0.3);
+        }
+
+        .match-status.upcoming {
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .match-main {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 0;
+        }
+
+        .match-team {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            flex: 1;
+        }
+
+        .team-shield {
+            width: 65px;
+            height: 65px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: #fff;
+            box-shadow: inset 0 0 15px rgba(255,255,255,0.05);
+        }
+
+        .team-name {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #fff;
+            text-align: center;
+        }
+
+        .match-score-box {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 18px;
+            padding: 12px 24px;
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #fff;
+            letter-spacing: 2px;
+            box-shadow: inset 0 2px 10px rgba(0,0,0,0.5);
+            min-width: 120px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .penalty-tag {
+            font-size: 0.75rem;
+            color: var(--pl-green);
+            font-weight: 600;
+            margin-top: 4px;
+            letter-spacing: 0;
+        }
+
+        .match-meta-box {
+            background: var(--card-inner-bg);
+            border-radius: 14px;
+            padding: 14px 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+            color: var(--text-sub);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .meta-left {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .meta-right {
+            text-align: right;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .scorers-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            padding-top: 5px;
+            font-size: 0.82rem;
+        }
+
+        .scorer-column {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .scorer-column.right {
+            text-align: right;
+        }
+
+        .scorer-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #e2d9e6;
+        }
+
+        .scorer-column.right .scorer-item {
+            justify-content: flex-end;
+        }
+
+        .scorer-item i {
+            color: var(--pl-green);
+            font-size: 0.75rem;
+        }
+
+        /* TABLES STYLING */
+        .glass-card {
+            background: var(--pl-card-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 25px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+            overflow-x: auto;
+        }
+
+        .card-header {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-header h2 {
+            font-size: 1.3rem;
+            color: var(--pl-green);
+            font-weight: 700;
+        }
+
+        .custom-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 8px;
+            min-width: 600px;
+        }
+
+        .custom-table th {
+            color: var(--text-sub);
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 12px 16px;
+            text-align: left;
+            text-transform: uppercase;
+        }
+
+        .custom-table td {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 14px 16px;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .custom-table tr td:first-child {
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+        }
+
+        .custom-table tr td:last-child {
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+
+        .custom-table tr:hover td {
+            background: rgba(255, 255, 255, 0.07);
+        }
+
+        .team-cell {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+        }
+
+        .team-logo-placeholder {
+            width: 28px;
+            height: 28px;
+            background: var(--pl-purple);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--pl-green);
+            border: 1px solid var(--glass-border);
+        }
+
+        .pos-badge {
+            font-weight: 700;
+            width: 25px;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .pos-ucl { color: #00d2ff; }
+        .pos-uel { color: #ff9100; }
+        .pos-rel { color: var(--pl-pink); }
+
+        /* FOOTER */
+        footer {
+            margin-top: auto;
+            text-align: center;
+            padding: 25px;
+            font-size: 0.85rem;
+            color: var(--text-sub);
+            background: rgba(10, 0, 18, 0.85);
+            border-top: 1px solid var(--glass-border);
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        footer strong {
+            color: var(--pl-green);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="brand">
+            <div class="logo-bezel">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/f/f2/Premier_League_Logo.svg/1280px-Premier_League_Logo.svg.png" alt="Premier League Logo">
+            </div>
+            <div class="brand-titles">
+                <h1>Home of Premier League</h1>
+                <span class="brand-sub"><i class="fa-solid fa-circle-check"></i> Project by Sports Hub Official (Football Media Center)</span>
+            </div>
+        </div>
+        <div class="live-badge">
+            <div class="pulse-dot"></div>
+            LIVE BROADCAST
+        </div>
+    </header>
+
+    <!-- NAVIGATION TABS -->
+    <nav>
+        <button class="nav-tab active" onclick="switchTab('live-stream', this)">
+            <i class="fa-solid fa-tv"></i> Live Stream
+        </button>
+        <button class="nav-tab" onclick="switchTab('schedule', this)">
+            <i class="fa-regular fa-calendar-days"></i> Schedule
+        </button>
+        <button class="nav-tab" onclick="switchTab('scores', this)">
+            <i class="fa-solid fa-chart-simple"></i> Scores
+        </button>
+        <button class="nav-tab" onclick="switchTab('standings', this)">
+            <i class="fa-solid fa-list-ol"></i> Standings
+        </button>
+    </nav>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <div class="container">
+
+        <!-- TAB 1: LIVE STREAM -->
+        <div id="live-stream" class="tab-content active">
+            <div class="stream-layout-single">
+                <div class="player-wrapper">
+                    <div class="player-container">
+                        <iframe id="main-player" src="https://logic.icelanders.st/embed/skysportspremierleague-uk" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>
+                    </div>
+                    <div class="player-info">
+                        <h3><i class="fa-solid fa-circle-play"></i> Sky Sports Premier League (UK)</h3>
+                        <span style="font-size: 0.85rem; color: var(--text-sub);"><i class="fa-solid fa-wifi" style="color: var(--pl-green);"></i> Ultra HD Feed</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 2: SCHEDULE (MATCHWEEK 1 TO 4) -->
+        <div id="schedule" class="tab-content">
+            <div class="match-grid">
+                
+                <!-- MATCHWEEK 1 -->
+                <div class="match-card">
+                    <div class="match-card-header">
+                        <span class="match-stage">Matchweek 1</span>
+                        <span class="match-status upcoming"><i class="fa-regular fa-clock"></i> 03:00 AM MYT</span>
+                    </div>
+                    <div class="match-main">
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Arsenal</span>
+                        </div>
+                        <div class="match-score-box" style="font-size: 1.4rem; color: var(--pl-green);">VS</div>
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Coventry City</span>
+                        </div>
+                    </div>
+                    <div class="match-meta-box">
+                        <div class="meta-left"><span>Stadium: <strong>Emirates Stadium</strong></span></div>
+                        <div class="meta-right">Sat, 22 Aug 2026</div>
+                    </div>
+                </div>
+
+                <div class="match-card">
+                    <div class="match-card-header">
+                        <span class="match-stage">Matchweek 1</span>
+                        <span class="match-status upcoming"><i class="fa-regular fa-clock"></i> 07:30 PM MYT</span>
+                    </div>
+                    <div class="match-main">
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Hull City</span>
+                        </div>
+                        <div class="match-score-box" style="font-size: 1.4rem; color: var(--pl-green);">VS</div>
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Manchester United</span>
+                        </div>
+                    </div>
+                    <div class="match-meta-box">
+                        <div class="meta-left"><span>Stadium: <strong>MKM Stadium</strong></span></div>
+                        <div class="meta-right">Sat, 22 Aug 2026</div>
+                    </div>
+                </div>
+
+                <div class="match-card">
+                    <div class="match-card-header">
+                        <span class="match-stage">Matchweek 1</span>
+                        <span class="match-status upcoming"><i class="fa-regular fa-clock"></i> 10:00 PM MYT</span>
+                    </div>
+                    <div class="match-main">
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Everton</span>
+                        </div>
+                        <div class="match-score-box" style="font-size: 1.4rem; color: var(--pl-green);">VS</div>
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Crystal Palace</span>
+                        </div>
+                    </div>
+                    <div class="match-meta-box">
+                        <div class="meta-left"><span>Stadium: <strong>Hill Dickinson Stadium</strong></span></div>
+                        <div class="meta-right">Sat, 22 Aug 2026</div>
+                    </div>
+                </div>
+
+                <div class="match-card">
+                    <div class="match-card-header">
+                        <span class="match-stage">Matchweek 1</span>
+                        <span class="match-status upcoming"><i class="fa-regular fa-clock"></i> 10:00 PM MYT</span>
+                    </div>
+                    <div class="match-main">
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Ipswich Town</span>
+                        </div>
+                        <div class="match-score-box" style="font-size: 1.4rem; color: var(--pl-green);">VS</div>
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Sunderland</span>
+                        </div>
+                    </div>
+                    <div class="match-meta-box">
+                        <div class="meta-left"><span>Stadium: <strong>Portman Road Stadium</strong></span></div>
+                        <div class="meta-right">Sat, 22 Aug 2026</div>
+                    </div>
+                </div>
+
+                <div class="match-card">
+                    <div class="match-card-header">
+                        <span class="match-stage">Matchweek 1</span>
+                        <span class="match-status upcoming"><i class="fa-regular fa-clock"></i> 10:00 PM MYT</span>
+                    </div>
+                    <div class="match-main">
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Nottingham Forest</span>
+                        </div>
+                        <div class="match-score-box" style="font-size: 1.4rem; color: var(--pl-green);">VS</div>
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Leeds United</span>
+                        </div>
+                    </div>
+                    <div class="match-meta-box">
+                        <div class="meta-left"><span>Stadium: <strong>City Ground</strong></span></div>
+                        <div class="meta-right">Sat, 22 Aug 2026</div>
+                    </div>
+                </div>
+
+                <div class="match-card">
+                    <div class="match-card-header">
+                        <span class="match-stage">Matchweek 1</span>
+                        <span class="match-status upcoming"><i class="fa-regular fa-clock"></i> 12:30 AM MYT</span>
+                    </div>
+                    <div class="match-main">
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Brentford</span>
+                        </div>
+                        <div class="match-score-box" style="font-size: 1.4rem; color: var(--pl-green);">VS</div>
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Tottenham Hotspur</span>
+                        </div>
+                    </div>
+                    <div class="match-meta-box">
+                        <div class="meta-left"><span>Stadium: <strong>Gtech Community Stadium</strong></span></div>
+                        <div class="meta-right">Sun, 23 Aug 2026</div>
+                    </div>
+                </div>
+
+                <div class="match-card">
+                    <div class="match-card-header">
+                        <span class="match-stage">Matchweek 1</span>
+                        <span class="match-status upcoming"><i class="fa-regular fa-clock"></i> 09:00 PM MYT</span>
+                    </div>
+                    <div class="match-main">
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Brighton & Hove Albion</span>
+                        </div>
+                        <div class="match-score-box" style="font-size: 1.4rem; color: var(--pl-green);">VS</div>
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Aston Villa</span>
+                        </div>
+                    </div>
+                    <div class="match-meta-box">
+                        <div class="meta-left"><span>Stadium: <strong>American Express Stadium</strong></span></div>
+                        <div class="meta-right">Sun, 23 Aug 2026</div>
+                    </div>
+                </div>
+
+                <div class="match-card">
+                    <div class="match-card-header">
+                        <span class="match-stage">Matchweek 1</span>
+                        <span class="match-status upcoming"><i class="fa-regular fa-clock"></i> 09:00 PM MYT</span>
+                    </div>
+                    <div class="match-main">
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Manchester City</span>
+                        </div>
+                        <div class="match-score-box" style="font-size: 1.4rem; color: var(--pl-green);">VS</div>
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">AFC Bournemouth</span>
+                        </div>
+                    </div>
+                    <div class="match-meta-box">
+                        <div class="meta-left"><span>Stadium: <strong>Etihad Stadium</strong></span></div>
+                        <div class="meta-right">Sun, 23 Aug 2026</div>
+                    </div>
+                </div>
+
+                <div class="match-card">
+                    <div class="match-card-header">
+                        <span class="match-stage">Matchweek 1</span>
+                        <span class="match-status upcoming"><i class="fa-regular fa-clock"></i> 11:30 PM MYT</span>
+                    </div>
+                    <div class="match-main">
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Newcastle United</span>
+                        </div>
+                        <div class="match-score-box" style="font-size: 1.4rem; color: var(--pl-green);">VS</div>
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Liverpool</span>
+                        </div>
+                    </div>
+                    <div class="match-meta-box">
+                        <div class="meta-left"><span>Stadium: <strong>St. James' Park</strong></span></div>
+                        <div class="meta-right">Sun, 23 Aug 2026</div>
+                    </div>
+                </div>
+
+                <div class="match-card">
+                    <div class="match-card-header">
+                        <span class="match-stage">Matchweek 1</span>
+                        <span class="match-status upcoming"><i class="fa-regular fa-clock"></i> 03:00 AM MYT</span>
+                    </div>
+                    <div class="match-main">
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Fulham</span>
+                        </div>
+                        <div class="match-score-box" style="font-size: 1.4rem; color: var(--pl-green);">VS</div>
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Chelsea</span>
+                        </div>
+                    </div>
+                    <div class="match-meta-box">
+                        <div class="meta-left"><span>Stadium: <strong>Craven Cottage</strong></span></div>
+                        <div class="meta-right">Tue, 25 Aug 2026</div>
+                    </div>
+                </div>
+
+                <!-- MATCHWEEK 2 -->
+                <div class="match-card">
+                    <div class="match-card-header">
+                        <span class="match-stage">Matchweek 2</span>
+                        <span class="match-status upcoming"><i class="fa-regular fa-clock"></i> 03:00 AM MYT</span>
+                    </div>
+                    <div class="match-main">
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Crystal Palace</span>
+                        </div>
+                        <div class="match-score-box" style="font-size: 1.4rem; color: var(--pl-green);">VS</div>
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Manchester City</span>
+                        </div>
+                    </div>
+                    <div class="match-meta-box">
+                        <div class="meta-left"><span>Stadium: <strong>Selhurst Park</strong></span></div>
+                        <div class="meta-right">Sat, 29 Aug 2026</div>
+                    </div>
+                </div>
+
+                <div class="match-card">
+                    <div class="match-card-header">
+                        <span class="match-stage">Matchweek 2</span>
+                        <span class="match-status upcoming"><i class="fa-regular fa-clock"></i> 07:30 PM MYT</span>
+                    </div>
+                    <div class="match-main">
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Liverpool</span>
+                        </div>
+                        <div class="match-score-box" style="font-size: 1.4rem; color: var(--pl-green);">VS</div>
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Nottingham Forest</span>
+                        </div>
+                    </div>
+                    <div class="match-meta-box">
+                        <div class="meta-left"><span>Stadium: <strong>Anfield</strong></span></div>
+                        <div class="meta-right">Sat, 29 Aug 2026</div>
+                    </div>
+                </div>
+
+                <div class="match-card">
+                    <div class="match-card-header">
+                        <span class="match-stage">Matchweek 2</span>
+                        <span class="match-status upcoming"><i class="fa-regular fa-clock"></i> 10:00 PM MYT</span>
+                    </div>
+                    <div class="match-main">
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">AFC Bournemouth</span>
+                        </div>
+                        <div class="match-score-box" style="font-size: 1.4rem; color: var(--pl-green);">VS</div>
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Everton</span>
+                        </div>
+                    </div>
+                    <div class="match-meta-box">
+                        <div class="meta-left"><span>Stadium: <strong>Vitality Stadium</strong></span></div>
+                        <div class="meta-right">Sat, 29 Aug 2026</div>
+                    </div>
+                </div>
+
+                <div class="match-card">
+                    <div class="match-card-header">
+                        <span class="match-stage">Matchweek 2</span>
+                        <span class="match-status upcoming"><i class="fa-regular fa-clock"></i> 10:00 PM MYT</span>
+                    </div>
+                    <div class="match-main">
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Coventry City</span>
+                        </div>
+                        <div class="match-score-box" style="font-size: 1.4rem; color: var(--pl-green);">VS</div>
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Hull City</span>
+                        </div>
+                    </div>
+                    <div class="match-meta-box">
+                        <div class="meta-left"><span>Stadium: <strong>Coventry Building Society Arena</strong></span></div>
+                        <div class="meta-right">Sat, 29 Aug 2026</div>
+                    </div>
+                </div>
+
+                <div class="match-card">
+                    <div class="match-card-header">
+                        <span class="match-stage">Matchweek 2</span>
+                        <span class="match-status upcoming"><i class="fa-regular fa-clock"></i> 12:30 AM MYT</span>
+                    </div>
+                    <div class="match-main">
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Tottenham Hotspur</span>
+                        </div>
+                        <div class="match-score-box" style="font-size: 1.4rem; color: var(--pl-green);">VS</div>
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Newcastle United</span>
+                        </div>
+                    </div>
+                    <div class="match-meta-box">
+                        <div class="meta-left"><span>Stadium: <strong>Tottenham Hotspur Stadium</strong></span></div>
+                        <div class="meta-right">Sun, 30 Aug 2026</div>
+                    </div>
+                </div>
+
+                <div class="match-card">
+                    <div class="match-card-header">
+                        <span class="match-stage">Matchweek 2</span>
+                        <span class="match-status upcoming"><i class="fa-regular fa-clock"></i> 09:00 PM MYT</span>
+                    </div>
+                    <div class="match-main">
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Chelsea</span>
+                        </div>
+                        <div class="match-score-box" style="font-size: 1.4rem; color: var(--pl-green);">VS</div>
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Brighton & Hove Albion</span>
+                        </div>
+                    </div>
+                    <div class="match-meta-box">
+                        <div class="meta-left"><span>Stadium: <strong>Stamford Bridge</strong></span></div>
+                        <div class="meta-right">Sun, 30 Aug 2026</div>
+                    </div>
+                </div>
+
+                <div class="match-card">
+                    <div class="match-card-header">
+                        <span class="match-stage">Matchweek 2</span>
+                        <span class="match-status upcoming"><i class="fa-regular fa-clock"></i> 09:00 PM MYT</span>
+                    </div>
+                    <div class="match-main">
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Leeds United</span>
+                        </div>
+                        <div class="match-score-box" style="font-size: 1.4rem; color: var(--pl-green);">VS</div>
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Brentford</span>
+                        </div>
+                    </div>
+                    <div class="match-meta-box">
+                        <div class="meta-left"><span>Stadium: <strong>Elland Road</strong></span></div>
+                        <div class="meta-right">Sun, 30 Aug 2026</div>
+                    </div>
+                </div>
+
+                <div class="match-card">
+                    <div class="match-card-header">
+                        <span class="match-stage">Matchweek 2</span>
+                        <span class="match-status upcoming"><i class="fa-regular fa-clock"></i> 09:00 PM MYT</span>
+                    </div>
+                    <div class="match-main">
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Sunderland</span>
+                        </div>
+                        <div class="match-score-box" style="font-size: 1.4rem; color: var(--pl-green);">VS</div>
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Fulham</span>
+                        </div>
+                    </div>
+                    <div class="match-meta-box">
+                        <div class="meta-left"><span>Stadium: <strong>Stadium of Light</strong></span></div>
+                        <div class="meta-right">Sun, 30 Aug 2026</div>
+                    </div>
+                </div>
+
+                <div class="match-card">
+                    <div class="match-card-header">
+                        <span class="match-stage">Matchweek 2</span>
+                        <span class="match-status upcoming"><i class="fa-regular fa-clock"></i> 11:30 PM MYT</span>
+                    </div>
+                    <div class="match-main">
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Manchester United</span>
+                        </div>
+                        <div class="match-score-box" style="font-size: 1.4rem; color: var(--pl-green);">VS</div>
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Ipswich Town</span>
+                        </div>
+                    </div>
+                    <div class="match-meta-box">
+                        <div class="meta-left"><span>Stadium: <strong>Old Trafford</strong></span></div>
+                        <div class="meta-right">Sun, 30 Aug 2026</div>
+                    </div>
+                </div>
+
+                <div class="match-card">
+                    <div class="match-card-header">
+                        <span class="match-stage">Matchweek 2</span>
+                        <span class="match-status upcoming"><i class="fa-regular fa-clock"></i> 03:00 AM MYT</span>
+                    </div>
+                    <div class="match-main">
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Aston Villa</span>
+                        </div>
+                        <div class="match-score-box" style="font-size: 1.4rem; color: var(--pl-green);">VS</div>
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Arsenal</span>
+                        </div>
+                    </div>
+                    <div class="match-meta-box">
+                        <div class="meta-left"><span>Stadium: <strong>Villa Park</strong></span></div>
+                        <div class="meta-right">Tue, 01 Sep 2026</div>
+                    </div>
+                </div>
+
+                <!-- MATCHWEEK 3 -->
+                <div class="match-card">
+                    <div class="match-card-header">
+                        <span class="match-stage">Matchweek 3</span>
+                        <span class="match-status upcoming"><i class="fa-regular fa-clock"></i> 03:00 AM MYT</span>
+                    </div>
+                    <div class="match-main">
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Ipswich Town</span>
+                        </div>
+                        <div class="match-score-box" style="font-size: 1.4rem; color: var(--pl-green);">VS</div>
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Liverpool</span>
+                        </div>
+                    </div>
+                    <div class="match-meta-box">
+                        <div class="meta-left"><span>Stadium: <strong>Portman Road Stadium</strong></span></div>
+                        <div class="meta-right">Sat, 05 Sep 2026</div>
+                    </div>
+                </div>
+
+                <div class="match-card">
+                    <div class="match-card-header">
+                        <span class="match-stage">Matchweek 3</span>
+                        <span class="match-status upcoming"><i class="fa-regular fa-clock"></i> 07:30 PM MYT</span>
+                    </div>
+                    <div class="match-main">
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Newcastle United</span>
+                        </div>
+                        <div class="match-score-box" style="font-size: 1.4rem; color: var(--pl-green);">VS</div>
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">AFC Bournemouth</span>
+                        </div>
+                    </div>
+                    <div class="match-meta-box">
+                        <div class="meta-left"><span>Stadium: <strong>St. James' Park</strong></span></div>
+                        <div class="meta-right">Sat, 05 Sep 2026</div>
+                    </div>
+                </div>
+
+                <div class="match-card">
+                    <div class="match-card-header">
+                        <span class="match-stage">Matchweek 3</span>
+                        <span class="match-status upcoming"><i class="fa-regular fa-clock"></i> 10:00 PM MYT</span>
+                    </div>
+                    <div class="match-main">
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Brentford</span>
+                        </div>
+                        <div class="match-score-box" style="font-size: 1.4rem; color: var(--pl-green);">VS</div>
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Sunderland</span>
+                        </div>
+                    </div>
+                    <div class="match-meta-box">
+                        <div class="meta-left"><span>Stadium: <strong>Gtech Community Stadium</strong></span></div>
+                        <div class="meta-right">Sat, 05 Sep 2026</div>
+                    </div>
+                </div>
+
+                <div class="match-card">
+                    <div class="match-card-header">
+                        <span class="match-stage">Matchweek 3</span>
+                        <span class="match-status upcoming"><i class="fa-regular fa-clock"></i> 10:00 PM MYT</span>
+                    </div>
+                    <div class="match-main">
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Brighton & Hove Albion</span>
+                        </div>
+                        <div class="match-score-box" style="font-size: 1.4rem; color: var(--pl-green);">VS</div>
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Leeds United</span>
+                        </div>
+                    </div>
+                    <div class="match-meta-box">
+                        <div class="meta-left"><span>Stadium: <strong>American Express Stadium</strong></span></div>
+                        <div class="meta-right">Sat, 05 Sep 2026</div>
+                    </div>
+                </div>
+
+                <div class="match-card">
+                    <div class="match-card-header">
+                        <span class="match-stage">Matchweek 3</span>
+                        <span class="match-status upcoming"><i class="fa-regular fa-clock"></i> 10:00 PM MYT</span>
+                    </div>
+                    <div class="match-main">
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Fulham</span>
+                        </div>
+                        <div class="match-score-box" style="font-size: 1.4rem; color: var(--pl-green);">VS</div>
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Crystal Palace</span>
+                        </div>
+                    </div>
+                    <div class="match-meta-box">
+                        <div class="meta-left"><span>Stadium: <strong>Craven Cottage</strong></span></div>
+                        <div class="meta-right">Sat, 05 Sep 2026</div>
+                    </div>
+                </div>
+
+                <div class="match-card">
+                    <div class="match-card-header">
+                        <span class="match-stage">Matchweek 3</span>
+                        <span class="match-status upcoming"><i class="fa-regular fa-clock"></i> 10:00 PM MYT</span>
+                    </div>
+                    <div class="match-main">
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Manchester City</span>
+                        </div>
+                        <div class="match-score-box" style="font-size: 1.4rem; color: var(--pl-green);">VS</div>
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Coventry City</span>
+                        </div>
+                    </div>
+                    <div class="match-meta-box">
+                        <div class="meta-left"><span>Stadium: <strong>Etihad Stadium</strong></span></div>
+                        <div class="meta-right">Sat, 05 Sep 2026</div>
+                    </div>
+                </div>
+
+                <div class="match-card">
+                    <div class="match-card-header">
+                        <span class="match-stage">Matchweek 3</span>
+                        <span class="match-status upcoming"><i class="fa-regular fa-clock"></i> 10:00 PM MYT</span>
+                    </div>
+                    <div class="match-main">
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Nottingham Forest</span>
+                        </div>
+                        <div class="match-score-box" style="font-size: 1.4rem; color: var(--pl-green);">VS</div>
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Tottenham Hotspur</span>
+                        </div>
+                    </div>
+                    <div class="match-meta-box">
+                        <div class="meta-left"><span>Stadium: <strong>City Ground</strong></span></div>
+                        <div class="meta-right">Sat, 05 Sep 2026</div>
+                    </div>
+                </div>
+
+                <div class="match-card">
+                    <div class="match-card-header">
+                        <span class="match-stage">Matchweek 3</span>
+                        <span class="match-status upcoming"><i class="fa-regular fa-clock"></i> 12:30 AM MYT</span>
+                    </div>
+                    <div class="match-main">
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Hull City</span>
+                        </div>
+                        <div class="match-score-box" style="font-size: 1.4rem; color: var(--pl-green);">VS</div>
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Aston Villa</span>
+                        </div>
+                    </div>
+                    <div class="match-meta-box">
+                        <div class="meta-left"><span>Stadium: <strong>MKM Stadium</strong></span></div>
+                        <div class="meta-right">Sun, 06 Sep 2026</div>
+                    </div>
+                </div>
+
+                <div class="match-card">
+                    <div class="match-card-header">
+                        <span class="match-stage">Matchweek 3</span>
+                        <span class="match-status upcoming"><i class="fa-regular fa-clock"></i> 09:00 PM MYT</span>
+                    </div>
+                    <div class="match-main">
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Everton</span>
+                        </div>
+                        <div class="match-score-box" style="font-size: 1.4rem; color: var(--pl-green);">VS</div>
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Manchester United</span>
+                        </div>
+                    </div>
+                    <div class="match-meta-box">
+                        <div class="meta-left"><span>Stadium: <strong>Hill Dickinson Stadium</strong></span></div>
+                        <div class="meta-right">Sun, 06 Sep 2026</div>
+                    </div>
+                </div>
+
+                <div class="match-card">
+                    <div class="match-card-header">
+                        <span class="match-stage">Matchweek 3</span>
+                        <span class="match-status upcoming"><i class="fa-regular fa-clock"></i> 11:30 PM MYT</span>
+                    </div>
+                    <div class="match-main">
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Arsenal</span>
+                        </div>
+                        <div class="match-score-box" style="font-size: 1.4rem; color: var(--pl-green);">VS</div>
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Chelsea</span>
+                        </div>
+                    </div>
+                    <div class="match-meta-box">
+                        <div class="meta-left"><span>Stadium: <strong>Emirates Stadium</strong></span></div>
+                        <div class="meta-right">Sun, 06 Sep 2026</div>
+                    </div>
+                </div>
+
+                <!-- MATCHWEEK 4 -->
+                <div class="match-card">
+                    <div class="match-card-header">
+                        <span class="match-stage">Matchweek 4</span>
+                        <span class="match-status upcoming"><i class="fa-regular fa-clock"></i> 10:00 PM MYT</span>
+                    </div>
+                    <div class="match-main">
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">AFC Bournemouth</span>
+                        </div>
+                        <div class="match-score-box" style="font-size: 1.4rem; color: var(--pl-green);">VS</div>
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Brentford</span>
+                        </div>
+                    </div>
+                    <div class="match-meta-box">
+                        <div class="meta-left"><span>Stadium: <strong>Vitality Stadium</strong></span></div>
+                        <div class="meta-right">Sat, 12 Sep 2026</div>
+                    </div>
+                </div>
+
+                <div class="match-card">
+                    <div class="match-card-header">
+                        <span class="match-stage">Matchweek 4</span>
+                        <span class="match-status upcoming"><i class="fa-regular fa-clock"></i> 10:00 PM MYT</span>
+                    </div>
+                    <div class="match-main">
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Aston Villa</span>
+                        </div>
+                        <div class="match-score-box" style="font-size: 1.4rem; color: var(--pl-green);">VS</div>
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Nottingham Forest</span>
+                        </div>
+                    </div>
+                    <div class="match-meta-box">
+                        <div class="meta-left"><span>Stadium: <strong>Villa Park</strong></span></div>
+                        <div class="meta-right">Sat, 12 Sep 2026</div>
+                    </div>
+                </div>
+
+                <div class="match-card">
+                    <div class="match-card-header">
+                        <span class="match-stage">Matchweek 4</span>
+                        <span class="match-status upcoming"><i class="fa-regular fa-clock"></i> 10:00 PM MYT</span>
+                    </div>
+                    <div class="match-main">
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Chelsea</span>
+                        </div>
+                        <div class="match-score-box" style="font-size: 1.4rem; color: var(--pl-green);">VS</div>
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Hull City</span>
+                        </div>
+                    </div>
+                    <div class="match-meta-box">
+                        <div class="meta-left"><span>Stadium: <strong>Stamford Bridge</strong></span></div>
+                        <div class="meta-right">Sat, 12 Sep 2026</div>
+                    </div>
+                </div>
+
+                <div class="match-card">
+                    <div class="match-card-header">
+                        <span class="match-stage">Matchweek 4</span>
+                        <span class="match-status upcoming"><i class="fa-regular fa-clock"></i> 10:00 PM MYT</span>
+                    </div>
+                    <div class="match-main">
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Crystal Palace</span>
+                        </div>
+                        <div class="match-score-box" style="font-size: 1.4rem; color: var(--pl-green);">VS</div>
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Ipswich Town</span>
+                        </div>
+                    </div>
+                    <div class="match-meta-box">
+                        <div class="meta-left"><span>Stadium: <strong>Selhurst Park</strong></span></div>
+                        <div class="meta-right">Sat, 12 Sep 2026</div>
+                    </div>
+                </div>
+
+                <div class="match-card">
+                    <div class="match-card-header">
+                        <span class="match-stage">Matchweek 4</span>
+                        <span class="match-status upcoming"><i class="fa-regular fa-clock"></i> 10:00 PM MYT</span>
+                    </div>
+                    <div class="match-main">
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Liverpool</span>
+                        </div>
+                        <div class="match-score-box" style="font-size: 1.4rem; color: var(--pl-green);">VS</div>
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Fulham</span>
+                        </div>
+                    </div>
+                    <div class="match-meta-box">
+                        <div class="meta-left"><span>Stadium: <strong>Anfield</strong></span></div>
+                        <div class="meta-right">Sat, 12 Sep 2026</div>
+                    </div>
+                </div>
+
+                <div class="match-card">
+                    <div class="match-card-header">
+                        <span class="match-stage">Matchweek 4</span>
+                        <span class="match-status upcoming"><i class="fa-regular fa-clock"></i> 12:30 AM MYT</span>
+                    </div>
+                    <div class="match-main">
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Tottenham Hotspur</span>
+                        </div>
+                        <div class="match-score-box" style="font-size: 1.4rem; color: var(--pl-green);">VS</div>
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Everton</span>
+                        </div>
+                    </div>
+                    <div class="match-meta-box">
+                        <div class="meta-left"><span>Stadium: <strong>Tottenham Hotspur Stadium</strong></span></div>
+                        <div class="meta-right">Sun, 13 Sep 2026</div>
+                    </div>
+                </div>
+
+                <div class="match-card">
+                    <div class="match-card-header">
+                        <span class="match-stage">Matchweek 4</span>
+                        <span class="match-status upcoming"><i class="fa-regular fa-clock"></i> 03:00 AM MYT</span>
+                    </div>
+                    <div class="match-main">
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Sunderland</span>
+                        </div>
+                        <div class="match-score-box" style="font-size: 1.4rem; color: var(--pl-green);">VS</div>
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Arsenal</span>
+                        </div>
+                    </div>
+                    <div class="match-meta-box">
+                        <div class="meta-left"><span>Stadium: <strong>Stadium of Light</strong></span></div>
+                        <div class="meta-right">Sun, 13 Sep 2026</div>
+                    </div>
+                </div>
+
+                <div class="match-card">
+                    <div class="match-card-header">
+                        <span class="match-stage">Matchweek 4</span>
+                        <span class="match-status upcoming"><i class="fa-regular fa-clock"></i> 09:00 PM MYT</span>
+                    </div>
+                    <div class="match-main">
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Coventry City</span>
+                        </div>
+                        <div class="match-score-box" style="font-size: 1.4rem; color: var(--pl-green);">VS</div>
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Brighton & Hove Albion</span>
+                        </div>
+                    </div>
+                    <div class="match-meta-box">
+                        <div class="meta-left"><span>Stadium: <strong>Coventry Building Society Arena</strong></span></div>
+                        <div class="meta-right">Sun, 13 Sep 2026</div>
+                    </div>
+                </div>
+
+                <div class="match-card">
+                    <div class="match-card-header">
+                        <span class="match-stage">Matchweek 4</span>
+                        <span class="match-status upcoming"><i class="fa-regular fa-clock"></i> 11:30 PM MYT</span>
+                    </div>
+                    <div class="match-main">
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Manchester United</span>
+                        </div>
+                        <div class="match-score-box" style="font-size: 1.4rem; color: var(--pl-green);">VS</div>
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Manchester City</span>
+                        </div>
+                    </div>
+                    <div class="match-meta-box">
+                        <div class="meta-left"><span>Stadium: <strong>Old Trafford</strong></span></div>
+                        <div class="meta-right">Sun, 13 Sep 2026</div>
+                    </div>
+                </div>
+
+                <div class="match-card">
+                    <div class="match-card-header">
+                        <span class="match-stage">Matchweek 4</span>
+                        <span class="match-status upcoming"><i class="fa-regular fa-clock"></i> 03:00 AM MYT</span>
+                    </div>
+                    <div class="match-main">
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Leeds United</span>
+                        </div>
+                        <div class="match-score-box" style="font-size: 1.4rem; color: var(--pl-green);">VS</div>
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Newcastle United</span>
+                        </div>
+                    </div>
+                    <div class="match-meta-box">
+                        <div class="meta-left"><span>Stadium: <strong>Elland Road</strong></span></div>
+                        <div class="meta-right">Tue, 15 Sep 2026</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- TAB 3: SCORES -->
+        <div id="scores" class="tab-content">
+            <div class="match-grid">
+
+                <div class="match-card">
+                    <div class="match-card-header">
+                        <span class="match-stage">FIFA World Cup 2026 Final</span>
+                        <span class="match-status"><i class="fa-solid fa-trophy"></i> Champion</span>
+                    </div>
+                    <div class="match-main">
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Argentina</span>
+                        </div>
+                        <div class="match-score-box">
+                            3:3
+                            <span class="penalty-tag">(Pen 4 - 2)</span>
+                        </div>
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">France</span>
+                        </div>
+                    </div>
+                    <div class="match-meta-box">
+                        <div class="meta-left">
+                            <span>Stadium: <strong>MetLife Stadium, NJ</strong></span>
+                            <span>Attendance: <strong>82,500</strong></span>
+                        </div>
+                        <div class="meta-right">Date: Jul 19, 2026</div>
+                    </div>
+                    <div class="scorers-grid">
+                        <div class="scorer-column">
+                            <div class="scorer-item"><i class="fa-solid fa-football"></i> L. Messi (23' pen, 108')</div>
+                            <div class="scorer-item"><i class="fa-solid fa-football"></i> A. Di María (36')</div>
+                        </div>
+                        <div class="scorer-column right">
+                            <div class="scorer-item">K. Mbappé (80' pen, 81', 118' pen) <i class="fa-solid fa-football"></i></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="match-card">
+                    <div class="match-card-header">
+                        <span class="match-stage">Semi Final</span>
+                        <span class="match-status"><i class="fa-solid fa-circle-check"></i> FT</span>
+                    </div>
+                    <div class="match-main">
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">England</span>
+                        </div>
+                        <div class="match-score-box">1:2</div>
+                        <div class="match-team">
+                            <div class="team-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="team-name">Argentina</span>
+                        </div>
+                    </div>
+                    <div class="match-meta-box">
+                        <div class="meta-left">
+                            <span>Stadium: <strong>Mercedes-Benz Stadium</strong></span>
+                            <span>Attendance: <strong>68,239</strong></span>
+                        </div>
+                        <div class="meta-right">Date: Jul 15, 2026</div>
+                    </div>
+                    <div class="scorers-grid">
+                        <div class="scorer-column">
+                            <div class="scorer-item"><i class="fa-solid fa-football"></i> H. Kane (55')</div>
+                        </div>
+                        <div class="scorer-column right">
+                            <div class="scorer-item">J. Álvarez (85') <i class="fa-solid fa-football"></i></div>
+                            <div class="scorer-item">L. Martínez (90+2') <i class="fa-solid fa-football"></i></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- TAB 4: STANDINGS (FULL 20 TEAMS) -->
+        <div id="standings" class="tab-content">
+            <div class="glass-card">
+                <div class="card-header">
+                    <i class="fa-solid fa-ranking-star" style="color: var(--pl-green); font-size: 1.4rem;"></i>
+                    <h2>Premier League Table</h2>
+                </div>
+                <table class="custom-table">
+                    <thead>
+                        <tr>
+                            <th>Ked</th>
+                            <th>Kelab</th>
+                            <th>P</th>
+                            <th>W</th>
+                            <th>D</th>
+                            <th>L</th>
+                            <th>GD</th>
+                            <th>Pts</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="pos-badge pos-ucl">1</span></td>
+                            <td><div class="team-cell"><div class="team-logo-placeholder">BOU</div> AFC Bournemouth</div></td>
+                            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td><strong>0</strong></td>
+                        </tr>
+                        <tr>
+                            <td><span class="pos-badge pos-ucl">2</span></td>
+                            <td><div class="team-cell"><div class="team-logo-placeholder">ARS</div> Arsenal</div></td>
+                            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td><strong>0</strong></td>
+                        </tr>
+                        <tr>
+                            <td><span class="pos-badge pos-ucl">3</span></td>
+                            <td><div class="team-cell"><div class="team-logo-placeholder">AVL</div> Aston Villa</div></td>
+                            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td><strong>0</strong></td>
+                        </tr>
+                        <tr>
+                            <td><span class="pos-badge pos-ucl">4</span></td>
+                            <td><div class="team-cell"><div class="team-logo-placeholder">BRE</div> Brentford</div></td>
+                            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td><strong>0</strong></td>
+                        </tr>
+                        <tr>
+                            <td><span class="pos-badge pos-uel">5</span></td>
+                            <td><div class="team-cell"><div class="team-logo-placeholder">BHA</div> Brighton & Hove Albion</div></td>
+                            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td><strong>0</strong></td>
+                        </tr>
+                        <tr>
+                            <td><span class="pos-badge">6</span></td>
+                            <td><div class="team-cell"><div class="team-logo-placeholder">CHE</div> Chelsea</div></td>
+                            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td><strong>0</strong></td>
+                        </tr>
+                        <tr>
+                            <td><span class="pos-badge">7</span></td>
+                            <td><div class="team-cell"><div class="team-logo-placeholder">COV</div> Coventry City</div></td>
+                            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td><strong>0</strong></td>
+                        </tr>
+                        <tr>
+                            <td><span class="pos-badge">8</span></td>
+                            <td><div class="team-cell"><div class="team-logo-placeholder">CRY</div> Crystal Palace</div></td>
+                            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td><strong>0</strong></td>
+                        </tr>
+                        <tr>
+                            <td><span class="pos-badge">9</span></td>
+                            <td><div class="team-cell"><div class="team-logo-placeholder">EVE</div> Everton</div></td>
+                            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td><strong>0</strong></td>
+                        </tr>
+                        <tr>
+                            <td><span class="pos-badge">10</span></td>
+                            <td><div class="team-cell"><div class="team-logo-placeholder">FUL</div> Fulham</div></td>
+                            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td><strong>0</strong></td>
+                        </tr>
+                        <tr>
+                            <td><span class="pos-badge">11</span></td>
+                            <td><div class="team-cell"><div class="team-logo-placeholder">HUL</div> Hull City</div></td>
+                            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td><strong>0</strong></td>
+                        </tr>
+                        <tr>
+                            <td><span class="pos-badge">12</span></td>
+                            <td><div class="team-cell"><div class="team-logo-placeholder">IPS</div> Ipswich Town</div></td>
+                            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td><strong>0</strong></td>
+                        </tr>
+                        <tr>
+                            <td><span class="pos-badge">13</span></td>
+                            <td><div class="team-cell"><div class="team-logo-placeholder">LEE</div> Leeds United</div></td>
+                            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td><strong>0</strong></td>
+                        </tr>
+                        <tr>
+                            <td><span class="pos-badge">14</span></td>
+                            <td><div class="team-cell"><div class="team-logo-placeholder">LIV</div> Liverpool</div></td>
+                            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td><strong>0</strong></td>
+                        </tr>
+                        <tr>
+                            <td><span class="pos-badge">15</span></td>
+                            <td><div class="team-cell"><div class="team-logo-placeholder">MCI</div> Manchester City</div></td>
+                            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td><strong>0</strong></td>
+                        </tr>
+                        <tr>
+                            <td><span class="pos-badge">16</span></td>
+                            <td><div class="team-cell"><div class="team-logo-placeholder">MUN</div> Manchester United</div></td>
+                            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td><strong>0</strong></td>
+                        </tr>
+                        <tr>
+                            <td><span class="pos-badge">17</span></td>
+                            <td><div class="team-cell"><div class="team-logo-placeholder">NEW</div> Newcastle United</div></td>
+                            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td><strong>0</strong></td>
+                        </tr>
+                        <tr>
+                            <td><span class="pos-badge pos-rel">18</span></td>
+                            <td><div class="team-cell"><div class="team-logo-placeholder">NFO</div> Nottingham Forest</div></td>
+                            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td><strong>0</strong></td>
+                        </tr>
+                        <tr>
+                            <td><span class="pos-badge pos-rel">19</span></td>
+                            <td><div class="team-cell"><div class="team-logo-placeholder">SUN</div> Sunderland</div></td>
+                            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td><strong>0</strong></td>
+                        </tr>
+                        <tr>
+                            <td><span class="pos-badge pos-rel">20</span></td>
+                            <td><div class="team-cell"><div class="team-logo-placeholder">TOT</div> Tottenham Hotspur</div></td>
+                            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td><strong>0</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; <strong>Sports Hub Official</strong> | Football Media Center. All rights reserved.</p>
+        <p style="font-size: 0.75rem;">Home of Premier League is an external video streaming aggregator project.</p>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        function switchTab(tabId, btn) {
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(c => c.classList.remove('active'));
+            
+            const tabs = document.querySelectorAll('.nav-tab');
+            tabs.forEach(t => t.classList.remove('active'));
+
+            document.getElementById(tabId).classList.add('active');
+            btn.classList.add('active');
+        }
+    </script>
+
+</body>
+</html>

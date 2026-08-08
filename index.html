@@ -5,10 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home of Premier League | Sports Hub Official</title>
     <link rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3jvhee0-_V6RWnWEIbtMRcAcorU9PqoRSI3vhTi0ugis7VSsUj9i3xaA&s=10" type="image/x-icon">
-    <!-- FontAwesome Icons -->
+    
+    <!-- Google Fonts & FontAwesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Video.js Styles -->
+    <link href="https://vjs.zencdn.net/8.10.0/video-js.css" rel="stylesheet" />
+    <link href="https://unpkg.com/@videojs/themes@1.0.1/dist/city/index.css" rel="stylesheet" />
+
+    <!-- Video.js Script -->
+    <script src="https://vjs.zencdn.net/8.10.0/video.min.js"></script>
     
     <style>
         :root {
@@ -28,7 +35,7 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Inter', sans-serif;
         }
 
         body {
@@ -217,37 +224,35 @@
         }
 
         .player-wrapper {
-            background: rgba(36, 0, 41, 0.65);
+            background: rgba(30, 41, 59, 0.7);
             border: 1px solid var(--glass-border);
             border-radius: 20px;
-            padding: 16px;
+            padding: 24px;
             backdrop-filter: blur(10px);
             box-shadow: 0 20px 40px rgba(0,0,0,0.6);
         }
 
-        .player-container {
-            position: relative;
+        .video-wrapper {
             width: 100%;
-            padding-top: 56.25%;
-            background-color: #000;
             border-radius: 12px;
             overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+            border: 1px solid var(--glass-border);
+            background-color: #000;
         }
 
-        .player-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
+        /* Customization Video.js Player Responsive */
+        .video-js {
             width: 100%;
-            height: 100%;
-            border: 0;
+            height: auto;
+            aspect-ratio: 16 / 9;
         }
 
         .player-info {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 10px 5px 10px;
+            padding: 20px 5px 5px 5px;
         }
 
         .player-info h3 {
@@ -259,7 +264,7 @@
         }
 
         .player-info h3 i {
-            color: var(--pl-green);
+            color: var(--pl-pink);
         }
 
         /* MATCH CARDS GRID LAYOUT */
@@ -595,11 +600,22 @@
         <div id="live-stream" class="tab-content active">
             <div class="stream-layout-single">
                 <div class="player-wrapper">
-                    <div class="player-container">
-                        <iframe id="main-player" src="https://logic.icelanders.st/embed/skysportspremierleague-uk" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>
+                    <div class="video-wrapper">
+                        <!-- Video.js Player Element -->
+                        <video 
+                            id="my-video" 
+                            class="video-js vjs-theme-city vjs-big-play-centered" 
+                            controls 
+                            preload="auto" 
+                            autoplay
+                            muted
+                            playsinline
+                            data-setup="{}">
+                            <source src="https://bold-sky-a86c.yusoff-rohaidee.workers.dev/?url=https://1nyaler.streamhostingcdn.top/stream/38/index.m3u8" type="application/x-mpegURL">
+                        </video>
                     </div>
                     <div class="player-info">
-                        <h3><i class="fa-solid fa-circle-play"></i> Sky Sports Premier League (UK)</h3>
+                        <h3><i class="fa-solid fa-tower-broadcast"></i> Sky Sports Premier League (UK)</h3>
                         <span style="font-size: 0.85rem; color: var(--text-sub);"><i class="fa-solid fa-wifi" style="color: var(--pl-green);"></i> Ultra HD Feed</span>
                     </div>
                 </div>
@@ -1721,6 +1737,14 @@
             document.getElementById(tabId).classList.add('active');
             btn.classList.add('active');
         }
+
+        // Initialize Video.js Player
+        document.addEventListener('DOMContentLoaded', function() {
+            var player = videojs('my-video', {
+                fluid: true,
+                autoplay: 'muted'
+            });
+        });
     </script>
 
 </body>

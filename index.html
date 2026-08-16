@@ -267,6 +267,66 @@
             color: var(--pl-pink);
         }
 
+        /* CHANNEL SELECTOR STYLING */
+        .channel-selector-container {
+            margin-top: 20px;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--glass-border);
+            border-radius: 14px;
+            padding: 15px;
+        }
+
+        .channel-selector-title {
+            font-size: 0.9rem;
+            color: var(--pl-cyan);
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .channel-group-title {
+            font-size: 0.8rem;
+            color: var(--pl-green);
+            font-weight: 700;
+            margin: 10px 0 5px 0;
+        }
+
+        .channel-buttons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .channel-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            color: #fff;
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-align: left;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .channel-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: var(--pl-green);
+        }
+
+        .channel-btn.active {
+            background: var(--pl-green);
+            color: var(--pl-purple);
+            font-weight: 700;
+            border-color: var(--pl-green);
+        }
+
         /* MATCH CARDS GRID LAYOUT */
         .match-grid {
             display: grid;
@@ -615,8 +675,41 @@
                         </video>
                     </div>
                     <div class="player-info">
-                        <h3><i class="fa-solid fa-tower-broadcast"></i> Sky Sports Premier League (UK)</h3>
+                        <h3 id="current-channel-title"><i class="fa-solid fa-tower-broadcast"></i> Sky Sports Premier League (UK)</h3>
                         <span style="font-size: 0.85rem; color: var(--text-sub);"><i class="fa-solid fa-wifi" style="color: var(--pl-green);"></i> Ultra HD Feed</span>
+                    </div>
+
+                    <!-- CHANNEL SELECTOR -->
+                    <div class="channel-selector-container">
+                        <div class="channel-selector-title"><i class="fa-solid fa-list"></i> Pilih Saluran Stream</div>
+                        
+                        <div class="channel-group-title"><i class="fa-solid fa-server"></i> PL New</div>
+                        <div class="channel-buttons-grid">
+                            <button class="channel-btn" onclick="changeChannel('TNT Sports 1 UK', 'https://bold-sky-a86c.yusoff-rohaidee.workers.dev/?url=https://1nyaler.streamhostingcdn.top/stream/13/index.m3u8', this)">TNT Sports 1 UK</button>
+                            <button class="channel-btn active" onclick="changeChannel('Sky Sports Premier League', 'https://bold-sky-a86c.yusoff-rohaidee.workers.dev/?url=https://1nyaler.streamhostingcdn.top/stream/38/index.m3u8', this)">Sky Sports Premier League</button>
+                            <button class="channel-btn" onclick="changeChannel('Arena 1 Premium', 'https://bold-sky-a86c.yusoff-rohaidee.workers.dev/?url=https://1nyaler.streamhostingcdn.top/stream/33/index.m3u8', this)">Arena 1 Premium</button>
+                            <button class="channel-btn" onclick="changeChannel('Arena 2 Premium', 'https://bold-sky-a86c.yusoff-rohaidee.workers.dev/?url=https://1nyaler.streamhostingcdn.top/stream/48/index.m3u8', this)">Arena 2 Premium</button>
+                            <button class="channel-btn" onclick="changeChannel('Arena Sport 1', 'https://bold-sky-a86c.yusoff-rohaidee.workers.dev/?url=https://1nyaler.streamhostingcdn.top/stream/63/index.m3u8', this)">Arena Sport 1</button>
+                            <button class="channel-btn" onclick="changeChannel('Arena Sport 4', 'https://bold-sky-a86c.yusoff-rohaidee.workers.dev/?url=https://1nyaler.streamhostingcdn.top/stream//67/index.m3u8', this)">Arena Sport 4</button>
+                            <button class="channel-btn" onclick="changeChannel('Arena 2 Premium (Alt)', 'https://bold-sky-a86c.yusoff-rohaidee.workers.dev/?url=https://1nyaler.streamhostingcdn.top/stream//78/index.m3u8', this)">Arena 2 Premium (Alt)</button>
+                            <button class="channel-btn" onclick="changeChannel('DAZN 1 Portugal', 'https://bold-sky-a86c.yusoff-rohaidee.workers.dev/?url=https://1nyaler.streamhostingcdn.top/stream/25/index.m3u8', this)">DAZN 1 Portugal</button>
+                            <button class="channel-btn" onclick="changeChannel('Premier Sports 1', 'https://bold-sky-a86c.yusoff-rohaidee.workers.dev/?url=https://1nyaler.streamhostingcdn.top/stream/47/index.m3u8', this)">Premier Sports 1</button>
+                            <button class="channel-btn" onclick="changeChannel('Premier Sports 2', 'https://bold-sky-a86c.yusoff-rohaidee.workers.dev/?url=https://1nyaler.streamhostingcdn.top/stream/5/index.m3u8', this)">Premier Sports 2</button>
+                        </div>
+
+                        <div class="channel-group-title"><i class="fa-solid fa-server"></i> Server 2</div>
+                        <div class="channel-buttons-grid">
+                            <button class="channel-btn" onclick="changeChannel('TNT Sports 1 UK (Server 2)', 'https://bold-sky-a86c.yusoff-rohaidee.workers.dev/?url=https://7nlayer.streamhostingcdn.top/stream/13/index.m3u8', this)">TNT Sports 1 UK</button>
+                            <button class="channel-btn" onclick="changeChannel('Sky Sports Premier League (Server 2)', 'https://bold-sky-a86c.yusoff-rohaidee.workers.dev/?url=https://7nlayer.streamhostingcdn.top/stream/38/index.m3u8', this)">Sky Sports Premier League</button>
+                            <button class="channel-btn" onclick="changeChannel('Arena 1 Premium (Server 2)', 'https://bold-sky-a86c.yusoff-rohaidee.workers.dev/?url=https://7nlayer.streamhostingcdn.top/stream/33/index.m3u8', this)">Arena 1 Premium</button>
+                            <button class="channel-btn" onclick="changeChannel('Arena 2 Premium (Server 2)', 'https://bold-sky-a86c.yusoff-rohaidee.workers.dev/?url=https://7nlayer.streamhostingcdn.top/stream/48/index.m3u8', this)">Arena 2 Premium</button>
+                            <button class="channel-btn" onclick="changeChannel('Arena Sport 1 (Server 2)', 'https://bold-sky-a86c.yusoff-rohaidee.workers.dev/?url=https://7nlayer.streamhostingcdn.top/stream/63/index.m3u8', this)">Arena Sport 1</button>
+                            <button class="channel-btn" onclick="changeChannel('Arena Sport 4 (Server 2)', 'https://bold-sky-a86c.yusoff-rohaidee.workers.dev/?url=https://7nlayer.streamhostingcdn.top/stream//67/index.m3u8', this)">Arena Sport 4</button>
+                            <button class="channel-btn" onclick="changeChannel('Arena 2 Premium Alt (Server 2)', 'https://bold-sky-a86c.yusoff-rohaidee.workers.dev/?url=https://7nlayer.streamhostingcdn.top/stream//78/index.m3u8', this)">Arena 2 Premium (Alt)</button>
+                            <button class="channel-btn" onclick="changeChannel('DAZN 1 Portugal (Server 2)', 'https://bold-sky-a86c.yusoff-rohaidee.workers.dev/?url=https://7nlayer.streamhostingcdn.top/stream/25/index.m3u8', this)">DAZN 1 Portugal</button>
+                            <button class="channel-btn" onclick="changeChannel('Premier Sports 1 (Server 2)', 'https://bold-sky-a86c.yusoff-rohaidee.workers.dev/?url=https://7nyaler.streamhostingcdn.top/stream/47/index.m3u8', this)">Premier Sports 1</button>
+                            <button class="channel-btn" onclick="changeChannel('Premier Sports 2 (Server 2)', 'https://bold-sky-a86c.yusoff-rohaidee.workers.dev/?url=https://7nyaler.streamhostingcdn.top/stream/5/index.m3u8', this)">Premier Sports 2</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1727,6 +1820,8 @@
 
     <!-- JAVASCRIPT -->
     <script>
+        var player;
+
         function switchTab(tabId, btn) {
             const contents = document.querySelectorAll('.tab-content');
             contents.forEach(c => c.classList.remove('active'));
@@ -1738,9 +1833,24 @@
             btn.classList.add('active');
         }
 
+        function changeChannel(title, url, btn) {
+            if (player) {
+                player.src({
+                    src: url,
+                    type: 'application/x-mpegURL'
+                });
+                player.play();
+            }
+            document.getElementById('current-channel-title').innerHTML = '<i class="fa-solid fa-tower-broadcast"></i> ' + title;
+
+            const buttons = document.querySelectorAll('.channel-btn');
+            buttons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+        }
+
         // Initialize Video.js Player
         document.addEventListener('DOMContentLoaded', function() {
-            var player = videojs('my-video', {
+            player = videojs('my-video', {
                 fluid: true,
                 autoplay: 'muted'
             });

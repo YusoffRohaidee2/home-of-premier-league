@@ -677,21 +677,60 @@
                         <span style="font-size: 0.85rem; color: var(--text-sub);"><i class="fa-solid fa-wifi" style="color: var(--pl-green);"></i> Ultra HD Feed</span>
                     </div>
 
-                    <!-- CHANNEL SELECTOR -->
-                    <div class="channel-selector-container">
-                        <div class="channel-selector-title"><i class="fa-solid fa-list"></i> Pick your channels!</div>
-                        
-                        <div class="channel-group-title"><i class="fa-solid fa-server"></i>Server 1</div>
-                        <div class="channel-buttons-grid">
-<button class="channel-btn active" onclick="changeChannel('Sky Sports Premier League', 'https://bold-sky-a86c.yusoff-rohaidee.workers.dev/?url=https://1nyaler.streamhostingcdn.top/stream/38/index.m3u8', this)">★ Sky Sports Premier League</button>                            <button class="channel-btn" onclick="changeChannel('DAZN 1 Portugal', 'https://bold-sky-a86c.yusoff-rohaidee.workers.dev/?url=https://1nyaler.streamhostingcdn.top/stream/25/index.m3u8', this)">DAZN 1 Portugal</button>
-                            <button class="channel-btn" onclick="changeChannel('Premier Sports 1', 'https://bold-sky-a86c.yusoff-rohaidee.workers.dev/?url=https://1nyaler.streamhostingcdn.top/stream/47/index.m3u8', this)">Premier Sports 1</button>
-                            <button class="channel-btn" onclick="changeChannel('Premier Sports 2', 'https://bold-sky-a86c.yusoff-rohaidee.workers.dev/?url=https://1nyaler.streamhostingcdn.top/stream/5/index.m3u8', this)">Premier Sports 2</button>
+<!-- CHANNEL SELECTOR -->
+<div class="channel-selector-container">
+    <div class="channel-selector-title">
+        <i class="fa-solid fa-tv"></i> Select Your Channel
+    </div>
+    
+    <!-- SERVER 1 -->
+    <div class="channel-group-title">
+        <i class="fa-solid fa-server"></i> Main Server (Server 1)
+    </div>
+    
+    <div class="channel-buttons-grid">
+        <button class="channel-btn active" onclick="changeChannel('Sky Sports Premier League UK', 'https://bold-sky-a86c.yusoff-rohaidee.workers.dev/?url=https://1nyaler.streamhostingcdn.top/stream/38/index.m3u8', this)">
+            <i class="fa-solid fa-star"></i> Sky Sports Premier League UK
+        </button>
+        <button class="channel-btn" onclick="changeChannel('Sky Sports UHD Main Event UK', 'https://bold-sky-a86c.yusoff-rohaidee.workers.dev/?url=https://1nyaler.streamhostingcdn.top/stream/19/index.m3u8', this)">
+            Sky Sports UHD Main Event UK
+        </button>
+        <button class="channel-btn" onclick="changeChannel('Sky Sports Plus/+ UK', 'https://bold-sky-a86c.yusoff-rohaidee.workers.dev/?url=https://1nyaler.streamhostingcdn.top/stream/11/index.m3u8', this)">
+            Sky Sports Plus/+ UK
+        </button>
+        <button class="channel-btn" onclick="changeChannel('TNT Sports 1 UK', 'https://bold-sky-a86c.yusoff-rohaidee.workers.dev/?url=https://1nyaler.streamhostingcdn.top/stream/13/index.m3u8', this)">
+            TNT Sports 1 UK
+        </button>
+        <button class="channel-btn" onclick="changeChannel('Premier Sports ROI 1', 'https://bold-sky-a86c.yusoff-rohaidee.workers.dev/?url=https://1nyaler.streamhostingcdn.top/stream/47/index.m3u8', this)">
+            Premier Sports ROI 1
+        </button>
+        <button class="channel-btn" onclick="changeChannel('USA Network', 'https://bold-sky-a86c.yusoff-rohaidee.workers.dev/?url=https://1nyaler.streamhostingcdn.top/stream/68/index.m3u8', this)">
+            USA Network
+        </button>
                         </div>
+
                     </div>
+
                 </div>
+
             </div>
+
         </div>
 
+    <!-- SERVER 2 -->
+    <div class="channel-group-title" style="margin-top: 20px;">
+        <i class="fa-solid fa-server"></i> Backup Server (Server 2 - Embed)
+    </div>
+    
+    <div class="channel-buttons-grid">
+        <button class="channel-btn" onclick="changeChannel('Sky Sports Premier League', 'https://cdx-08192.website/embed/skysportspremierleague-uk', this)">
+            Sky Sports Premier League
+        </button>
+        <button class="channel-btn" onclick="changeChannel('Sky Sports Main Event', 'https://cdx-08192.website/embed/skysportsmainevent-uk', this)">
+            Sky Sports Main Event
+        </button>
+    </div>
+</div>
         <!-- TAB 2: SCHEDULE (MATCHWEEK 1 TO 4) -->
         <div id="schedule" class="tab-content">
             <div class="match-grid">

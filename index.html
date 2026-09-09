@@ -12,9 +12,14 @@
 
     <!-- Video.js Styles -->
     <link href="https://vjs.zencdn.net/8.10.0/video-js.css" rel="stylesheet" />
-    <!-- Video.js Script -->
-    <script src="https://vjs.zencdn.net/8.10.0/video.min.js"></script>
     
+    <!-- Video.js Core Script -->
+    <script src="https://vjs.zencdn.net/8.10.0/video.min.js"></script>
+
+    <!-- Shaka Player Core & Integration for DRM DASH ClearKey Playback -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.3.6/shaka-player.compiled.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/videojs-shaka-player@1.0.0/dist/videojs-shaka-player.min.js"></script>
+
     <style>
         :root {
             --pl-purple: #38003c;
@@ -46,19 +51,10 @@
         }
 
         /* Scrollbar */
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: var(--pl-dark);
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #520058;
-            border-radius: 10px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--pl-green);
-        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--pl-dark); }
+        ::-webkit-scrollbar-thumb { background: #520058; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--pl-green); }
 
         /* HEADER */
         header {
@@ -239,7 +235,6 @@
             background-color: #000;
         }
 
-        /* Customization Video.js Player Responsive */
         .video-js {
             width: 100%;
             height: auto;
@@ -333,9 +328,7 @@
         }
 
         @media (max-width: 480px) {
-            .match-grid {
-                grid-template-columns: 1fr;
-            }
+            .match-grid { grid-template-columns: 1fr; }
         }
 
         /* MATCH CARD UI DESIGN */
@@ -438,14 +431,6 @@
             align-items: center;
         }
 
-        .penalty-tag {
-            font-size: 0.75rem;
-            color: var(--pl-green);
-            font-weight: 600;
-            margin-top: 4px;
-            letter-spacing: 0;
-        }
-
         .match-meta-box {
             background: var(--card-inner-bg);
             border-radius: 14px;
@@ -458,17 +443,8 @@
             border: 1px solid rgba(255, 255, 255, 0.03);
         }
 
-        .meta-left {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
-
-        .meta-right {
-            text-align: right;
-            font-weight: 600;
-            color: #fff;
-        }
+        .meta-left { display: flex; flex-direction: column; gap: 4px; }
+        .meta-right { text-align: right; font-weight: 600; color: #fff; }
 
         .scorers-grid {
             display: grid;
@@ -478,31 +454,11 @@
             font-size: 0.82rem;
         }
 
-        .scorer-column {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-
-        .scorer-column.right {
-            text-align: right;
-        }
-
-        .scorer-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: #e2d9e6;
-        }
-
-        .scorer-column.right .scorer-item {
-            justify-content: flex-end;
-        }
-
-        .scorer-item i {
-            color: var(--pl-green);
-            font-size: 0.75rem;
-        }
+        .scorer-column { display: flex; flex-direction: column; gap: 6px; }
+        .scorer-column.right { text-align: right; }
+        .scorer-item { display: flex; align-items: center; gap: 8px; color: #e2d9e6; }
+        .scorer-column.right .scorer-item { justify-content: flex-end; }
+        .scorer-item i { color: var(--pl-green); font-size: 0.75rem; }
 
         /* TABLES STYLING */
         .glass-card {
@@ -522,11 +478,7 @@
             gap: 10px;
         }
 
-        .card-header h2 {
-            font-size: 1.3rem;
-            color: var(--pl-green);
-            font-weight: 700;
-        }
+        .card-header h2 { font-size: 1.3rem; color: var(--pl-green); font-weight: 700; }
 
         .custom-table {
             width: 100%;
@@ -551,27 +503,11 @@
             font-weight: 500;
         }
 
-        .custom-table tr td:first-child {
-            border-top-left-radius: 10px;
-            border-bottom-left-radius: 10px;
-        }
+        .custom-table tr td:first-child { border-top-left-radius: 10px; border-bottom-left-radius: 10px; }
+        .custom-table tr td:last-child { border-top-right-radius: 10px; border-bottom-right-radius: 10px; }
+        .custom-table tr:hover td { background: rgba(255, 255, 255, 0.07); }
 
-        .custom-table tr td:last-child {
-            border-top-right-radius: 10px;
-            border-bottom-right-radius: 10px;
-        }
-
-        .custom-table tr:hover td {
-            background: rgba(255, 255, 255, 0.07);
-        }
-
-        .team-cell {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-weight: 600;
-        }
-
+        .team-cell { display: flex; align-items: center; gap: 12px; font-weight: 600; }
         .team-logo-placeholder {
             width: 28px;
             height: 28px;
@@ -586,13 +522,7 @@
             border: 1px solid var(--glass-border);
         }
 
-        .pos-badge {
-            font-weight: 700;
-            width: 25px;
-            display: inline-block;
-            text-align: center;
-        }
-
+        .pos-badge { font-weight: 700; width: 25px; display: inline-block; text-align: center; }
         .pos-ucl { color: #00d2ff; }
         .pos-uel { color: #ff9100; }
         .pos-rel { color: var(--pl-pink); }
@@ -611,9 +541,7 @@
             gap: 5px;
         }
 
-        footer strong {
-            color: var(--pl-green);
-        }
+        footer strong { color: var(--pl-green); }
     </style>
 </head>
 <body>
@@ -667,97 +595,75 @@
                             preload="auto" 
                             autoplay
                             muted
-                            playsinline
-                            data-setup="{}">
-                            <source src="https://bold-sky-a86c.yusoff-rohaidee.workers.dev/?url=https://1nyaler.streamhostingcdn.top/stream/38/index.m3u8" type="application/x-mpegURL">
+                            playsinline>
                         </video>
                     </div>
                     <div class="player-info">
-                        <h3 id="current-channel-title"><i class="fa-solid fa-tower-broadcast"></i> Sky Sports Premier League (UK)</h3>
-                        <span style="font-size: 0.85rem; color: var(--text-sub);"><i class="fa-solid fa-wifi" style="color: var(--pl-green);"></i> Ultra HD Feed</span>
+                        <h3 id="current-channel-title"><i class="fa-solid fa-tower-broadcast"></i> TNT Sports 1 UK</h3>
+                        <span style="font-size: 0.85rem; color: var(--text-sub);"><i class="fa-solid fa-wifi" style="color: var(--pl-green);"></i> Direct Stream Feed</span>
                     </div>
 
-<!-- CHANNEL SELECTOR -->
-<div class="channel-selector-container">
-    <div class="channel-selector-title">
-        <i class="fa-solid fa-tv"></i> Select Your Channel
-    </div>
-    
-<!-- SERVER 1 -->
-<div class="channel-group-title">
-    <i class="fa-solid fa-server"></i> Main Server (Server 1)
-</div>
+                    <!-- CHANNEL SELECTOR -->
+                    <div class="channel-selector-container">
+                        <div class="channel-selector-title">
+                            <i class="fa-solid fa-tv"></i> Select Your Channel
+                        </div>
+                        
+                        <!-- TNT SPORTS (CLEARKEY DRM) -->
+                        <div class="channel-group-title">
+                            <i class="fa-solid fa-bolt"></i> TNT Sports Channels
+                        </div>
 
-<div class="channel-buttons-grid">
-    <button class="channel-btn active" onclick="changeChannel('Sky Sports Select NZ', 'https://flat-butterfly-3ef0.yusoffrohaidee1.workers.dev/?url=https://183.bozztv.com/giatv/giatv-fake/skyselectnz/chunks.m3u8', this)">
-        <i class="fa-solid fa-star"></i> Sky Sports Select NZ
-    </button>
-    <button class="channel-btn" onclick="changeChannel('Sky Sports 5 NZ', 'https://flat-butterfly-3ef0.yusoffrohaidee1.workers.dev/?url=https://183.bozztv.com/giatv/giatv-fake/sky5nz/chunks.m3u8', this)">
-        <i class="fa-solid fa-star"></i> Sky Sports 5 NZ
-    </button>
-    <button class="channel-btn" onclick="changeChannel('Sky Sports 7 NZ', 'https://flat-butterfly-3ef0.yusoffrohaidee1.workers.dev/?url=https://183.bozztv.com/giatv/giatv-fake/sky7nz/chunks.m3u8', this)">
-        <i class="fa-solid fa-star"></i> Sky Sports 7 NZ
-    </button>
-    <button class="channel-btn" onclick="changeChannel('Sky Sports 8 / Premier League NZ', 'https://flat-butterfly-3ef0.yusoffrohaidee1.workers.dev/?url=https://183.bozztv.com/giatv/giatv-fake/sky8nz/chunks.m3u8', this)">
-        <i class="fa-solid fa-star"></i> Sky Sports 8 / Premier League NZ
-    </button>
-    <button class="channel-btn" onclick="changeChannel('Astro Grandstand', 'https://flat-butterfly-3ef0.yusoffrohaidee1.workers.dev/?url=https://183.bozztv.com/giatv/giatv-fake/astrograndstand/chunks.m3u8', this)">
-        <i class="fa-solid fa-star"></i> Astro Grandstand
-    </button>
-    <button class="channel-btn" onclick="changeChannel('Astro Premier League', 'https://flat-butterfly-3ef0.yusoffrohaidee1.workers.dev/?url=https://183.bozztv.com/giatv/giatv-fake/astropremierleague/chunks.m3u8', this)">
-        <i class="fa-solid fa-star"></i> Astro Premier League
-    </button>
-    <button class="channel-btn" onclick="changeChannel('Astro Premier League 2', 'https://flat-butterfly-3ef0.yusoffrohaidee1.workers.dev/?url=https://183.bozztv.com/giatv/giatv-fake/astropremierleague2/chunks.m3u8', this)">
-        <i class="fa-solid fa-star"></i> Astro Premier League 2
-    </button>
-    <button class="channel-btn" onclick="changeChannel('Astro Premier League 3', 'https://flat-butterfly-3ef0.yusoffrohaidee1.workers.dev/?url=https://183.bozztv.com/giatv/giatv-fake/astropremierleague3/chunks.m3u8', this)">
-        <i class="fa-solid fa-star"></i> Astro Premier League 3
-    </button>
-    <button class="channel-btn" onclick="changeChannel('Astro Premier League 4', 'https://flat-butterfly-3ef0.yusoffrohaidee1.workers.dev/?url=https://183.bozztv.com/giatv/giatv-fake/astropremierleague4/chunks.m3u8', this)">
-        <i class="fa-solid fa-star"></i> Astro Premier League 4
-    </button>
-    <button class="channel-btn" onclick="changeChannel('USA Network SD', 'https://tvsen3.aynaott.com/dbbcY6NG/index.m3u8', this)">
-        <i class="fa-solid fa-star"></i> USA Network SD
-    </button>
-</div>
-
-<!-- SERVER 2 -->
-<div class="channel-group-title" style="margin-top: 20px;">
-    <i class="fa-solid fa-server"></i> Backup Server (Server 2)
-</div>
-
-<div class="channel-buttons-grid">
-    <button class="channel-btn" onclick="changeChannel('Sky Sports Select NZ', 'https://183.bozztv.com/giatv/giatv-fake/skyselectnz/chunks.m3u8', this)">
-        <i class="fa-solid fa-star"></i> Sky Sports Select NZ
-    </button>
-    <button class="channel-btn" onclick="changeChannel('Sky Sports 5 NZ', 'https://183.bozztv.com/giatv/giatv-fake/sky5nz/chunks.m3u8', this)">
-        <i class="fa-solid fa-star"></i> Sky Sports 5 NZ
-    </button>
-    <button class="channel-btn" onclick="changeChannel('Sky Sports 7 NZ', 'https://183.bozztv.com/giatv/giatv-fake/sky7nz/chunks.m3u8', this)">
-        <i class="fa-solid fa-star"></i> Sky Sports 7 NZ
-    </button>
-    <button class="channel-btn" onclick="changeChannel('Sky Sports 8 / Premier League NZ', 'https://183.bozztv.com/giatv/giatv-fake/sky8nz/chunks.m3u8', this)">
-        <i class="fa-solid fa-star"></i> Sky Sports 8 / Premier League NZ
-    </button>
-    <button class="channel-btn" onclick="changeChannel('Astro Grandstand', 'https://183.bozztv.com/giatv/giatv-fake/astrograndstand/chunks.m3u8', this)">
-        <i class="fa-solid fa-star"></i> Astro Grandstand
-    </button>
-    <button class="channel-btn" onclick="changeChannel('Astro Premier League', 'https://183.bozztv.com/giatv/giatv-fake/astropremierleague/chunks.m3u8', this)">
-        <i class="fa-solid fa-star"></i> Astro Premier League
-    </button>
-    <button class="channel-btn" onclick="changeChannel('Astro Premier League 2', 'https://183.bozztv.com/giatv/giatv-fake/astropremierleague2/chunks.m3u8', this)">
-        <i class="fa-solid fa-star"></i> Astro Premier League 2
-    </button>
-    <button class="channel-btn" onclick="changeChannel('Astro Premier League 3', 'https://183.bozztv.com/giatv/giatv-fake/astropremierleague3/chunks.m3u8', this)">
-        <i class="fa-solid fa-star"></i> Astro Premier League 3
-    </button>
-    <button class="channel-btn" onclick="changeChannel('Astro Premier League 4', 'https://183.bozztv.com/giatv/giatv-fake/astropremierleague4/chunks.m3u8', this)">
-        <i class="fa-solid fa-star"></i> Astro Premier League 4
-    </button>
+                        <div class="channel-buttons-grid">
+                            <button class="channel-btn active" onclick="playDASHChannel('TNT Sports 1', 'https://otte.cache.aiv-cdn.net/iad-nitro/live/clients/dash/enc/rhf2dwosdt/out/v1/ee550d2a68d846c797e6ce4de2e8b76d/cenc.mpd', '69a5aa835a061ce64a630d1046727e40', 'd02feac8a999bd06bf4059bf33411749', this)">
+                                <i class="fa-solid fa-play"></i> TNT Sports 1
+                            </button>
+                            <button class="channel-btn" onclick="playDASHChannel('TNT Sports 2', 'https://otte.cache.aiv-cdn.net/bom-nitro/live/clients/dash/enc/puehlftk5j/out/v1/f7f0da1ee112481ca0024e6d4dd97f4a/cenc.mpd', 'f3df7843080ae743bf865dc5fdf64c68', '567c863bc12eb74788ea74888c042e1b', this)">
+                                <i class="fa-solid fa-play"></i> TNT Sports 2
+                            </button>
+                            <button class="channel-btn" onclick="playDASHChannel('TNT Sports 3', 'https://otte.cache.aiv-cdn.net/bom-nitro/live/clients/dash/enc/dev1hjwzh9/out/v1/a5f0ee7ad7b24906b14f43bebbbe4678/cenc.mpd', 'cc91508324ce9dcaf425a43d58f1d9d4', '643e5474d9edd87c7d9091c8c97994ca', this)">
+                                <i class="fa-solid fa-play"></i> TNT Sports 3
+                            </button>
+                            <button class="channel-btn" onclick="playDASHChannel('TNT Sports 4', 'https://otte.cache.aiv-cdn.net/bom-nitro/live/clients/dash/enc/tdijwiga2k/out/v1/f5fde318678f4f7583bf27b7231bde1f/cenc.mpd', 'fa34fa8c90336dd528c7a23871cad1fe', '552a78d1aeb74f1650d68255c5749408', this)">
+                                <i class="fa-solid fa-play"></i> TNT Sports 4
+                            </button>
     <button class="channel-btn" onclick="changeChannel('USA Network SD', 'https://tvsen3.aynaott.com/dbbcY6NG/index.m3u8', this)">
         <i class="fa-solid fa-star"></i> USA Network SD
     </button>
                         </div>
+
+                        <!-- TURKEY SPORTS -->
+                        <div class="channel-group-title" style="margin-top: 15px;">
+                            <i class="fa-solid fa-globe"></i> beIN Sports Turkiye Channels
+                        </div>
+
+                        <div class="channel-buttons-grid">
+                            <button class="channel-btn" onclick="playHLSChannel('beIN Sports 1 TR (A)', 'https://andro.evrenesoglu99.click/checklist/batutest.m3u8', this)">
+                                <i class="fa-solid fa-star"></i> beIN Sports 1 TR
+                            </button>
+                            <button class="channel-btn" onclick="playHLSChannel('beIN Sports 2 TR (A)', 'https://andro.evrenesoglu99.click/checklist/androstreamlivebs2.m3u8', this)">
+                                <i class="fa-solid fa-star"></i> beIN Sports 2 TR
+                            </button>
+                            <button class="channel-btn" onclick="playHLSChannel('beIN Sports 3 TR (A)', 'https://andro.evrenesoglu99.click/checklist/androstreamlivebs3.m3u8', this)">
+                                <i class="fa-solid fa-star"></i> beIN Sports 3 TR
+                            </button>
+                            <button class="channel-btn" onclick="playHLSChannel('beIN Sports 4 TR (A)', 'https://andro.evrenesoglu99.click/checklist/androstreamlivebs4.m3u8', this)">
+                                <i class="fa-solid fa-star"></i> beIN Sports 4 TR
+                            </button>
+                            <button class="channel-btn" onclick="playHLSChannel('beIN Sports 5 TR (A)', 'https://andro.evrenesoglu99.click/checklist/androstreamlivebs5.m3u8', this)">
+                                <i class="fa-solid fa-star"></i> beIN Sports 5 TR
+                            </button>
+                            <button class="channel-btn" onclick="playHLSChannel('beIN Sports MAX 1 TR (A)', 'https://andro.evrenesoglu99.click/checklist/androstreamlivebsm1.m3u8', this)">
+                                <i class="fa-solid fa-star"></i> beIN Sports MAX 1 TR
+                            </button>
+                            <button class="channel-btn" onclick="playHLSChannel('beIN Sports MAX 2 TR (A)', 'https://andro.evrenesoglu99.click/checklist/androstreamlivebsm2.m3u8', this)">
+                                <i class="fa-solid fa-star"></i> beIN Sports MAX 2 TR
+                            </button>
+    <button class="channel-btn" onclick="changeChannel('USA Network SD', 'https://tvsen3.aynaott.com/dbbcY6NG/index.m3u8', this)">
+        <i class="fa-solid fa-star"></i> USA Network SD
+    </button>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -8974,12 +8880,70 @@
     <!-- FOOTER -->
     <footer>
         <p>&copy; <strong>Sports Hub Official</strong> | Football Media Center. All rights reserved.</p>
-        <p style="font-size: 0.75rem;">Home of Premier League is an external video streaming aggregator project.</p>
     </footer>
 
-    <!-- JAVASCRIPT -->
+    <!-- JAVASCRIPT LOGIC -->
     <script>
         var player;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Inisialisasi Video.js Player dengan Enjin Shaka Player
+            player = videojs('my-video', {
+                techOrder: ['shaka', 'html5'],
+                autoplay: 'muted',
+                controls: true
+            });
+
+            // Set laluan automatik saluran pertama (TNT Sports 1)
+            const firstBtn = document.querySelector('.channel-btn.active');
+            playDASHChannel(
+                'TNT Sports 1', 
+                'https://otte.cache.aiv-cdn.net/iad-nitro/live/clients/dash/enc/rhf2dwosdt/out/v1/ee550d2a68d846c797e6ce4de2e8b76d/cenc.mpd', 
+                '69a5aa835a061ce64a630d1046727e40', 
+                'd02feac8a999bd06bf4059bf33411749', 
+                firstBtn
+            );
+        });
+
+        // Fungsi Memutar Saluran DASH + ClearKey DRM
+        function playDASHChannel(title, manifestUrl, kid, key, btn) {
+            updateUI(title, btn);
+
+            var clearKeysConfig = {};
+            clearKeysConfig[kid] = key;
+
+            player.src({
+                src: manifestUrl,
+                type: 'application/dash+xml',
+                keySystems: {
+                    'org.w3.clearkey': {
+                        clearKeys: clearKeysConfig
+                    }
+                }
+            });
+
+            player.play();
+        }
+
+        // Fungsi Memutar Saluran M3U8 Direct Stream (Tanpa Proxy)
+        function playHLSChannel(title, url, btn) {
+            updateUI(title, btn);
+
+            player.src({
+                src: url,
+                type: 'application/x-mpegURL'
+            });
+
+            player.play();
+        }
+
+        function updateUI(title, btn) {
+            document.getElementById('current-channel-title').innerHTML = '<i class="fa-solid fa-tower-broadcast"></i> ' + title;
+
+            const buttons = document.querySelectorAll('.channel-btn');
+            buttons.forEach(b => b.classList.remove('active'));
+            if(btn) btn.classList.add('active');
+        }
 
         function switchTab(tabId, btn) {
             const contents = document.querySelectorAll('.tab-content');
@@ -8991,29 +8955,6 @@
             document.getElementById(tabId).classList.add('active');
             btn.classList.add('active');
         }
-
-        function changeChannel(title, url, btn) {
-            if (player) {
-                player.src({
-                    src: url,
-                    type: 'application/x-mpegURL'
-                });
-                player.play();
-            }
-            document.getElementById('current-channel-title').innerHTML = '<i class="fa-solid fa-tower-broadcast"></i> ' + title;
-
-            const buttons = document.querySelectorAll('.channel-btn');
-            buttons.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-        }
-
-        // Initialize Video.js Player
-        document.addEventListener('DOMContentLoaded', function() {
-            player = videojs('my-video', {
-                fluid: true,
-                autoplay: 'muted'
-            });
-        });
     </script>
 
 </body>

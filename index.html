@@ -600,7 +600,7 @@
                     </div>
                     <div class="player-info">
                         <h3 id="current-channel-title"><i class="fa-solid fa-tower-broadcast"></i> TNT Sports 1 UK</h3>
-                        <span style="font-size: 0.85rem; color: var(--text-sub);"><i class="fa-solid fa-wifi" style="color: var(--pl-green);"></i> Direct Stream Feed</span>
+                        <span style="font-size: 0.85rem; color: var(--text-sub);"><i class="fa-solid fa-wifi" style="color: var(--pl-green);"></i> Live Stream Feed</span>
                     </div>
 
                     <!-- CHANNEL SELECTOR -->
@@ -609,32 +609,29 @@
                             <i class="fa-solid fa-tv"></i> Select Your Channel
                         </div>
                         
-                        <!-- TNT SPORTS (CLEARKEY DRM) -->
+                        <!-- SERVER 1: TNT SPORTS (VIA PROXY + CLEARKEY DRM) -->
                         <div class="channel-group-title">
-                            <i class="fa-solid fa-bolt"></i> TNT Sports Channels
+                            <i class="fa-solid fa-server"></i> Server 1 (TNT Sports UK - Proxied)
                         </div>
 
                         <div class="channel-buttons-grid">
-                            <button class="channel-btn active" onclick="playDASHChannel('TNT Sports 1', 'https://otte.cache.aiv-cdn.net/iad-nitro/live/clients/dash/enc/rhf2dwosdt/out/v1/ee550d2a68d846c797e6ce4de2e8b76d/cenc.mpd', '69a5aa835a061ce64a630d1046727e40', 'd02feac8a999bd06bf4059bf33411749', this)">
+                            <button class="channel-btn active" onclick="playDASHChannel('TNT Sports 1', 'https://flat-butterfly-3ef0.yusoffrohaidee1.workers.dev/?url=https://otte.cache.aiv-cdn.net/iad-nitro/live/clients/dash/enc/rhf2dwosdt/out/v1/ee550d2a68d846c797e6ce4de2e8b76d/cenc.mpd', '69a5aa835a061ce64a630d1046727e40', 'd02feac8a999bd06bf4059bf33411749', this)">
                                 <i class="fa-solid fa-play"></i> TNT Sports 1
                             </button>
-                            <button class="channel-btn" onclick="playDASHChannel('TNT Sports 2', 'https://otte.cache.aiv-cdn.net/bom-nitro/live/clients/dash/enc/puehlftk5j/out/v1/f7f0da1ee112481ca0024e6d4dd97f4a/cenc.mpd', 'f3df7843080ae743bf865dc5fdf64c68', '567c863bc12eb74788ea74888c042e1b', this)">
+                            <button class="channel-btn" onclick="playDASHChannel('TNT Sports 2', 'https://flat-butterfly-3ef0.yusoffrohaidee1.workers.dev/?url=https://otte.cache.aiv-cdn.net/bom-nitro/live/clients/dash/enc/puehlftk5j/out/v1/f7f0da1ee112481ca0024e6d4dd97f4a/cenc.mpd', 'f3df7843080ae743bf865dc5fdf64c68', '567c863bc12eb74788ea74888c042e1b', this)">
                                 <i class="fa-solid fa-play"></i> TNT Sports 2
                             </button>
-                            <button class="channel-btn" onclick="playDASHChannel('TNT Sports 3', 'https://otte.cache.aiv-cdn.net/bom-nitro/live/clients/dash/enc/dev1hjwzh9/out/v1/a5f0ee7ad7b24906b14f43bebbbe4678/cenc.mpd', 'cc91508324ce9dcaf425a43d58f1d9d4', '643e5474d9edd87c7d9091c8c97994ca', this)">
+                            <button class="channel-btn" onclick="playDASHChannel('TNT Sports 3', 'https://flat-butterfly-3ef0.yusoffrohaidee1.workers.dev/?url=https://otte.cache.aiv-cdn.net/bom-nitro/live/clients/dash/enc/dev1hjwzh9/out/v1/a5f0ee7ad7b24906b14f43bebbbe4678/cenc.mpd', 'cc91508324ce9dcaf425a43d58f1d9d4', '643e5474d9edd87c7d9091c8c97994ca', this)">
                                 <i class="fa-solid fa-play"></i> TNT Sports 3
                             </button>
-                            <button class="channel-btn" onclick="playDASHChannel('TNT Sports 4', 'https://otte.cache.aiv-cdn.net/bom-nitro/live/clients/dash/enc/tdijwiga2k/out/v1/f5fde318678f4f7583bf27b7231bde1f/cenc.mpd', 'fa34fa8c90336dd528c7a23871cad1fe', '552a78d1aeb74f1650d68255c5749408', this)">
+                            <button class="channel-btn" onclick="playDASHChannel('TNT Sports 4', 'https://flat-butterfly-3ef0.yusoffrohaidee1.workers.dev/?url=https://otte.cache.aiv-cdn.net/bom-nitro/live/clients/dash/enc/tdijwiga2k/out/v1/f5fde318678f4f7583bf27b7231bde1f/cenc.mpd', 'fa34fa8c90336dd528c7a23871cad1fe', '552a78d1aeb74f1650d68255c5749408', this)">
                                 <i class="fa-solid fa-play"></i> TNT Sports 4
                             </button>
-    <button class="channel-btn" onclick="changeChannel('USA Network SD', 'https://tvsen3.aynaott.com/dbbcY6NG/index.m3u8', this)">
-        <i class="fa-solid fa-star"></i> USA Network SD
-    </button>
                         </div>
 
-                        <!-- TURKEY SPORTS -->
+                        <!-- SERVER 2: BEIN SPORTS TURKIYE -->
                         <div class="channel-group-title" style="margin-top: 15px;">
-                            <i class="fa-solid fa-globe"></i> beIN Sports Turkiye Channels
+                            <i class="fa-solid fa-server"></i> Server 2 (beIN Sports Turkiye)
                         </div>
 
                         <div class="channel-buttons-grid">
@@ -659,9 +656,17 @@
                             <button class="channel-btn" onclick="playHLSChannel('beIN Sports MAX 2 TR (A)', 'https://andro.evrenesoglu99.click/checklist/androstreamlivebsm2.m3u8', this)">
                                 <i class="fa-solid fa-star"></i> beIN Sports MAX 2 TR
                             </button>
-    <button class="channel-btn" onclick="changeChannel('USA Network SD', 'https://tvsen3.aynaott.com/dbbcY6NG/index.m3u8', this)">
-        <i class="fa-solid fa-star"></i> USA Network SD
-    </button>
+                        </div>
+
+                        <!-- SERVER 3: USA NETWORK -->
+                        <div class="channel-group-title" style="margin-top: 15px;">
+                            <i class="fa-solid fa-server"></i> Server 3 (US Networks)
+                        </div>
+
+                        <div class="channel-buttons-grid">
+                            <button class="channel-btn" onclick="playHLSChannel('USA Network SD', 'https://tvsen3.aynaott.com/dbbcY6NG/index.m3u8', this)">
+                                <i class="fa-solid fa-star"></i> USA Network SD
+                            </button>
                         </div>
 
                     </div>
@@ -8772,103 +8777,103 @@
                     <tbody>
                         <tr>
                             <td><span class="pos-badge pos-ucl">1</span></td>
-                            <td><div class="team-cell"><div class="team-logo-placeholder">ARS</div> Arsenal</div></td>
-                            <td>1</td><td>1</td><td>0</td><td>0</td><td>+3</td><td><strong>3</strong></td>
+                            <td><div class="team-cell"><div class="team-logo-placeholder">MCI</div> Manchester City</div></td>
+                            <td>2</td><td>2</td><td>0</td><td>0</td><td>+4</td><td><strong>6</strong></td>
                         </tr>
                         <tr>
                             <td><span class="pos-badge pos-ucl">2</span></td>
-                            <td><div class="team-cell"><div class="team-logo-placeholder">BRE</div> Brentford</div></td>
-                            <td>1</td><td>1</td><td>0</td><td>0</td><td>+3</td><td><strong>3</strong></td>
+                            <td><div class="team-cell"><div class="team-logo-placeholder">ARS</div> Arsenal</div></td>
+                            <td>2</td><td>2</td><td>0</td><td>0</td><td>+4</td><td><strong>6</strong></td>
                         </tr>
                         <tr>
                             <td><span class="pos-badge pos-ucl">3</span></td>
-                            <td><div class="team-cell"><div class="team-logo-placeholder">EVE</div> Everton</div></td>
-                            <td>1</td><td>1</td><td>0</td><td>0</td><td>+2</td><td><strong>3</strong></td>
+                            <td><div class="team-cell"><div class="team-logo-placeholder">HUL</div> Hull City</div></td>
+                            <td>2</td><td>2</td><td>0</td><td>0</td><td>+3</td><td><strong>6</strong></td>
                         </tr>
                         <tr>
                             <td><span class="pos-badge pos-ucl">4</span></td>
-                            <td><div class="team-cell"><div class="team-logo-placeholder">HUL</div> Hull City</div></td>
-                            <td>1</td><td>1</td><td>0</td><td>0</td><td>+2</td><td><strong>3</strong></td>
+                            <td><div class="team-cell"><div class="team-logo-placeholder">CHE</div> Chelsea</div></td>
+                            <td>2</td><td>2</td><td>0</td><td>0</td><td>+2</td><td><strong>6</strong></td>
                         </tr>
                         <tr>
                             <td><span class="pos-badge pos-uel">5</span></td>
-                            <td><div class="team-cell"><div class="team-logo-placeholder">IPS</div> Ipswich Town</div></td>
-                            <td>1</td><td>1</td><td>0</td><td>0</td><td>+1</td><td><strong>3</strong></td>
+                            <td><div class="team-cell"><div class="team-logo-placeholder">LIV</div> Liverpool</div></td>
+                            <td>3</td><td>1</td><td>2</td><td>0</td><td>+2</td><td><strong>5</strong></td>
                         </tr>
                         <tr>
                             <td><span class="pos-badge">6</span></td>
-                            <td><div class="team-cell"><div class="team-logo-placeholder">LEE</div> Leeds United</div></td>
-                            <td>1</td><td>1</td><td>0</td><td>0</td><td>+1</td><td><strong>3</strong></td>
+                            <td><div class="team-cell"><div class="team-logo-placeholder">BRE</div> Brentford</div></td>
+                            <td>2</td><td>1</td><td>1</td><td>0</td><td>+3</td><td><strong>4</strong></td>
                         </tr>
                         <tr>
                             <td><span class="pos-badge">7</span></td>
-                            <td><div class="team-cell"><div class="team-logo-placeholder">AVL</div> Aston Villa</div></td>
-                            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td><strong>0</strong></td>
+                            <td><div class="team-cell"><div class="team-logo-placeholder">NEW</div> Newcastle United</div></td>
+                            <td>2</td><td>1</td><td>1</td><td>0</td><td>+2</td><td><strong>4</strong></td>
                         </tr>
                         <tr>
                             <td><span class="pos-badge">8</span></td>
-                            <td><div class="team-cell"><div class="team-logo-placeholder">BOU</div> AFC Bournemouth</div></td>
-                            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td><strong>0</strong></td>
+                            <td><div class="team-cell"><div class="team-logo-placeholder">EVE</div> Everton</div></td>
+                            <td>2</td><td>1</td><td>1</td><td>0</td><td>+2</td><td><strong>4</strong></td>
                         </tr>
                         <tr>
                             <td><span class="pos-badge">9</span></td>
-                            <td><div class="team-cell"><div class="team-logo-placeholder">BHA</div> Brighton & Hove Albion</div></td>
-                            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td><strong>0</strong></td>
+                            <td><div class="team-cell"><div class="team-logo-placeholder">LEE</div> Leeds United</div></td>
+                            <td>2</td><td>1</td><td>1</td><td>0</td><td>+1</td><td><strong>4</strong></td>
                         </tr>
                         <tr>
                             <td><span class="pos-badge">10</span></td>
-                            <td><div class="team-cell"><div class="team-logo-placeholder">CHE</div> Chelsea</div></td>
-                            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td><strong>0</strong></td>
+                            <td><div class="team-cell"><div class="team-logo-placeholder">BHA</div> Brighton & Hove Albion</div></td>
+                            <td>2</td><td>1</td><td>0</td><td>1</td><td>+3</td><td><strong>3</strong></td>
                         </tr>
                         <tr>
                             <td><span class="pos-badge">11</span></td>
-                            <td><div class="team-cell"><div class="team-logo-placeholder">FUL</div> Fulham</div></td>
-                            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td><strong>0</strong></td>
+                            <td><div class="team-cell"><div class="team-logo-placeholder">MUN</div> Manchester United</div></td>
+                            <td>2</td><td>1</td><td>0</td><td>1</td><td>+1</td><td><strong>3</strong></td>
                         </tr>
                         <tr>
                             <td><span class="pos-badge">12</span></td>
-                            <td><div class="team-cell"><div class="team-logo-placeholder">LIV</div> Liverpool</div></td>
-                            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td><strong>0</strong></td>
+                            <td><div class="team-cell"><div class="team-logo-placeholder">SUN</div> Sunderland</div></td>
+                            <td>2</td><td>1</td><td>0</td><td>1</td><td>0</td><td><strong>3</strong></td>
                         </tr>
                         <tr>
                             <td><span class="pos-badge">13</span></td>
-                            <td><div class="team-cell"><div class="team-logo-placeholder">MCI</div> Manchester City</div></td>
-                            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td><strong>0</strong></td>
+                            <td><div class="team-cell"><div class="team-logo-placeholder">IPS</div> Ipswich Town</div></td>
+                            <td>3</td><td>1</td><td>0</td><td>2</td><td>-4</td><td><strong>3</strong></td>
                         </tr>
                         <tr>
                             <td><span class="pos-badge">14</span></td>
-                            <td><div class="team-cell"><div class="team-logo-placeholder">NEW</div> Newcastle United</div></td>
-                            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td><strong>0</strong></td>
+                            <td><div class="team-cell"><div class="team-logo-placeholder">BOU</div> AFC Bournemouth</div></td>
+                            <td>2</td><td>0</td><td>1</td><td>1</td><td>-1</td><td><strong>1</strong></td>
                         </tr>
                         <tr>
                             <td><span class="pos-badge">15</span></td>
-                            <td><div class="team-cell"><div class="team-logo-placeholder">SUN</div> Sunderland</div></td>
-                            <td>1</td><td>0</td><td>0</td><td>1</td><td>-1</td><td><strong>0</strong></td>
+                            <td><div class="team-cell"><div class="team-logo-placeholder">NFO</div> Nottingham Forest</div></td>
+                            <td>2</td><td>0</td><td>1</td><td>1</td><td>-1</td><td><strong>1</strong></td>
                         </tr>
                         <tr>
                             <td><span class="pos-badge">16</span></td>
-                            <td><div class="team-cell"><div class="team-logo-placeholder">NFO</div> Nottingham Forest</div></td>
-                            <td>1</td><td>0</td><td>0</td><td>1</td><td>-1</td><td><strong>0</strong></td>
+                            <td><div class="team-cell"><div class="team-logo-placeholder">FUL</div> Fulham</div></td>
+                            <td>2</td><td>0</td><td>0</td><td>2</td><td>-2</td><td><strong>0</strong></td>
                         </tr>
                         <tr>
                             <td><span class="pos-badge">17</span></td>
-                            <td><div class="team-cell"><div class="team-logo-placeholder">CRY</div> Crystal Palace</div></td>
-                            <td>1</td><td>0</td><td>0</td><td>1</td><td>-2</td><td><strong>0</strong></td>
+                            <td><div class="team-cell"><div class="team-logo-placeholder">COV</div> Coventry City</div></td>
+                            <td>2</td><td>0</td><td>0</td><td>2</td><td>-4</td><td><strong>0</strong></td>
                         </tr>
                         <tr>
                             <td><span class="pos-badge pos-rel">18</span></td>
-                            <td><div class="team-cell"><div class="team-logo-placeholder">MUN</div> Manchester United</div></td>
-                            <td>1</td><td>0</td><td>0</td><td>1</td><td>-2</td><td><strong>0</strong></td>
+                            <td><div class="team-cell"><div class="team-logo-placeholder">CRY</div> Crystal Palace</div></td>
+                            <td>2</td><td>0</td><td>0</td><td>2</td><td>-5</td><td><strong>0</strong></td>
                         </tr>
                         <tr>
                             <td><span class="pos-badge pos-rel">19</span></td>
-                            <td><div class="team-cell"><div class="team-logo-placeholder">COV</div> Coventry City</div></td>
-                            <td>1</td><td>0</td><td>0</td><td>1</td><td>-3</td><td><strong>0</strong></td>
+                            <td><div class="team-cell"><div class="team-logo-placeholder">AVL</div> Aston Villa</div></td>
+                            <td>2</td><td>0</td><td>0</td><td>2</td><td>-5</td><td><strong>0</strong></td>
                         </tr>
                         <tr>
                             <td><span class="pos-badge pos-rel">20</span></td>
                             <td><div class="team-cell"><div class="team-logo-placeholder">TOT</div> Tottenham Hotspur</div></td>
-                            <td>1</td><td>0</td><td>0</td><td>1</td><td>-3</td><td><strong>0</strong></td>
+                            <td>2</td><td>0</td><td>0</td><td>2</td><td>-5</td><td><strong>0</strong></td>
                         </tr>
                     </tbody>
                 </table>
@@ -8894,11 +8899,11 @@
                 controls: true
             });
 
-            // Set laluan automatik saluran pertama (TNT Sports 1)
+            // Set laluan automatik saluran pertama (TNT Sports 1) menerusi proxy Cloudflare Worker
             const firstBtn = document.querySelector('.channel-btn.active');
             playDASHChannel(
                 'TNT Sports 1', 
-                'https://otte.cache.aiv-cdn.net/iad-nitro/live/clients/dash/enc/rhf2dwosdt/out/v1/ee550d2a68d846c797e6ce4de2e8b76d/cenc.mpd', 
+                'https://flat-butterfly-3ef0.yusoffrohaidee1.workers.dev/?url=https://otte.cache.aiv-cdn.net/iad-nitro/live/clients/dash/enc/rhf2dwosdt/out/v1/ee550d2a68d846c797e6ce4de2e8b76d/cenc.mpd', 
                 '69a5aa835a061ce64a630d1046727e40', 
                 'd02feac8a999bd06bf4059bf33411749', 
                 firstBtn
@@ -8925,7 +8930,7 @@
             player.play();
         }
 
-        // Fungsi Memutar Saluran M3U8 Direct Stream (Tanpa Proxy)
+        // Fungsi Memutar Saluran M3U8 Direct Stream
         function playHLSChannel(title, url, btn) {
             updateUI(title, btn);
 
@@ -8935,6 +8940,11 @@
             });
 
             player.play();
+        }
+
+        // Fungsi sokongan jika terdapat butang lama yang menggunakan nama changeChannel
+        function changeChannel(title, url, btn) {
+            playHLSChannel(title, url, btn);
         }
 
         function updateUI(title, btn) {

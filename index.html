@@ -16,6 +16,9 @@
     <!-- Video.js Core Script -->
     <script src="https://vjs.zencdn.net/8.10.0/video.min.js"></script>
 
+    <!-- HLS.js Core Library -->
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+
     <!-- Shaka Player Core & Integration for DRM DASH ClearKey Playback -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.3.6/shaka-player.compiled.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/videojs-shaka-player@1.0.0/dist/videojs-shaka-player.min.js"></script>
@@ -320,213 +323,6 @@
             border-color: var(--pl-green);
         }
 
-        /* MATCH CARDS GRID LAYOUT */
-        .match-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
-            gap: 25px;
-        }
-
-        @media (max-width: 480px) {
-            .match-grid { grid-template-columns: 1fr; }
-        }
-
-        /* MATCH CARD UI DESIGN */
-        .match-card {
-            background: var(--pl-card-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 24px;
-            padding: 24px;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.5);
-            backdrop-filter: blur(10px);
-            position: relative;
-        }
-
-        .match-card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .match-stage {
-            color: var(--pl-cyan);
-            font-size: 0.85rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .match-status {
-            background: rgba(0, 255, 133, 0.15);
-            color: var(--pl-green);
-            font-size: 0.8rem;
-            font-weight: 700;
-            padding: 4px 12px;
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            border: 1px solid rgba(0, 255, 133, 0.3);
-        }
-
-        .match-status.upcoming {
-            background: rgba(255, 255, 255, 0.08);
-            color: #fff;
-            border-color: rgba(255, 255, 255, 0.15);
-        }
-
-        .match-main {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 10px 0;
-        }
-
-        .match-team {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 12px;
-            flex: 1;
-        }
-
-        .team-shield {
-            width: 65px;
-            height: 65px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            color: #fff;
-            box-shadow: inset 0 0 15px rgba(255,255,255,0.05);
-        }
-
-        .team-name {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: #fff;
-            text-align: center;
-        }
-
-        .match-score-box {
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 18px;
-            padding: 12px 24px;
-            font-size: 2.2rem;
-            font-weight: 800;
-            color: #fff;
-            letter-spacing: 2px;
-            box-shadow: inset 0 2px 10px rgba(0,0,0,0.5);
-            min-width: 120px;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .match-meta-box {
-            background: var(--card-inner-bg);
-            border-radius: 14px;
-            padding: 14px 18px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.8rem;
-            color: var(--text-sub);
-            border: 1px solid rgba(255, 255, 255, 0.03);
-        }
-
-        .meta-left { display: flex; flex-direction: column; gap: 4px; }
-        .meta-right { text-align: right; font-weight: 600; color: #fff; }
-
-        .scorers-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            padding-top: 5px;
-            font-size: 0.82rem;
-        }
-
-        .scorer-column { display: flex; flex-direction: column; gap: 6px; }
-        .scorer-column.right { text-align: right; }
-        .scorer-item { display: flex; align-items: center; gap: 8px; color: #e2d9e6; }
-        .scorer-column.right .scorer-item { justify-content: flex-end; }
-        .scorer-item i { color: var(--pl-green); font-size: 0.75rem; }
-
-        /* TABLES STYLING */
-        .glass-card {
-            background: var(--pl-card-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 25px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
-            overflow-x: auto;
-        }
-
-        .card-header {
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .card-header h2 { font-size: 1.3rem; color: var(--pl-green); font-weight: 700; }
-
-        .custom-table {
-            width: 100%;
-            border-collapse: separate;
-            border-spacing: 0 8px;
-            min-width: 600px;
-        }
-
-        .custom-table th {
-            color: var(--text-sub);
-            font-size: 0.85rem;
-            font-weight: 600;
-            padding: 12px 16px;
-            text-align: left;
-            text-transform: uppercase;
-        }
-
-        .custom-table td {
-            background: rgba(255, 255, 255, 0.03);
-            padding: 14px 16px;
-            font-size: 0.95rem;
-            font-weight: 500;
-        }
-
-        .custom-table tr td:first-child { border-top-left-radius: 10px; border-bottom-left-radius: 10px; }
-        .custom-table tr td:last-child { border-top-right-radius: 10px; border-bottom-right-radius: 10px; }
-        .custom-table tr:hover td { background: rgba(255, 255, 255, 0.07); }
-
-        .team-cell { display: flex; align-items: center; gap: 12px; font-weight: 600; }
-        .team-logo-placeholder {
-            width: 28px;
-            height: 28px;
-            background: var(--pl-purple);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.7rem;
-            font-weight: 700;
-            color: var(--pl-green);
-            border: 1px solid var(--glass-border);
-        }
-
-        .pos-badge { font-weight: 700; width: 25px; display: inline-block; text-align: center; }
-        .pos-ucl { color: #00d2ff; }
-        .pos-uel { color: #ff9100; }
-        .pos-rel { color: var(--pl-pink); }
-
         /* FOOTER */
         footer {
             margin-top: auto;
@@ -587,7 +383,7 @@
         <div class="stream-layout-single">
             <div class="player-wrapper">
                 <div class="video-wrapper">
-                    <!-- Video.js Player Element -->
+                    <!-- Video Element Standard untuk HLS.js / Video.js -->
                     <video 
                         id="my-video" 
                         class="video-js vjs-theme-city vjs-big-play-centered vjs-16-9" 
@@ -614,12 +410,15 @@
                     </div>
 
                     <div class="channel-buttons-grid">
-                        <button class="channel-btn active" onclick="playHLSChannel('Star Sports Select 1 HD', 'https://sbsw.b-cdn.net/StarSportsHD1/720p1m/video.m3u8', this)">
+                        <!-- Gunakan playHlsJsChannel untuk Star Sports Select 1 & 2 -->
+                        <button class="channel-btn active" onclick="playHlsJsChannel('Star Sports Select 1 HD', 'https://sbsw.b-cdn.net/StarSportsHD1/720p1m/video.m3u8', this)">
                             <i class="fa-solid fa-play"></i> Star Sports Select 1 HD
                         </button>
-                        <button class="channel-btn" onclick="playHLSChannel('Star Sports Select 2 HD', 'https://sbsw.b-cdn.net/StarSportsHD2/720p1m/video.m3u8', this)">
+                        <button class="channel-btn" onclick="playHlsJsChannel('Star Sports Select 2 HD', 'https://sbsw.b-cdn.net/StarSportsHD2/720p1m/video.m3u8', this)">
                             <i class="fa-solid fa-play"></i> Star Sports Select 2 HD
                         </button>
+                        
+                        <!-- Saluran lain kekal guna playHLSChannel biasa -->
                         <button class="channel-btn" onclick="playHLSChannel('Star Sports 2 HD', 'https://tvsen5.aynascope.net/cXPB2LKkErN9/index.m3u8', this)">
                             <i class="fa-solid fa-play"></i> Star Sports 2 HD
                         </button>
@@ -8887,6 +8686,7 @@
 <!-- JAVASCRIPT LOGIC -->
 <script>
     var player;
+    var hlsInstance = null;
 
     document.addEventListener('DOMContentLoaded', function() {
         // Inisialisasi Video.js Player dengan Enjin Shaka Player
@@ -8901,11 +8701,46 @@
         const firstBtn = document.querySelector('.channel-btn.active');
         if (firstBtn) {
             firstBtn.click();
-        } // <- DIBAIKI: Sebelum ini ditulis ');'
+        }
     });
 
-    // Fungsi Memutar Saluran DASH + ClearKey DRM
+    // Fungsi Khas: Memutar Saluran Menggunakan Enjin HLS.js Secara Langsung
+    // (Digunakan untuk Star Sports Select 1 HD & Star Sports Select 2 HD)
+    function playHlsJsChannel(title, url, btn) {
+        updateUI(title, btn);
+
+        // Hentikan Video.js sekiranya sedang memutar stream lain
+        if (player) {
+            player.pause();
+            player.reset();
+        }
+
+        // Musnahkan instance HLS.js lama jika ada
+        cleanupHLS();
+
+        var videoElement = document.getElementById('my-video');
+
+        if (Hls.isSupported()) {
+            hlsInstance = new Hls();
+            hlsInstance.loadSource(url);
+            hlsInstance.attachMedia(videoElement);
+            hlsInstance.on(Hls.Events.MANIFEST_PARSED, function() {
+                videoElement.play().catch(function(error) {
+                    console.log("Autoplay dihalang:", error);
+                });
+            });
+        } else if (videoElement.canPlayType('application/vnd.apple.mpegurl')) {
+            // Sokongan Native HLS (Safari / iOS)
+            videoElement.src = url;
+            videoElement.play().catch(function(error) {
+                console.log("Autoplay dihalang:", error);
+            });
+        }
+    }
+
+    // Fungsi Memutar Saluran DASH + ClearKey DRM (Melalui Shaka Player / Video.js)
     function playDASHChannel(title, manifestUrl, kid, key, btn) {
+        cleanupHLS();
         updateUI(title, btn);
 
         var clearKeysConfig = {};
@@ -8928,8 +8763,9 @@
         });
     }
 
-    // Fungsi Memutar Saluran M3U8 Direct Stream
+    // Fungsi Memutar Saluran M3U8 Direct Stream (Melalui Video.js)
     function playHLSChannel(title, url, btn) {
+        cleanupHLS();
         updateUI(title, btn);
 
         player.src({
@@ -8945,6 +8781,14 @@
     // Fungsi sokongan jika terdapat butang lama yang menggunakan nama changeChannel
     function changeChannel(title, url, btn) {
         playHLSChannel(title, url, btn);
+    }
+
+    // Pembersihan instance HLS.js
+    function cleanupHLS() {
+        if (hlsInstance) {
+            hlsInstance.destroy();
+            hlsInstance = null;
+        }
     }
 
     function updateUI(title, btn) {

@@ -70,17 +70,6 @@
             gap: 18px;
         }
 
-        .logo-bezel {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 6px 14px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 0 15px rgba(0, 255, 133, 0.3);
-            border: 2px solid var(--pl-green);
-        }
-
         .brand-titles h1 {
             font-size: 1.3rem;
             font-weight: 800;
@@ -280,15 +269,15 @@
                     </div>
 
                     <div class="channel-buttons-grid">
-                        <!-- Select 1 & 2 guna playHlsJsChannel (hls.js) -->
-                        <button class="channel-btn active" onclick="playHlsJsChannel('Star Sports Select 1 HD', 'https://sbsw.b-cdn.net/StarSportsHD1/720p1m/video.m3u8', this)">
+                        <!-- Select 1 & 2 guna playHLSjsChannel (hls.js) -->
+                        <button class="channel-btn active" onclick="playHLSjsChannel('Star Sports Select 1 HD', 'https://sbsw.b-cdn.net/StarSportsHD1/720p1m/video.m3u8', this)">
                             <i class="fa-solid fa-play"></i> Star Sports Select 1 HD
                         </button>
-                        <button class="channel-btn" onclick="playHlsJsChannel('Star Sports Select 2 HD', 'https://sbsw.b-cdn.net/StarSportsHD2/720p1m/video.m3u8', this)">
+                        <button class="channel-btn" onclick="playHLSjsChannel('Star Sports Select 2 HD', 'https://sbsw.b-cdn.net/StarSportsHD2/720p1m/video.m3u8', this)">
                             <i class="fa-solid fa-play"></i> Star Sports Select 2 HD
                         </button>
                         
-                        <!-- Saluran lain kekal guna playHLSChannel biasa -->
+                        <!-- Saluran lain guna playHLSChannel (Video.js) -->
                         <button class="channel-btn" onclick="playHLSChannel('Star Sports 2 HD', 'https://tvsen5.aynascope.net/cXPB2LKkErN9/index.m3u8', this)">
                             <i class="fa-solid fa-play"></i> Star Sports 2 HD
                         </button>
@@ -8555,140 +8544,140 @@
 
 <!-- JAVASCRIPT LOGIC -->
 <script>
-    var player = null;
-    var hlsInstance = null;
+var player = null;
+var hlsInstance = null;
 
-    document.addEventListener('DOMContentLoaded', function() {
-        // Inisialisasi Video.js Player dengan Enjin Shaka / HTML5
-        player = videojs('my-video', {
-            techOrder: ['shaka', 'html5'],
-            autoplay: true,
-            muted: true,
-            controls: true
-        });
-
-        // Set laluan automatik saluran pertama
-        const firstBtn = document.querySelector('.channel-btn.active');
-        if (firstBtn) {
-            firstBtn.click();
-        }
+document.addEventListener('DOMContentLoaded', function() {
+    // Inisialisasi Video.js Player
+    player = videojs('my-video', {
+        techOrder: ['shaka', 'html5'],
+        autoplay: true,
+        muted: true,
+        controls: true
     });
 
-    // 1. Fungsi Khas: Memutar Saluran Menggunakan Enjin HLS.js Secara Langsung
-    // (Digunakan untuk Star Sports Select 1 HD & Star Sports Select 2 HD)
-    function playHlsJsChannel(title, url, btn) {
-        updateUI(title, btn);
-        cleanupHLS();
+    // Autoclick butang saluran pertama yang aktif
+    const firstBtn = document.querySelector('.channel-btn.active');
+    if (firstBtn) {
+        firstBtn.click();
+    }
+});
 
-        // Kosongkan dan hentikan sumber Video.js jika sedang aktif
-        if (player) {
-            player.pause();
-            player.hasStarted(false);
-            player.src(''); 
-        }
+// 1. Trigger pemutaran melalui Video.js (Native Video.js M3U8 Player)
+function playHLSChannel(title, url, btn) {
+    updateUI(title, btn);
+    cleanupHLS(); // Pastikan HLS.js dimatikan jika sedang berjalan
 
-        var videoElement = document.getElementById('my-video');
+    if (player) {
+        player.reset(); // Sifar semula state Video.js
+        player.src({
+            src: url,
+            type: 'application/x-mpegURL'
+        });
 
-        if (Hls.isSupported()) {
-            hlsInstance = new Hls({
-                enableWorker: true,
-                lowLatencyMode: true
-            });
-            hlsInstance.loadSource(url);
-            hlsInstance.attachMedia(videoElement);
-            hlsInstance.on(Hls.Events.MANIFEST_PARSED, function() {
-                videoElement.play().catch(function(error) {
-                    console.log("Autoplay HLS.js dihalang:", error);
-                });
-            });
-        } else if (videoElement.canPlayType('application/vnd.apple.mpegurl')) {
-            // Sokongan Native HLS (Safari / iOS)
-            videoElement.src = url;
-            videoElement.play().catch(function(error) {
-                console.log("Autoplay Native HLS dihalang:", error);
-            });
-        }
+        player.play().catch(function(error) {
+            console.log("Autoplay Video.js HLS dihalang:", error);
+        });
+    }
+}
+
+// 2. Trigger pemutaran menggunakan enjin HLS.js secara terus
+function playHLSjsChannel(title, url, btn) {
+    updateUI(title, btn);
+    cleanupHLS(); // Reset sebarang instance HLS.js sedia ada
+
+    // Rehatkan dan kosongkan Video.js supaya tidak mengganggu HLS.js
+    if (player) {
+        player.pause();
+        player.hasStarted(false);
+        player.src(''); 
     }
 
-    // 2. Fungsi Memutar Saluran DASH + ClearKey DRM (Melalui Shaka Player / Video.js)
-    function playDASHChannel(title, manifestUrl, kid, key, btn) {
-        cleanupHLS();
-        updateUI(title, btn);
+    // Ambil elemen HTML5 video sebenar (Video.js menggunakan id asas atau id + _html5_api)
+    var videoElement = document.getElementById('my-video_html5_api') || document.getElementById('my-video');
 
-        var clearKeysConfig = {};
-        if (kid && key) {
-            clearKeysConfig[kid] = key;
-        }
-
-        if (player) {
-            player.src({
-                src: manifestUrl,
-                type: 'application/dash+xml',
-                keySystems: {
-                    'org.w3.clearkey': {
-                        clearKeys: clearKeysConfig
-                    }
-                }
-            });
-
-            player.play().catch(function(error) {
-                console.log("Autoplay DASH dihalang:", error);
-            });
-        }
-    }
-
-    // 3. Fungsi Memutar Saluran M3U8 Direct Stream (Melalui Video.js)
-    function playHLSChannel(title, url, btn) {
-        cleanupHLS();
-        updateUI(title, btn);
-
-        if (player) {
-            player.src({
-                src: url,
-                type: 'application/x-mpegURL'
-            });
-
-            player.play().catch(function(error) {
-                console.log("Autoplay HLS Video.js dihalang:", error);
-            });
-        }
-    }
-
-    // Fungsi sokongan jika terdapat butang lama yang menggunakan nama changeChannel
-    function changeChannel(title, url, btn) {
-        playHLSChannel(title, url, btn);
-    }
-
-    // Pembersihan instance HLS.js
-    function cleanupHLS() {
-        if (hlsInstance) {
-            hlsInstance.destroy();
-            hlsInstance = null;
-        }
-    }
-
-    function updateUI(title, btn) {
-        var titleElem = document.getElementById('current-channel-title');
-        if (titleElem) {
-            titleElem.innerHTML = '<i class="fa-solid fa-tower-broadcast"></i> ' + title;
-        }
-
-        const buttons = document.querySelectorAll('.channel-btn');
-        buttons.forEach(b => b.classList.remove('active'));
-        if (btn) btn.classList.add('active');
-    }
-
-    function switchTab(tabId, btn) {
-        const contents = document.querySelectorAll('.tab-content');
-        contents.forEach(c => c.classList.remove('active'));
+    if (Hls.isSupported()) {
+        hlsInstance = new Hls({
+            enableWorker: true,
+            lowLatencyMode: true
+        });
         
-        const tabs = document.querySelectorAll('.nav-tab');
-        tabs.forEach(t => t.classList.remove('active'));
-
-        const targetTab = document.getElementById(tabId);
-        if (targetTab) targetTab.classList.add('active');
-        if (btn) btn.classList.add('active');
+        hlsInstance.loadSource(url);
+        hlsInstance.attachMedia(videoElement);
+        
+        hlsInstance.on(Hls.Events.MANIFEST_PARSED, function() {
+            videoElement.play().catch(function(error) {
+                console.log("Autoplay HLS.js dihalang:", error);
+            });
+        });
+    } else if (videoElement.canPlayType('application/vnd.apple.mpegurl')) {
+        // Sokongan native HLS untuk Safari / iOS
+        videoElement.src = url;
+        videoElement.play().catch(function(error) {
+            console.log("Autoplay Native HLS dihalang:", error);
+        });
     }
+}
+
+// 3. Trigger pemutaran DASH + DRM ClearKey
+function playDASHChannel(title, manifestUrl, kid, key, btn) {
+    cleanupHLS();
+    updateUI(title, btn);
+
+    var clearKeysConfig = {};
+    if (kid && key) {
+        clearKeysConfig[kid] = key;
+    }
+
+    if (player) {
+        player.src({
+            src: manifestUrl,
+            type: 'application/dash+xml',
+            keySystems: {
+                'org.w3.clearkey': {
+                    clearKeys: clearKeysConfig
+                }
+            }
+        });
+
+        player.play().catch(function(error) {
+            console.log("Autoplay DASH dihalang:", error);
+        });
+    }
+}
+
+// Helper: Pembersihan HLS.js
+function cleanupHLS() {
+    if (hlsInstance) {
+        hlsInstance.destroy();
+        hlsInstance = null;
+    }
+}
+
+// Helper: Kemaskini UI Antaramuka
+function updateUI(title, btn) {
+    var titleElem = document.getElementById('current-channel-title');
+    if (titleElem) {
+        titleElem.innerHTML = '<i class="fa-solid fa-tower-broadcast"></i> ' + title;
+    }
+
+    const buttons = document.querySelectorAll('.channel-btn');
+    buttons.forEach(b => b.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+}
+
+// Helper: Tukar Tab UI
+function switchTab(tabId, btn) {
+    const contents = document.querySelectorAll('.tab-content');
+    contents.forEach(c => c.classList.remove('active'));
+    
+    const tabs = document.querySelectorAll('.nav-tab');
+    tabs.forEach(t => t.classList.remove('active'));
+
+    const targetTab = document.getElementById(tabId);
+    if (targetTab) targetTab.classList.add('active');
+    if (btn) btn.classList.add('active');
+}
 </script>
 
 </body>

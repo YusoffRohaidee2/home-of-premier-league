@@ -19,10 +19,6 @@
     <!-- HLS.js Core Library -->
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 
-    <!-- Shaka Player Core & Integration for DRM DASH ClearKey Playback -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.3.6/shaka-player.compiled.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/videojs-shaka-player@1.0.0/dist/videojs-shaka-player.min.js"></script>
-
     <style>
         :root {
             --pl-purple: #38003c;
@@ -53,12 +49,6 @@
             overflow-x: hidden;
         }
 
-        /* Scrollbar */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: var(--pl-dark); }
-        ::-webkit-scrollbar-thumb { background: #520058; border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: var(--pl-green); }
-
         /* HEADER */
         header {
             background: rgba(56, 0, 60, 0.85);
@@ -87,31 +77,13 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 0 15px rgba(0, 255, 133, 0.3), inset 0 0 5px rgba(0,0,0,0.2);
+            box-shadow: 0 0 15px rgba(0, 255, 133, 0.3);
             border: 2px solid var(--pl-green);
-            transition: transform 0.3s ease;
         }
 
-        .logo-bezel:hover {
-            transform: scale(1.03);
-            box-shadow: 0 0 20px rgba(0, 255, 133, 0.6);
-        }
-
-        .logo-bezel img {
-            height: 38px;
-            width: auto;
-            display: block;
-        }
-
-        .brand-titles {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .brand h1 {
+        .brand-titles h1 {
             font-size: 1.3rem;
             font-weight: 800;
-            line-height: 1.1;
             background: linear-gradient(90deg, #ffffff, var(--pl-green));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -121,7 +93,6 @@
             font-size: 0.75rem;
             color: var(--pl-cyan);
             font-weight: 600;
-            letter-spacing: 0.5px;
         }
 
         .live-badge {
@@ -131,93 +102,18 @@
             border-radius: 20px;
             font-size: 0.75rem;
             font-weight: 700;
-            letter-spacing: 1px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            box-shadow: 0 0 15px rgba(233, 0, 82, 0.5);
-            animation: pulse 2s infinite;
-        }
-
-        .pulse-dot {
-            width: 8px;
-            height: 8px;
-            background-color: #fff;
-            border-radius: 50%;
-        }
-
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(233, 0, 82, 0.7); }
-            70% { box-shadow: 0 0 0 10px rgba(233, 0, 82, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(233, 0, 82, 0); }
-        }
-
-        /* NAVIGATION TABS */
-        nav {
-            background: rgba(15, 0, 23, 0.7);
-            backdrop-filter: blur(8px);
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            padding: 12px 20px;
-            border-bottom: 1px solid var(--glass-border);
-        }
-
-        .nav-tab {
-            background: transparent;
-            border: 1px solid transparent;
-            color: var(--text-sub);
-            font-size: 0.95rem;
-            font-weight: 600;
-            padding: 10px 24px;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
             align-items: center;
             gap: 8px;
         }
 
-        .nav-tab:hover {
-            color: #ffffff;
-            background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(255, 255, 255, 0.1);
-        }
-
-        .nav-tab.active {
-            background: var(--pl-green);
-            color: var(--pl-purple);
-            font-weight: 700;
-            box-shadow: 0 0 20px rgba(0, 255, 133, 0.4);
-        }
-
-        /* MAIN CONTAINER */
+        /* CONTAINER */
         .container {
-            max-width: 1500px;
+            max-width: 1100px;
             width: 100%;
             margin: 25px auto;
             padding: 0 20px;
             flex: 1;
-        }
-
-        .tab-content {
-            display: none;
-            animation: fadeIn 0.4s ease-in-out;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* LIVE STREAM SECTION */
-        .stream-layout-single {
-            max-width: 1100px;
-            margin: 0 auto;
         }
 
         .player-wrapper {
@@ -226,15 +122,12 @@
             border-radius: 20px;
             padding: 24px;
             backdrop-filter: blur(10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
         }
 
         .video-wrapper {
             width: 100%;
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
-            border: 1px solid var(--glass-border);
             background-color: #000;
         }
 
@@ -248,22 +141,10 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 5px 5px 5px;
+            padding: 15px 5px 5px 5px;
         }
 
-        .player-info h3 {
-            font-size: 1.2rem;
-            color: #fff;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .player-info h3 i {
-            color: var(--pl-pink);
-        }
-
-        /* CHANNEL SELECTOR STYLING */
+        /* CHANNEL SELECTOR */
         .channel-selector-container {
             margin-top: 20px;
             background: rgba(0, 0, 0, 0.4);
@@ -278,7 +159,6 @@
             font-weight: 700;
             margin-bottom: 10px;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
         }
 
         .channel-group-title {
@@ -290,25 +170,21 @@
 
         .channel-buttons-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             gap: 10px;
-            margin-bottom: 10px;
         }
 
         .channel-btn {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--glass-border);
             color: #fff;
-            padding: 8px 12px;
+            padding: 10px 14px;
             border-radius: 8px;
             cursor: pointer;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             font-weight: 600;
             text-align: left;
             transition: all 0.2s ease;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
         }
 
         .channel-btn:hover {
@@ -323,21 +199,15 @@
             border-color: var(--pl-green);
         }
 
-        /* FOOTER */
         footer {
             margin-top: auto;
             text-align: center;
-            padding: 25px;
+            padding: 20px;
             font-size: 0.85rem;
             color: var(--text-sub);
             background: rgba(10, 0, 18, 0.85);
             border-top: 1px solid var(--glass-border);
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
         }
-
-        footer strong { color: var(--pl-green); }
     </style>
 </head>
 <body>
@@ -383,7 +253,7 @@
         <div class="stream-layout-single">
             <div class="player-wrapper">
                 <div class="video-wrapper">
-                    <!-- Video Element Standard untuk HLS.js / Video.js -->
+                    <!-- Video Element Standard -->
                     <video 
                         id="my-video" 
                         class="video-js vjs-theme-city vjs-big-play-centered vjs-16-9" 
@@ -410,7 +280,7 @@
                     </div>
 
                     <div class="channel-buttons-grid">
-                        <!-- Gunakan playHlsJsChannel untuk Star Sports Select 1 & 2 -->
+                        <!-- Select 1 & 2 guna playHlsJsChannel (hls.js) -->
                         <button class="channel-btn active" onclick="playHlsJsChannel('Star Sports Select 1 HD', 'https://sbsw.b-cdn.net/StarSportsHD1/720p1m/video.m3u8', this)">
                             <i class="fa-solid fa-play"></i> Star Sports Select 1 HD
                         </button>
@@ -8685,11 +8555,11 @@
 
 <!-- JAVASCRIPT LOGIC -->
 <script>
-    var player;
+    var player = null;
     var hlsInstance = null;
 
     document.addEventListener('DOMContentLoaded', function() {
-        // Inisialisasi Video.js Player dengan Enjin Shaka Player
+        // Inisialisasi Video.js Player dengan Enjin Shaka / HTML5
         player = videojs('my-video', {
             techOrder: ['shaka', 'html5'],
             autoplay: true,
@@ -8704,41 +8574,43 @@
         }
     });
 
-    // Fungsi Khas: Memutar Saluran Menggunakan Enjin HLS.js Secara Langsung
+    // 1. Fungsi Khas: Memutar Saluran Menggunakan Enjin HLS.js Secara Langsung
     // (Digunakan untuk Star Sports Select 1 HD & Star Sports Select 2 HD)
     function playHlsJsChannel(title, url, btn) {
         updateUI(title, btn);
+        cleanupHLS();
 
-        // Hentikan Video.js sekiranya sedang memutar stream lain
+        // Kosongkan dan hentikan sumber Video.js jika sedang aktif
         if (player) {
             player.pause();
-            player.reset();
+            player.hasStarted(false);
+            player.src(''); 
         }
-
-        // Musnahkan instance HLS.js lama jika ada
-        cleanupHLS();
 
         var videoElement = document.getElementById('my-video');
 
         if (Hls.isSupported()) {
-            hlsInstance = new Hls();
+            hlsInstance = new Hls({
+                enableWorker: true,
+                lowLatencyMode: true
+            });
             hlsInstance.loadSource(url);
             hlsInstance.attachMedia(videoElement);
             hlsInstance.on(Hls.Events.MANIFEST_PARSED, function() {
                 videoElement.play().catch(function(error) {
-                    console.log("Autoplay dihalang:", error);
+                    console.log("Autoplay HLS.js dihalang:", error);
                 });
             });
         } else if (videoElement.canPlayType('application/vnd.apple.mpegurl')) {
             // Sokongan Native HLS (Safari / iOS)
             videoElement.src = url;
             videoElement.play().catch(function(error) {
-                console.log("Autoplay dihalang:", error);
+                console.log("Autoplay Native HLS dihalang:", error);
             });
         }
     }
 
-    // Fungsi Memutar Saluran DASH + ClearKey DRM (Melalui Shaka Player / Video.js)
+    // 2. Fungsi Memutar Saluran DASH + ClearKey DRM (Melalui Shaka Player / Video.js)
     function playDASHChannel(title, manifestUrl, kid, key, btn) {
         cleanupHLS();
         updateUI(title, btn);
@@ -8748,34 +8620,38 @@
             clearKeysConfig[kid] = key;
         }
 
-        player.src({
-            src: manifestUrl,
-            type: 'application/dash+xml',
-            keySystems: {
-                'org.w3.clearkey': {
-                    clearKeys: clearKeysConfig
+        if (player) {
+            player.src({
+                src: manifestUrl,
+                type: 'application/dash+xml',
+                keySystems: {
+                    'org.w3.clearkey': {
+                        clearKeys: clearKeysConfig
+                    }
                 }
-            }
-        });
+            });
 
-        player.play().catch(function(error) {
-            console.log("Autoplay dihalang:", error);
-        });
+            player.play().catch(function(error) {
+                console.log("Autoplay DASH dihalang:", error);
+            });
+        }
     }
 
-    // Fungsi Memutar Saluran M3U8 Direct Stream (Melalui Video.js)
+    // 3. Fungsi Memutar Saluran M3U8 Direct Stream (Melalui Video.js)
     function playHLSChannel(title, url, btn) {
         cleanupHLS();
         updateUI(title, btn);
 
-        player.src({
-            src: url,
-            type: 'application/x-mpegURL'
-        });
+        if (player) {
+            player.src({
+                src: url,
+                type: 'application/x-mpegURL'
+            });
 
-        player.play().catch(function(error) {
-            console.log("Autoplay dihalang:", error);
-        });
+            player.play().catch(function(error) {
+                console.log("Autoplay HLS Video.js dihalang:", error);
+            });
+        }
     }
 
     // Fungsi sokongan jika terdapat butang lama yang menggunakan nama changeChannel

@@ -579,7 +579,7 @@
         </button>
     </nav>
 
-    <!-- MAIN CONTENT CONTAINER -->
+<!-- MAIN CONTENT CONTAINER -->
     <div class="container">
 
         <!-- TAB 1: LIVE STREAM -->
@@ -599,7 +599,7 @@
                         </video>
                     </div>
                     <div class="player-info">
-                        <h3 id="current-channel-title"><i class="fa-solid fa-tower-broadcast"></i> TNT Sports 1 UK</h3>
+                        <h3 id="current-channel-title"><i class="fa-solid fa-tower-broadcast"></i> Star Sports Select 1 HD</h3>
                         <span style="font-size: 0.85rem; color: var(--text-sub);"><i class="fa-solid fa-wifi" style="color: var(--pl-green);"></i> Live Stream Feed</span>
                     </div>
 
@@ -615,13 +615,13 @@
                         </div>
 
                         <div class="channel-buttons-grid">
-                            <button class="channel-btn active" onclick="playDASHChannel('Star Sports Select 1 HD', 'https://sbsw.b-cdn.net/StarSportsHD1/720p1m/video.m3u8, this)">
+                            <button class="channel-btn active" onclick="playHLSChannel('Star Sports Select 1 HD', 'https://flat-butterfly-3ef0.yusoffrohaidee1.workers.dev/?url=https://sbsw.b-cdn.net/StarSportsHD1/720p1m/video.m3u8', this)">
                                 <i class="fa-solid fa-play"></i> Star Sports Select 1 HD
                             </button>
-                            <button class="channel-btn" onclick="playDASHChannel('Star Sports Select 2 HD', 'https://sbsw.b-cdn.net/StarSportsHD2/720p1m/video.m3u8', this)">
+                            <button class="channel-btn" onclick="playHLSChannel('Star Sports Select 2 HD', 'https://flat-butterfly-3ef0.yusoffrohaidee1.workers.dev/?url=https://sbsw.b-cdn.net/StarSportsHD2/720p1m/video.m3u8', this)">
                                 <i class="fa-solid fa-play"></i> Star Sports Select 2 HD
                             </button>
-                            <button class="channel-btn" onclick="playDASHChannel('Star Sports 2 HD', 'https://tvsen5.aynascope.net/cXPB2LKkErN9/index.m3u8', this)">
+                            <button class="channel-btn" onclick="playHLSChannel('Star Sports 2 HD', 'https://flat-butterfly-3ef0.yusoffrohaidee1.workers.dev/?url=https://tvsen5.aynascope.net/cXPB2LKkErN9/index.m3u8', this)">
                                 <i class="fa-solid fa-play"></i> Star Sports 2 HD
                             </button>
                         </div>
@@ -8879,7 +8879,7 @@
         
     </div>
 
-    <!-- FOOTER -->
+<!-- FOOTER -->
     <footer>
         <p>&copy; <strong>Sports Hub Official</strong> | Football Media Center. All rights reserved.</p>
     </footer>
@@ -8896,14 +8896,10 @@
                 controls: true
             });
 
-            // Set laluan automatik saluran pertama (TNT Sports 1) menerusi proxy Cloudflare Worker
+            // Set laluan automatik saluran pertama (jika ada saluran lain)
             const firstBtn = document.querySelector('.channel-btn.active');
-            playDASHChannel(
-                'TNT Sports 1', 
-                'https://flat-butterfly-3ef0.yusoffrohaidee1.workers.dev/?url=https://otte.cache.aiv-cdn.net/iad-nitro/live/clients/dash/enc/rhf2dwosdt/out/v1/ee550d2a68d846c797e6ce4de2e8b76d/cenc.mpd', 
-                '69a5aa835a061ce64a630d1046727e40', 
-                'd02feac8a999bd06bf4059bf33411749', 
-                firstBtn
+            if (firstBtn) {
+                firstBtn.click();
             );
         });
 

@@ -5,20 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home of Premier League | Sports Hub Official</title>
     <link rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3jvhee0-_V6RWnWEIbtMRcAcorU9PqoRSI3vhTi0ugis7VSsUj9i3xaA&s=10" type="image/x-icon">
-    
-    <!-- Google Fonts & FontAwesome -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <!-- Video.js Styles -->
-    <link href="https://vjs.zencdn.net/8.10.0/video-js.css" rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <!-- Video.js Core Script -->
-    <script src="https://vjs.zencdn.net/8.10.0/video.min.js"></script>
-
-    <!-- HLS.js Core Library -->
-    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-
     <style>
         :root {
             --pl-purple: #38003c;
@@ -37,7 +28,7 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Poppins', sans-serif;
         }
 
         body {
@@ -49,7 +40,20 @@
             overflow-x: hidden;
         }
 
-        /* HEADER */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--pl-dark);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #520058;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--pl-green);
+        }
+
         header {
             background: rgba(56, 0, 60, 0.85);
             backdrop-filter: blur(12px);
@@ -70,9 +74,38 @@
             gap: 18px;
         }
 
-        .brand-titles h1 {
+        .logo-bezel {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 6px 14px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 15px rgba(0, 255, 133, 0.3), inset 0 0 5px rgba(0,0,0,0.2);
+            border: 2px solid var(--pl-green);
+            transition: transform 0.3s ease;
+        }
+
+        .logo-bezel:hover {
+            transform: scale(1.03);
+            box-shadow: 0 0 20px rgba(0, 255, 133, 0.6);
+        }
+
+        .logo-bezel img {
+            height: 38px;
+            width: auto;
+            display: block;
+        }
+
+        .brand-titles {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .brand h1 {
             font-size: 1.3rem;
             font-weight: 800;
+            line-height: 1.1;
             background: linear-gradient(90deg, #ffffff, var(--pl-green));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -82,6 +115,7 @@
             font-size: 0.75rem;
             color: var(--pl-cyan);
             font-weight: 600;
+            letter-spacing: 0.5px;
         }
 
         .live-badge {
@@ -91,111 +125,485 @@
             border-radius: 20px;
             font-size: 0.75rem;
             font-weight: 700;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 0 15px rgba(233, 0, 82, 0.5);
+            animation: pulse 2s infinite;
+        }
+
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #fff;
+            border-radius: 50%;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(233, 0, 82, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(233, 0, 82, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(233, 0, 82, 0); }
+        }
+
+        nav {
+            background: rgba(15, 0, 23, 0.7);
+            backdrop-filter: blur(8px);
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 12px 20px;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .nav-tab {
+            background: transparent;
+            border: 1px solid transparent;
+            color: var(--text-sub);
+            font-size: 0.95rem;
+            font-weight: 600;
+            padding: 10px 24px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
             align-items: center;
             gap: 8px;
         }
 
-        /* CONTAINER */
+        .nav-tab:hover {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-tab.active {
+            background: var(--pl-green);
+            color: var(--pl-purple);
+            font-weight: 700;
+            box-shadow: 0 0 20px rgba(0, 255, 133, 0.4);
+        }
+
         .container {
-            max-width: 1100px;
+            max-width: 1500px;
             width: 100%;
             margin: 25px auto;
             padding: 0 20px;
             flex: 1;
         }
 
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .stream-layout-single {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
         .player-wrapper {
-            background: rgba(30, 41, 59, 0.7);
+            background: rgba(36, 0, 41, 0.65);
             border: 1px solid var(--glass-border);
             border-radius: 20px;
-            padding: 24px;
+            padding: 16px;
             backdrop-filter: blur(10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+            margin-bottom: 25px;
         }
 
-        .video-wrapper {
+        .player-container {
+            position: relative;
             width: 100%;
+            padding-top: 56.25%;
+            background-color: #000;
             border-radius: 12px;
             overflow: hidden;
-            background-color: #000;
         }
 
-        .video-js {
+        .player-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            height: auto;
-            aspect-ratio: 16 / 9;
+            height: 100%;
+            border: 0;
         }
 
         .player-info {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 5px 5px 5px;
+            padding: 15px 10px 5px 10px;
         }
 
-        /* CHANNEL SELECTOR */
-        .channel-selector-container {
-            margin-top: 20px;
-            background: rgba(0, 0, 0, 0.4);
+        .player-info h3 {
+            font-size: 1.2rem;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .player-info h3 i {
+            color: var(--pl-green);
+        }
+
+        .channel-directory {
+            background: var(--pl-card-bg);
             border: 1px solid var(--glass-border);
-            border-radius: 14px;
-            padding: 15px;
-        }
-
-        .channel-selector-title {
-            font-size: 0.9rem;
-            color: var(--pl-cyan);
-            font-weight: 700;
-            margin-bottom: 10px;
-            text-transform: uppercase;
+            border-radius: 20px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
         }
 
         .channel-group-title {
-            font-size: 0.8rem;
-            color: var(--pl-green);
+            font-size: 1rem;
             font-weight: 700;
-            margin: 10px 0 5px 0;
+            color: var(--pl-green);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .channel-buttons-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 10px;
+            gap: 12px;
         }
 
         .channel-btn {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--glass-border);
-            color: #fff;
-            padding: 10px 14px;
-            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.04);
+            color: var(--text-main);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 12px 16px;
+            border-radius: 12px;
             cursor: pointer;
-            font-size: 0.85rem;
-            font-weight: 600;
             text-align: left;
             transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.88rem;
+            font-weight: 500;
         }
 
         .channel-btn:hover {
-            background: rgba(255, 255, 255, 0.15);
+            background-color: rgba(255, 255, 255, 0.1);
             border-color: var(--pl-green);
+            color: #fff;
         }
 
         .channel-btn.active {
-            background: var(--pl-green);
+            background-color: var(--pl-green);
             color: var(--pl-purple);
             font-weight: 700;
             border-color: var(--pl-green);
+            box-shadow: 0 0 15px rgba(0, 255, 133, 0.3);
         }
+
+        .channel-btn i {
+            font-size: 0.85rem;
+        }
+
+        .match-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+            gap: 25px;
+        }
+
+        @media (max-width: 480px) {
+            .match-grid {
+                grid-template-columns: 1fr;
+            }
+            .channel-buttons-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .match-card {
+            background: var(--pl-card-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+            backdrop-filter: blur(10px);
+            position: relative;
+        }
+
+        .match-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .match-stage {
+            color: var(--pl-cyan);
+            font-size: 0.85rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .match-status {
+            background: rgba(0, 255, 133, 0.15);
+            color: var(--pl-green);
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            border: 1px solid rgba(0, 255, 133, 0.3);
+        }
+
+        .match-status.upcoming {
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .match-main {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 0;
+        }
+
+        .match-team {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            flex: 1;
+        }
+
+        .team-shield {
+            width: 65px;
+            height: 65px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: #fff;
+            box-shadow: inset 0 0 15px rgba(255,255,255,0.05);
+        }
+
+        .team-name {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #fff;
+            text-align: center;
+        }
+
+        .match-score-box {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 18px;
+            padding: 12px 24px;
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #fff;
+            letter-spacing: 2px;
+            box-shadow: inset 0 2px 10px rgba(0,0,0,0.5);
+            min-width: 120px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .penalty-tag {
+            font-size: 0.75rem;
+            color: var(--pl-green);
+            font-weight: 600;
+            margin-top: 4px;
+            letter-spacing: 0;
+        }
+
+        .match-meta-box {
+            background: var(--card-inner-bg);
+            border-radius: 14px;
+            padding: 14px 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+            color: var(--text-sub);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .meta-left {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .meta-right {
+            text-align: right;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .scorers-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            padding-top: 5px;
+            font-size: 0.82rem;
+        }
+
+        .scorer-column {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .scorer-column.right {
+            text-align: right;
+        }
+
+        .scorer-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #e2d9e6;
+        }
+
+        .scorer-column.right .scorer-item {
+            justify-content: flex-end;
+        }
+
+        .scorer-item i {
+            color: var(--pl-green);
+            font-size: 0.75rem;
+        }
+
+        .glass-card {
+            background: var(--pl-card-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 25px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+            overflow-x: auto;
+        }
+
+        .card-header {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-header h2 {
+            font-size: 1.3rem;
+            color: var(--pl-green);
+            font-weight: 700;
+        }
+
+        .custom-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 8px;
+            min-width: 600px;
+        }
+
+        .custom-table th {
+            color: var(--text-sub);
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 12px 16px;
+            text-align: left;
+            text-transform: uppercase;
+        }
+
+        .custom-table td {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 14px 16px;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .custom-table tr td:first-child {
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+        }
+
+        .custom-table tr td:last-child {
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+
+        .custom-table tr:hover td {
+            background: rgba(255, 255, 255, 0.07);
+        }
+
+        .team-cell {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+        }
+
+        .team-logo-placeholder {
+            width: 28px;
+            height: 28px;
+            background: var(--pl-purple);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--pl-green);
+            border: 1px solid var(--glass-border);
+        }
+
+        .pos-badge {
+            font-weight: 700;
+            width: 25px;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .pos-ucl { color: #00d2ff; }
+        .pos-uel { color: #ff9100; }
+        .pos-rel { color: var(--pl-pink); }
 
         footer {
             margin-top: auto;
             text-align: center;
-            padding: 20px;
+            padding: 25px;
             font-size: 0.85rem;
             color: var(--text-sub);
             background: rgba(10, 0, 18, 0.85);
             border-top: 1px solid var(--glass-border);
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        footer strong {
+            color: var(--pl-green);
         }
     </style>
 </head>
@@ -234,100 +642,85 @@
         </button>
     </nav>
 
-<!-- MAIN CONTENT CONTAINER -->
-<div class="container">
+    <!-- MAIN CONTENT CONTAINER -->
+    <div class="container">
 
-    <!-- TAB 1: LIVE STREAM -->
-    <div id="live-stream" class="tab-content active">
-        <div class="stream-layout-single">
-            <div class="player-wrapper">
-                <div class="video-wrapper">
-                    <!-- Video Element Standard -->
-                    <video 
-                        id="my-video" 
-                        class="video-js vjs-theme-city vjs-big-play-centered vjs-16-9" 
-                        controls 
-                        preload="auto" 
-                        muted 
-                        playsinline>
-                    </video>
-                </div>
-                <div class="player-info">
-                    <h3 id="current-channel-title"><i class="fa-solid fa-tower-broadcast"></i> Star Sports Select 1 HD</h3>
-                    <span style="font-size: 0.85rem; color: var(--text-sub);"><i class="fa-solid fa-wifi" style="color: var(--pl-green);"></i> Live Stream Feed</span>
-                </div>
-
-                <!-- CHANNEL SELECTOR -->
-                <div class="channel-selector-container">
-                    <div class="channel-selector-title">
-                        <i class="fa-solid fa-tv"></i> Select Your Channel
+        <!-- TAB 1: LIVE STREAM -->
+        <div id="live-stream" class="tab-content active">
+            <div class="stream-layout-single">
+                
+                <!-- CONTAINER PLAYER VIDEO -->
+                <div class="player-wrapper">
+                    <div class="player-container" id="player-container">
+                        <iframe src="https://player.icanplay.my.id/?url=https://sbsw.b-cdn.net/StarSportsHD1/720p1m/video.m3u8" allowfullscreen="true" scrolling="no" frameborder="0" sandbox="allow-scripts allow-same-origin allow-presentation" referrerpolicy="no-referrer"></iframe>
                     </div>
+                    <div class="player-info">
+                        <h3 id="current-channel-title"><i class="fa-solid fa-circle-play"></i> Star Sports Select 1 HD</h3>
+                        <span style="font-size: 0.85rem; color: var(--text-sub);"><i class="fa-solid fa-wifi" style="color: var(--pl-green);"></i> Ultra HD Feed</span>
+                    </div>
+                </div>
+
+                <!-- CHANNEL DIRECTORY -->
+                <div class="channel-directory">
                     
                     <!-- SERVER 1: STAR SPORTS -->
                     <div class="channel-group-title">
                         <i class="fa-solid fa-server"></i> Server 1 (Star Sports)
                     </div>
-
                     <div class="channel-buttons-grid">
-                        <!-- Select 1 & 2 guna playHLSjsChannel (hls.js) -->
-                        <button class="channel-btn active" onclick="playHLSjsChannel('Star Sports Select 1 HD', 'https://sbsw.b-cdn.net/StarSportsHD1/720p1m/video.m3u8', this)">
+                        <button class="channel-btn active" onclick="playIframeChannel('Star Sports Select 1 HD', 'https://player.icanplay.my.id/?url=https://sbsw.b-cdn.net/StarSportsHD1/720p1m/video.m3u8', this)">
                             <i class="fa-solid fa-play"></i> Star Sports Select 1 HD
                         </button>
-                        <button class="channel-btn" onclick="playHLSjsChannel('Star Sports Select 2 HD', 'https://sbsw.b-cdn.net/StarSportsHD2/720p1m/video.m3u8', this)">
+                        <button class="channel-btn" onclick="playIframeChannel('Star Sports Select 2 HD', 'https://player.icanplay.my.id/?url=https://sbsw.b-cdn.net/StarSportsHD2/720p1m/video.m3u8', this)">
                             <i class="fa-solid fa-play"></i> Star Sports Select 2 HD
                         </button>
-                        
-                        <!-- Saluran lain guna playHLSChannel (Video.js) -->
-                        <button class="channel-btn" onclick="playHLSChannel('Star Sports 2 HD', 'https://tvsen5.aynascope.net/cXPB2LKkErN9/index.m3u8', this)">
+                        <button class="channel-btn" onclick="playIframeChannel('Star Sports 2 HD', 'https://player.icanplay.my.id/?url=https://tvsen5.aynascope.net/cXPB2LKkErN9/index.m3u8', this)">
                             <i class="fa-solid fa-play"></i> Star Sports 2 HD
                         </button>
                     </div>
 
                     <!-- SERVER 2: BEIN SPORTS TURKIYE -->
-                    <div class="channel-group-title" style="margin-top: 15px;">
+                    <div class="channel-group-title" style="margin-top: 20px;">
                         <i class="fa-solid fa-server"></i> Server 2 (beIN Sports Turkiye)
                     </div>
-
                     <div class="channel-buttons-grid">
-                        <button class="channel-btn" onclick="playHLSChannel('beIN Sports 1 TR (A)', 'https://andro.evrenesoglu99.click/checklist/batutest.m3u8', this)">
+                        <button class="channel-btn" onclick="playIframeChannel('beIN Sports 1 TR', 'https://player.icanplay.my.id/?url=https://andro.evrenesoglu99.click/checklist/batutest.m3u8', this)">
                             <i class="fa-solid fa-star"></i> beIN Sports 1 TR
                         </button>
-                        <button class="channel-btn" onclick="playHLSChannel('beIN Sports 2 TR (A)', 'https://andro.evrenesoglu99.click/checklist/androstreamlivebs2.m3u8', this)">
+                        <button class="channel-btn" onclick="playIframeChannel('beIN Sports 2 TR', 'https://player.icanplay.my.id/?url=https://andro.evrenesoglu99.click/checklist/androstreamlivebs2.m3u8', this)">
                             <i class="fa-solid fa-star"></i> beIN Sports 2 TR
                         </button>
-                        <button class="channel-btn" onclick="playHLSChannel('beIN Sports 3 TR (A)', 'https://andro.evrenesoglu99.click/checklist/androstreamlivebs3.m3u8', this)">
+                        <button class="channel-btn" onclick="playIframeChannel('beIN Sports 3 TR', 'https://player.icanplay.my.id/?url=https://andro.evrenesoglu99.click/checklist/androstreamlivebs3.m3u8', this)">
                             <i class="fa-solid fa-star"></i> beIN Sports 3 TR
                         </button>
-                        <button class="channel-btn" onclick="playHLSChannel('beIN Sports 4 TR (A)', 'https://andro.evrenesoglu99.click/checklist/androstreamlivebs4.m3u8', this)">
+                        <button class="channel-btn" onclick="playIframeChannel('beIN Sports 4 TR', 'https://player.icanplay.my.id/?url=https://andro.evrenesoglu99.click/checklist/androstreamlivebs4.m3u8', this)">
                             <i class="fa-solid fa-star"></i> beIN Sports 4 TR
                         </button>
-                        <button class="channel-btn" onclick="playHLSChannel('beIN Sports 5 TR (A)', 'https://andro.evrenesoglu99.click/checklist/androstreamlivebs5.m3u8', this)">
+                        <button class="channel-btn" onclick="playIframeChannel('beIN Sports 5 TR', 'https://player.icanplay.my.id/?url=https://andro.evrenesoglu99.click/checklist/androstreamlivebs5.m3u8', this)">
                             <i class="fa-solid fa-star"></i> beIN Sports 5 TR
                         </button>
-                        <button class="channel-btn" onclick="playHLSChannel('beIN Sports MAX 1 TR (A)', 'https://andro.evrenesoglu99.click/checklist/androstreamlivebsm1.m3u8', this)">
+                        <button class="channel-btn" onclick="playIframeChannel('beIN Sports MAX 1 TR', 'https://player.icanplay.my.id/?url=https://andro.evrenesoglu99.click/checklist/androstreamlivebsm1.m3u8', this)">
                             <i class="fa-solid fa-star"></i> beIN Sports MAX 1 TR
                         </button>
-                        <button class="channel-btn" onclick="playHLSChannel('beIN Sports MAX 2 TR (A)', 'https://andro.evrenesoglu99.click/checklist/androstreamlivebsm2.m3u8', this)">
+                        <button class="channel-btn" onclick="playIframeChannel('beIN Sports MAX 2 TR', 'https://player.icanplay.my.id/?url=https://andro.evrenesoglu99.click/checklist/androstreamlivebsm2.m3u8', this)">
                             <i class="fa-solid fa-star"></i> beIN Sports MAX 2 TR
                         </button>
                     </div>
 
                     <!-- SERVER 3: USA NETWORK -->
-                    <div class="channel-group-title" style="margin-top: 15px;">
+                    <div class="channel-group-title" style="margin-top: 20px;">
                         <i class="fa-solid fa-server"></i> Server 3 (USA Network)
                     </div>
-
                     <div class="channel-buttons-grid">
-                        <button class="channel-btn" onclick="playHLSChannel('USA Network SD', 'https://tvsen3.aynaott.com/dbbcY6NG/index.m3u8', this)">
+                        <button class="channel-btn" onclick="playIframeChannel('USA Network SD', 'https://player.icanplay.my.id/?url=https://tvsen3.aynaott.com/dbbcY6NG/index.m3u8', this)">
                             <i class="fa-solid fa-star"></i> USA Network SD
                         </button>
                     </div>
 
                 </div>
+
             </div>
         </div>
-    </div>
-</div>
 
                 <!-- TAB 2: SCHEDULE (MATCHWEEK 1 TO 4) -->
         <div id="schedule" class="tab-content">
@@ -8537,148 +8930,47 @@
         
     </div>
 
-<!-- FOOTER -->
+    <!-- FOOTER -->
     <footer>
         <p>&copy; <strong>Sports Hub Official</strong> | Football Media Center. All rights reserved.</p>
+        <p style="font-size: 0.75rem;">Home of Premier League is an external video streaming aggregator project.</p>
     </footer>
 
-<!-- JAVASCRIPT LOGIC -->
-<script>
-var player = null;
-var hlsInstance = null;
+    <!-- JAVASCRIPT -->
+    <script>
+        function switchTab(tabId, btn) {
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(c => c.classList.remove('active'));
+            
+            const tabs = document.querySelectorAll('.nav-tab');
+            tabs.forEach(t => t.classList.remove('active'));
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Inisialisasi Video.js Player
-    player = videojs('my-video', {
-        techOrder: ['shaka', 'html5'],
-        autoplay: true,
-        muted: true,
-        controls: true
-    });
+            document.getElementById(tabId).classList.add('active');
+            btn.classList.add('active');
+        }
 
-    // Autoclick butang saluran pertama yang aktif
-    const firstBtn = document.querySelector('.channel-btn.active');
-    if (firstBtn) {
-        firstBtn.click();
-    }
-});
+        function playIframeChannel(channelName, embedUrl, btnElement) {
+            document.querySelectorAll('.channel-btn').forEach(btn => btn.classList.remove('active'));
+            if (btnElement) btnElement.classList.add('active');
 
-// 1. Trigger pemutaran melalui Video.js (Native Video.js M3U8 Player)
-function playHLSChannel(title, url, btn) {
-    updateUI(title, btn);
-    cleanupHLS(); // Pastikan HLS.js dimatikan jika sedang berjalan
-
-    if (player) {
-        player.reset(); // Sifar semula state Video.js
-        player.src({
-            src: url,
-            type: 'application/x-mpegURL'
-        });
-
-        player.play().catch(function(error) {
-            console.log("Autoplay Video.js HLS dihalang:", error);
-        });
-    }
-}
-
-// 2. Trigger pemutaran menggunakan enjin HLS.js secara terus
-function playHLSjsChannel(title, url, btn) {
-    updateUI(title, btn);
-    cleanupHLS(); // Reset sebarang instance HLS.js sedia ada
-
-    // Rehatkan dan kosongkan Video.js supaya tidak mengganggu HLS.js
-    if (player) {
-        player.pause();
-        player.hasStarted(false);
-        player.src(''); 
-    }
-
-    // Ambil elemen HTML5 video sebenar (Video.js menggunakan id asas atau id + _html5_api)
-    var videoElement = document.getElementById('my-video_html5_api') || document.getElementById('my-video');
-
-    if (Hls.isSupported()) {
-        hlsInstance = new Hls({
-            enableWorker: true,
-            lowLatencyMode: true
-        });
-        
-        hlsInstance.loadSource(url);
-        hlsInstance.attachMedia(videoElement);
-        
-        hlsInstance.on(Hls.Events.MANIFEST_PARSED, function() {
-            videoElement.play().catch(function(error) {
-                console.log("Autoplay HLS.js dihalang:", error);
-            });
-        });
-    } else if (videoElement.canPlayType('application/vnd.apple.mpegurl')) {
-        // Sokongan native HLS untuk Safari / iOS
-        videoElement.src = url;
-        videoElement.play().catch(function(error) {
-            console.log("Autoplay Native HLS dihalang:", error);
-        });
-    }
-}
-
-// 3. Trigger pemutaran DASH + DRM ClearKey
-function playDASHChannel(title, manifestUrl, kid, key, btn) {
-    cleanupHLS();
-    updateUI(title, btn);
-
-    var clearKeysConfig = {};
-    if (kid && key) {
-        clearKeysConfig[kid] = key;
-    }
-
-    if (player) {
-        player.src({
-            src: manifestUrl,
-            type: 'application/dash+xml',
-            keySystems: {
-                'org.w3.clearkey': {
-                    clearKeys: clearKeysConfig
-                }
+            const titleElem = document.getElementById('current-channel-title');
+            if (titleElem) {
+                titleElem.innerHTML = `<i class="fa-solid fa-circle-play"></i> ${channelName}`;
             }
-        });
 
-        player.play().catch(function(error) {
-            console.log("Autoplay DASH dihalang:", error);
-        });
-    }
-}
-
-// Helper: Pembersihan HLS.js
-function cleanupHLS() {
-    if (hlsInstance) {
-        hlsInstance.destroy();
-        hlsInstance = null;
-    }
-}
-
-// Helper: Kemaskini UI Antaramuka
-function updateUI(title, btn) {
-    var titleElem = document.getElementById('current-channel-title');
-    if (titleElem) {
-        titleElem.innerHTML = '<i class="fa-solid fa-tower-broadcast"></i> ' + title;
-    }
-
-    const buttons = document.querySelectorAll('.channel-btn');
-    buttons.forEach(b => b.classList.remove('active'));
-    if (btn) btn.classList.add('active');
-}
-
-// Helper: Tukar Tab UI
-function switchTab(tabId, btn) {
-    const contents = document.querySelectorAll('.tab-content');
-    contents.forEach(c => c.classList.remove('active'));
-    
-    const tabs = document.querySelectorAll('.nav-tab');
-    tabs.forEach(t => t.classList.remove('active'));
-
-    const targetTab = document.getElementById(tabId);
-    if (targetTab) targetTab.classList.add('active');
-    if (btn) btn.classList.add('active');
-}
-</script>
+            const playerContainer = document.getElementById('player-container');
+            playerContainer.innerHTML = `
+                <iframe 
+                    src="${embedUrl.trim()}" 
+                    allowfullscreen="true" 
+                    scrolling="no" 
+                    frameborder="0"
+                    sandbox="allow-scripts allow-same-origin allow-presentation"
+                    referrerpolicy="no-referrer">
+                </iframe>
+            `;
+        }
+    </script>
 
 </body>
 </html>

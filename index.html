@@ -580,96 +580,96 @@
     </nav>
 
 <!-- MAIN CONTENT CONTAINER -->
-    <div class="container">
+<div class="container">
 
-        <!-- TAB 1: LIVE STREAM -->
-        <div id="live-stream" class="tab-content active">
-            <div class="stream-layout-single">
-                <div class="player-wrapper">
-                    <div class="video-wrapper">
-                        <!-- Video.js Player Element -->
-                        <video 
-                            id="my-video" 
-                            class="video-js vjs-theme-city vjs-big-play-centered" 
-                            controls 
-                            preload="auto" 
-                            autoplay
-                            muted
-                            playsinline>
-                        </video>
+    <!-- TAB 1: LIVE STREAM -->
+    <div id="live-stream" class="tab-content active">
+        <div class="stream-layout-single">
+            <div class="player-wrapper">
+                <div class="video-wrapper">
+                    <!-- Video.js Player Element -->
+                    <video 
+                        id="my-video" 
+                        class="video-js vjs-theme-city vjs-big-play-centered vjs-16-9" 
+                        controls 
+                        preload="auto" 
+                        muted 
+                        playsinline>
+                    </video>
+                </div>
+                <div class="player-info">
+                    <h3 id="current-channel-title"><i class="fa-solid fa-tower-broadcast"></i> Star Sports Select 1 HD</h3>
+                    <span style="font-size: 0.85rem; color: var(--text-sub);"><i class="fa-solid fa-wifi" style="color: var(--pl-green);"></i> Live Stream Feed</span>
+                </div>
+
+                <!-- CHANNEL SELECTOR -->
+                <div class="channel-selector-container">
+                    <div class="channel-selector-title">
+                        <i class="fa-solid fa-tv"></i> Select Your Channel
                     </div>
-                    <div class="player-info">
-                        <h3 id="current-channel-title"><i class="fa-solid fa-tower-broadcast"></i> Star Sports Select 1 HD</h3>
-                        <span style="font-size: 0.85rem; color: var(--text-sub);"><i class="fa-solid fa-wifi" style="color: var(--pl-green);"></i> Live Stream Feed</span>
+                    
+                    <!-- SERVER 1: STAR SPORTS -->
+                    <div class="channel-group-title">
+                        <i class="fa-solid fa-server"></i> Server 1 (Star Sports)
                     </div>
 
-                    <!-- CHANNEL SELECTOR -->
-                    <div class="channel-selector-container">
-                        <div class="channel-selector-title">
-                            <i class="fa-solid fa-tv"></i> Select Your Channel
-                        </div>
-                        
-                        <!-- SERVER 1: STAR SPORTS -->
-                        <div class="channel-group-title">
-                            <i class="fa-solid fa-server"></i> Server 1 (Star Sports)
-                        </div>
-
-                        <div class="channel-buttons-grid">
-                            <button class="channel-btn active" onclick="playHLSChannel('Star Sports Select 1 HD', 'https://flat-butterfly-3ef0.yusoffrohaidee1.workers.dev/?url=https://sbsw.b-cdn.net/StarSportsHD1/720p1m/video.m3u8', this)">
-                                <i class="fa-solid fa-play"></i> Star Sports Select 1 HD
-                            </button>
-                            <button class="channel-btn" onclick="playHLSChannel('Star Sports Select 2 HD', 'https://flat-butterfly-3ef0.yusoffrohaidee1.workers.dev/?url=https://sbsw.b-cdn.net/StarSportsHD2/720p1m/video.m3u8', this)">
-                                <i class="fa-solid fa-play"></i> Star Sports Select 2 HD
-                            </button>
-                            <button class="channel-btn" onclick="playHLSChannel('Star Sports 2 HD', 'https://flat-butterfly-3ef0.yusoffrohaidee1.workers.dev/?url=https://tvsen5.aynascope.net/cXPB2LKkErN9/index.m3u8', this)">
-                                <i class="fa-solid fa-play"></i> Star Sports 2 HD
-                            </button>
-                        </div>
-
-                        <!-- SERVER 2: BEIN SPORTS TURKIYE -->
-                        <div class="channel-group-title" style="margin-top: 15px;">
-                            <i class="fa-solid fa-server"></i> Server 2 (beIN Sports Turkiye)
-                        </div>
-
-                        <div class="channel-buttons-grid">
-                            <button class="channel-btn" onclick="playHLSChannel('beIN Sports 1 TR (A)', 'https://andro.evrenesoglu99.click/checklist/batutest.m3u8', this)">
-                                <i class="fa-solid fa-star"></i> beIN Sports 1 TR
-                            </button>
-                            <button class="channel-btn" onclick="playHLSChannel('beIN Sports 2 TR (A)', 'https://andro.evrenesoglu99.click/checklist/androstreamlivebs2.m3u8', this)">
-                                <i class="fa-solid fa-star"></i> beIN Sports 2 TR
-                            </button>
-                            <button class="channel-btn" onclick="playHLSChannel('beIN Sports 3 TR (A)', 'https://andro.evrenesoglu99.click/checklist/androstreamlivebs3.m3u8', this)">
-                                <i class="fa-solid fa-star"></i> beIN Sports 3 TR
-                            </button>
-                            <button class="channel-btn" onclick="playHLSChannel('beIN Sports 4 TR (A)', 'https://andro.evrenesoglu99.click/checklist/androstreamlivebs4.m3u8', this)">
-                                <i class="fa-solid fa-star"></i> beIN Sports 4 TR
-                            </button>
-                            <button class="channel-btn" onclick="playHLSChannel('beIN Sports 5 TR (A)', 'https://andro.evrenesoglu99.click/checklist/androstreamlivebs5.m3u8', this)">
-                                <i class="fa-solid fa-star"></i> beIN Sports 5 TR
-                            </button>
-                            <button class="channel-btn" onclick="playHLSChannel('beIN Sports MAX 1 TR (A)', 'https://andro.evrenesoglu99.click/checklist/androstreamlivebsm1.m3u8', this)">
-                                <i class="fa-solid fa-star"></i> beIN Sports MAX 1 TR
-                            </button>
-                            <button class="channel-btn" onclick="playHLSChannel('beIN Sports MAX 2 TR (A)', 'https://andro.evrenesoglu99.click/checklist/androstreamlivebsm2.m3u8', this)">
-                                <i class="fa-solid fa-star"></i> beIN Sports MAX 2 TR
-                            </button>
-                        </div>
-
-                        <!-- SERVER 3: USA NETWORK -->
-                        <div class="channel-group-title" style="margin-top: 15px;">
-                            <i class="fa-solid fa-server"></i> Server 3 (USA Network)
-                        </div>
-
-                        <div class="channel-buttons-grid">
-                            <button class="channel-btn" onclick="playHLSChannel('USA Network SD', 'https://tvsen3.aynaott.com/dbbcY6NG/index.m3u8', this)">
-                                <i class="fa-solid fa-star"></i> USA Network SD
-                            </button>
-                        </div>
-
+                    <div class="channel-buttons-grid">
+                        <button class="channel-btn active" onclick="playHLSChannel('Star Sports Select 1 HD', 'https://flat-butterfly-3ef0.yusoffrohaidee1.workers.dev/?url=https://sbsw.b-cdn.net/StarSportsHD1/720p1m/video.m3u8', this)">
+                            <i class="fa-solid fa-play"></i> Star Sports Select 1 HD
+                        </button>
+                        <button class="channel-btn" onclick="playHLSChannel('Star Sports Select 2 HD', 'https://flat-butterfly-3ef0.yusoffrohaidee1.workers.dev/?url=https://sbsw.b-cdn.net/StarSportsHD2/720p1m/video.m3u8', this)">
+                            <i class="fa-solid fa-play"></i> Star Sports Select 2 HD
+                        </button>
+                        <button class="channel-btn" onclick="playHLSChannel('Star Sports 2 HD', 'https://flat-butterfly-3ef0.yusoffrohaidee1.workers.dev/?url=https://tvsen5.aynascope.net/cXPB2LKkErN9/index.m3u8', this)">
+                            <i class="fa-solid fa-play"></i> Star Sports 2 HD
+                        </button>
                     </div>
+
+                    <!-- SERVER 2: BEIN SPORTS TURKIYE -->
+                    <div class="channel-group-title" style="margin-top: 15px;">
+                        <i class="fa-solid fa-server"></i> Server 2 (beIN Sports Turkiye)
+                    </div>
+
+                    <div class="channel-buttons-grid">
+                        <button class="channel-btn" onclick="playHLSChannel('beIN Sports 1 TR (A)', 'https://andro.evrenesoglu99.click/checklist/batutest.m3u8', this)">
+                            <i class="fa-solid fa-star"></i> beIN Sports 1 TR
+                        </button>
+                        <button class="channel-btn" onclick="playHLSChannel('beIN Sports 2 TR (A)', 'https://andro.evrenesoglu99.click/checklist/androstreamlivebs2.m3u8', this)">
+                            <i class="fa-solid fa-star"></i> beIN Sports 2 TR
+                        </button>
+                        <button class="channel-btn" onclick="playHLSChannel('beIN Sports 3 TR (A)', 'https://andro.evrenesoglu99.click/checklist/androstreamlivebs3.m3u8', this)">
+                            <i class="fa-solid fa-star"></i> beIN Sports 3 TR
+                        </button>
+                        <button class="channel-btn" onclick="playHLSChannel('beIN Sports 4 TR (A)', 'https://andro.evrenesoglu99.click/checklist/androstreamlivebs4.m3u8', this)">
+                            <i class="fa-solid fa-star"></i> beIN Sports 4 TR
+                        </button>
+                        <button class="channel-btn" onclick="playHLSChannel('beIN Sports 5 TR (A)', 'https://andro.evrenesoglu99.click/checklist/androstreamlivebs5.m3u8', this)">
+                            <i class="fa-solid fa-star"></i> beIN Sports 5 TR
+                        </button>
+                        <button class="channel-btn" onclick="playHLSChannel('beIN Sports MAX 1 TR (A)', 'https://andro.evrenesoglu99.click/checklist/androstreamlivebsm1.m3u8', this)">
+                            <i class="fa-solid fa-star"></i> beIN Sports MAX 1 TR
+                        </button>
+                        <button class="channel-btn" onclick="playHLSChannel('beIN Sports MAX 2 TR (A)', 'https://andro.evrenesoglu99.click/checklist/androstreamlivebsm2.m3u8', this)">
+                            <i class="fa-solid fa-star"></i> beIN Sports MAX 2 TR
+                        </button>
+                    </div>
+
+                    <!-- SERVER 3: USA NETWORK -->
+                    <div class="channel-group-title" style="margin-top: 15px;">
+                        <i class="fa-solid fa-server"></i> Server 3 (USA Network)
+                    </div>
+
+                    <div class="channel-buttons-grid">
+                        <button class="channel-btn" onclick="playHLSChannel('USA Network SD', 'https://tvsen3.aynaott.com/dbbcY6NG/index.m3u8', this)">
+                            <i class="fa-solid fa-star"></i> USA Network SD
+                        </button>
+                    </div>
+
                 </div>
             </div>
         </div>
+    </div>
+</div>
 
                 <!-- TAB 2: SCHEDULE (MATCHWEEK 1 TO 4) -->
         <div id="schedule" class="tab-content">
@@ -8884,81 +8884,92 @@
         <p>&copy; <strong>Sports Hub Official</strong> | Football Media Center. All rights reserved.</p>
     </footer>
 
-    <!-- JAVASCRIPT LOGIC -->
-    <script>
-        var player;
+<!-- JAVASCRIPT LOGIC -->
+<script>
+    var player;
 
-        document.addEventListener('DOMContentLoaded', function() {
-            // Inisialisasi Video.js Player dengan Enjin Shaka Player
-            player = videojs('my-video', {
-                techOrder: ['shaka', 'html5'],
-                autoplay: 'muted',
-                controls: true
-            });
-
-            // Set laluan automatik saluran pertama (jika ada saluran lain)
-            const firstBtn = document.querySelector('.channel-btn.active');
-            if (firstBtn) {
-                firstBtn.click();
-            );
+    document.addEventListener('DOMContentLoaded', function() {
+        // Inisialisasi Video.js Player dengan Enjin Shaka Player
+        player = videojs('my-video', {
+            techOrder: ['shaka', 'html5'],
+            autoplay: true,
+            muted: true,
+            controls: true
         });
 
-        // Fungsi Memutar Saluran DASH + ClearKey DRM
-        function playDASHChannel(title, manifestUrl, kid, key, btn) {
-            updateUI(title, btn);
+        // Set laluan automatik saluran pertama
+        const firstBtn = document.querySelector('.channel-btn.active');
+        if (firstBtn) {
+            firstBtn.click();
+        } // <- DIBAIKI: Sebelum ini ditulis ');'
+    });
 
-            var clearKeysConfig = {};
+    // Fungsi Memutar Saluran DASH + ClearKey DRM
+    function playDASHChannel(title, manifestUrl, kid, key, btn) {
+        updateUI(title, btn);
+
+        var clearKeysConfig = {};
+        if (kid && key) {
             clearKeysConfig[kid] = key;
+        }
 
-            player.src({
-                src: manifestUrl,
-                type: 'application/dash+xml',
-                keySystems: {
-                    'org.w3.clearkey': {
-                        clearKeys: clearKeysConfig
-                    }
+        player.src({
+            src: manifestUrl,
+            type: 'application/dash+xml',
+            keySystems: {
+                'org.w3.clearkey': {
+                    clearKeys: clearKeysConfig
                 }
-            });
+            }
+        });
 
-            player.play();
+        player.play().catch(function(error) {
+            console.log("Autoplay dihalang:", error);
+        });
+    }
+
+    // Fungsi Memutar Saluran M3U8 Direct Stream
+    function playHLSChannel(title, url, btn) {
+        updateUI(title, btn);
+
+        player.src({
+            src: url,
+            type: 'application/x-mpegURL'
+        });
+
+        player.play().catch(function(error) {
+            console.log("Autoplay dihalang:", error);
+        });
+    }
+
+    // Fungsi sokongan jika terdapat butang lama yang menggunakan nama changeChannel
+    function changeChannel(title, url, btn) {
+        playHLSChannel(title, url, btn);
+    }
+
+    function updateUI(title, btn) {
+        var titleElem = document.getElementById('current-channel-title');
+        if (titleElem) {
+            titleElem.innerHTML = '<i class="fa-solid fa-tower-broadcast"></i> ' + title;
         }
 
-        // Fungsi Memutar Saluran M3U8 Direct Stream
-        function playHLSChannel(title, url, btn) {
-            updateUI(title, btn);
+        const buttons = document.querySelectorAll('.channel-btn');
+        buttons.forEach(b => b.classList.remove('active'));
+        if (btn) btn.classList.add('active');
+    }
 
-            player.src({
-                src: url,
-                type: 'application/x-mpegURL'
-            });
+    function switchTab(tabId, btn) {
+        const contents = document.querySelectorAll('.tab-content');
+        contents.forEach(c => c.classList.remove('active'));
+        
+        const tabs = document.querySelectorAll('.nav-tab');
+        tabs.forEach(t => t.classList.remove('active'));
 
-            player.play();
-        }
-
-        // Fungsi sokongan jika terdapat butang lama yang menggunakan nama changeChannel
-        function changeChannel(title, url, btn) {
-            playHLSChannel(title, url, btn);
-        }
-
-        function updateUI(title, btn) {
-            document.getElementById('current-channel-title').innerHTML = '<i class="fa-solid fa-tower-broadcast"></i> ' + title;
-
-            const buttons = document.querySelectorAll('.channel-btn');
-            buttons.forEach(b => b.classList.remove('active'));
-            if(btn) btn.classList.add('active');
-        }
-
-        function switchTab(tabId, btn) {
-            const contents = document.querySelectorAll('.tab-content');
-            contents.forEach(c => c.classList.remove('active'));
-            
-            const tabs = document.querySelectorAll('.nav-tab');
-            tabs.forEach(t => t.classList.remove('active'));
-
-            document.getElementById(tabId).classList.add('active');
-            btn.classList.add('active');
-        }
-    </script>
+        const targetTab = document.getElementById(tabId);
+        if (targetTab) targetTab.classList.add('active');
+        if (btn) btn.classList.add('active');
+    }
+</script>
 
 </body>
 </html>

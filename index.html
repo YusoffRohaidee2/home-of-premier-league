@@ -11,6 +11,10 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     
+    <!-- Video.js CSS & JS -->
+    <link href="https://vjs.zencdn.net/8.10.0/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/8.10.0/video.min.js"></script>
+
     <style>
         :root {
             --bg-dark: #07040d;
@@ -216,13 +220,37 @@
             box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.9);
         }
 
-        .player-container iframe {
+        /* Player Containers Visibility Switch */
+        .player-element {
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
+            width: 100% !important;
+            height: 100% !important;
             border: none;
+            display: none;
+        }
+
+        .player-element.active-player {
+            display: block;
+        }
+
+        /* Video.js Custom Styling */
+        .video-js .vjs-big-play-button {
+            background-color: rgba(0, 255, 133, 0.85) !important;
+            border: 2px solid var(--pl-green) !important;
+            color: #000 !important;
+            border-radius: 50% !important;
+            width: 70px !important;
+            height: 70px !important;
+            line-height: 66px !important;
+            margin-top: -35px !important;
+            margin-left: -35px !important;
+            box-shadow: 0 0 25px rgba(0, 255, 133, 0.6);
+        }
+
+        .video-js .vjs-play-progress {
+            background-color: var(--pl-green);
         }
 
         .player-info {
@@ -449,12 +477,22 @@
 
     <div class="container">
         
-        <!-- Player Container -->
+        <!-- Hybrid Player Wrapper -->
         <div class="player-wrapper">
             <div class="player-container">
-                <!-- IFRAME EMBED PLAYER (ICANPLAY EMBED FRAMEWORK) -->
+                <!-- 1. Video.js Player Element -->
+                <div id="vjs-player-box" class="player-element active-player">
+                    <video id="vjs-player" class="video-js vjs-big-play-centered vjs-fluid w-full h-full" controls preload="auto" crossorigin="anonymous">
+                        <p class="vjs-no-js">
+                            Sila aktifkan JavaScript untuk menonton siaran ini.
+                        </p>
+                    </video>
+                </div>
+
+                <!-- 2. Iframe Player Element -->
                 <iframe id="embed-player" 
-                        src="https://player.icanplay.my.id/?url=https://cp11.adabmedia.com/hls2/bein1.m3u8" 
+                        class="player-element"
+                        src="about:blank" 
                         allow="autoplay; encrypted-media; picture-in-picture; fullscreen" 
                         allowfullscreen>
                 </iframe>
@@ -462,33 +500,33 @@
             <div class="player-info">
                 <h3 id="current-channel-title"><i class="fa-solid fa-tv"></i> beIN Sports 1</h3>
                 <div class="badge-ultra">
-                    <i class="fa-solid fa-wifi" style="color: var(--pl-green);"></i> Ultra HD Stream
+                    <i class="fa-solid fa-wifi" style="color: var(--pl-green);"></i> <span id="player-type-label">Video.js Player</span>
                 </div>
             </div>
         </div>
 
-        <!-- Category 2: beIN Sports Arabia -->
+        <!-- Category 1: beIN Sports Arabia (Video.js Player) -->
         <div class="category-section">
             <div class="category-header">
                 <i class="fa-solid fa-globe"></i> Category 1: beIN Sports Arabia
             </div>
             <div class="channel-buttons-grid">
 
-                <button class="channel-btn active" onclick="playChannel('beIN Sports 1', 'https://cp11.adabmedia.com/hls2/bein1.m3u8', this)">
+                <button class="channel-btn active" onclick="playChannel('beIN Sports 1', 'https://cp11.adabmedia.com/hls2/bein1.m3u8', 'videojs', this)">
                     <div class="btn-label">
                         <i class="fa-solid fa-play"></i>
                         <span>beIN Sports 1</span>
                     </div>
                     <span class="status-tag">LIVE</span>
                 </button>
-                <button class="channel-btn" onclick="playChannel('beIN Sports 2', 'https://cp11.adabmedia.com/hls2/bein2.m3u8', this)">
+                <button class="channel-btn" onclick="playChannel('beIN Sports 2', 'https://cp11.adabmedia.com/hls2/bein2.m3u8', 'videojs', this)">
                     <div class="btn-label">
                         <i class="fa-solid fa-play"></i>
                         <span>beIN Sports 2</span>
                     </div>
                     <span class="status-tag">LIVE</span>
                 </button>
-                                <button class="channel-btn" onclick="playChannel('beIN Sports 3', 'https://cp11.adabmedia.com/hls2/bein3.m3u8', this)">
+                <button class="channel-btn" onclick="playChannel('beIN Sports 3', 'https://cp11.adabmedia.com/hls2/bein3.m3u8', 'videojs', this)">
                     <div class="btn-label">
                         <i class="fa-solid fa-play"></i>
                         <span>beIN Sports 3</span>
@@ -498,13 +536,13 @@
             </div>
         </div>
 
-        <!-- Category 3: Star Sports -->
+        <!-- Category 2: Star Sports (Iframe Player) -->
         <div class="category-section">
             <div class="category-header">
                 <i class="fa-solid fa-star"></i> Category 2: Star Sports
             </div>
             <div class="channel-buttons-grid">
-                <button class="channel-btn" onclick="playChannel('Star Sports Select 1 HD', 'https://sbsw.b-cdn.net/StarSportsHD1/720p1m/video.m3u8', this)">
+                <button class="channel-btn" onclick="playChannel('Star Sports Select 1 HD', 'https://sbsw.b-cdn.net/StarSportsHD1/720p1m/video.m3u8', 'iframe', this)">
                     <div class="btn-label">
                         <i class="fa-solid fa-play"></i>
                         <span>Star Sports Select 1 HD</span>
@@ -512,7 +550,7 @@
                     <span class="status-tag">LIVE</span>
                 </button>
 
-                <button class="channel-btn" onclick="playChannel('Star Sports Select 2 HD', 'https://sbsw.b-cdn.net/StarSportsHD2/720p1m/video.m3u8', this)">
+                <button class="channel-btn" onclick="playChannel('Star Sports Select 2 HD', 'https://sbsw.b-cdn.net/StarSportsHD2/720p1m/video.m3u8', 'iframe', this)">
                     <div class="btn-label">
                         <i class="fa-solid fa-play"></i>
                         <span>Star Sports Select 2 HD</span>
@@ -526,19 +564,74 @@
 
     <footer>
         <div>&copy; 2026 <strong>Sports Hub Official (Football Media Center)</strong>. All rights reserved.</div>
-        <div style="font-size: 0.75rem; color: rgba(255, 255, 255, 0.4);">POWERED BY ICANPLAY EMBED FRAMEWORK</div>
+        <div style="font-size: 0.75rem; color: rgba(255, 255, 255, 0.4);">POWERED BY HYBRID VIDEO.JS & ICANPLAY EMBED FRAMEWORK</div>
     </footer>
 
     <script>
-        function playChannel(channelTitle, m3u8Url, element) {
-            // Update channel title display
+        let vjsPlayer = null;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Inisialisasi Video.js Player
+            vjsPlayer = videojs('vjs-player', {
+                autoplay: true,
+                controls: true,
+                responsive: true,
+                fluid: true,
+                liveui: true,
+                html5: {
+                    vhs: { overrideNative: true },
+                    nativeAudioTracks: false,
+                    nativeVideoTracks: false
+                }
+            });
+
+            // Set Mula-mula Main Saluran beIN Sports 1 menggunakan Video.js
+            playChannel('beIN Sports 1', 'https://cp11.adabmedia.com/hls2/bein1.m3u8', 'videojs', document.querySelector('.channel-btn.active'));
+        });
+
+        function playChannel(channelTitle, m3u8Url, playerType, element) {
+            // Kemas kini Tajuk Saluran
             document.getElementById('current-channel-title').innerHTML = '<i class="fa-solid fa-tv"></i> ' + channelTitle;
 
-            // Update embed player URL
-            var embedPlayer = document.getElementById('embed-player');
-            embedPlayer.src = 'https://player.icanplay.my.id/?url=' + encodeURIComponent(m3u8Url);
+            const vjsBox = document.getElementById('vjs-player-box');
+            const iframePlayer = document.getElementById('embed-player');
+            const playerLabel = document.getElementById('player-type-label');
 
-            // Update active state across all buttons
+            if (playerType === 'videojs') {
+                // Tunjuk Video.js, Sembunyikan Iframe
+                iframePlayer.classList.remove('active-player');
+                iframePlayer.src = 'about:blank'; // Hentikan Iframe jika ada
+
+                vjsBox.classList.add('active-player');
+                playerLabel.textContent = 'Video.js Player';
+
+                // Mainkan menerusi Video.js
+                if (vjsPlayer) {
+                    vjsPlayer.pause();
+                    vjsPlayer.src({
+                        src: m3u8Url,
+                        type: 'application/x-mpegURL'
+                    });
+                    vjsPlayer.load();
+                    vjsPlayer.play().catch(function(err) {
+                        console.log("Autoplay ditahan pengguna:", err);
+                    });
+                }
+            } else if (playerType === 'iframe') {
+                // Tunjuk Iframe, Sembunyikan & Paus Video.js
+                if (vjsPlayer) {
+                    vjsPlayer.pause();
+                }
+
+                vjsBox.classList.remove('active-player');
+                iframePlayer.classList.add('active-player');
+                playerLabel.textContent = 'Iframe Player';
+
+                // Tukar sumber Iframe secara lancar
+                iframePlayer.src = 'https://player.icanplay.my.id/?url=' + encodeURIComponent(m3u8Url);
+            }
+
+            // Kemas kini status butang aktif
             var buttons = document.querySelectorAll('.channel-btn');
             buttons.forEach(function(btn) {
                 btn.classList.remove('active');
@@ -547,7 +640,7 @@
                 element.classList.add('active');
             }
 
-            // Scroll up to player frame on smaller mobile screens
+            // Scroll ke pemain pada skrin telefon
             if (window.innerWidth <= 768) {
                 document.querySelector('.player-wrapper').scrollIntoView({ behavior: 'smooth' });
             }

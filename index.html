@@ -454,135 +454,46 @@
             <div class="player-container">
                 <!-- IFRAME EMBED PLAYER (ICANPLAY EMBED FRAMEWORK) -->
                 <iframe id="embed-player" 
-                        src="https://player.icanplay.my.id/?url=https%3A%2F%2Fbl.rutube.ru%2Flivestream%2Fe5bacac3b8e730791d4cab20ae81cd8f%2Findex.m3u8%3Fs%3DfdwVAdW4mvcVhTjZJv_l9A%26e%3D2074182388%26scheme%3Dhttps" 
+                        src="https://player.icanplay.my.id/?url=https://cp11.adabmedia.com/hls2/bein1.m3u8" 
                         allow="autoplay; encrypted-media; picture-in-picture; fullscreen" 
                         allowfullscreen>
                 </iframe>
             </div>
             <div class="player-info">
-                <h3 id="current-channel-title"><i class="fa-solid fa-tv"></i> Sky Sports Premier League UK</h3>
+                <h3 id="current-channel-title"><i class="fa-solid fa-tv"></i> beIN Sports 1</h3>
                 <div class="badge-ultra">
                     <i class="fa-solid fa-wifi" style="color: var(--pl-green);"></i> Ultra HD Stream
                 </div>
             </div>
         </div>
 
-        <!-- Category 1: Sky Sports -->
-        <div class="category-section">
-            <div class="category-header">
-                <i class="fa-solid fa-bolt"></i> Category 1: Sky Sports
-            </div>
-            <div class="channel-buttons-grid">
-                <button class="channel-btn active" onclick="playChannel('Sky Sports Premier League UK', 'https://bl.rutube.ru/livestream/e5bacac3b8e730791d4cab20ae81cd8f/index.m3u8?s=fdwVAdW4mvcVhTjZJv_l9A&e=2074182388&scheme=https', this)">
-                    <div class="btn-label">
-                        <i class="fa-solid fa-play"></i>
-                        <span>Sky Sports Premier League UK</span>
-                    </div>
-                    <span class="status-tag">MAIN FEED</span>
-                </button>
-            </div>
-        </div>
-
         <!-- Category 2: beIN Sports Arabia -->
         <div class="category-section">
             <div class="category-header">
-                <i class="fa-solid fa-globe"></i> Category 2: beIN Sports Arabia
+                <i class="fa-solid fa-globe"></i> Category 1: beIN Sports Arabia
             </div>
             <div class="channel-buttons-grid">
-                <button class="channel-btn" onclick="playChannel('beIN Sports 1', 'http://z79ip.afcon.fan/live/shref-elbeshbehy2/qkWR9OAEYo/368411.m3u8', this)">
+
+                <button class="channel-btn active" onclick="playChannel('beIN Sports 1', 'https://cp11.adabmedia.com/hls2/bein1.m3u8', this)">
                     <div class="btn-label">
                         <i class="fa-solid fa-play"></i>
                         <span>beIN Sports 1</span>
                     </div>
-                    <span class="status-tag">FEED 1</span>
+                    <span class="status-tag">LIVE</span>
                 </button>
-
-                <button class="channel-btn" onclick="playChannel('beIN Sports 1 (2)', 'https://edge22.776740.ir.cdn.ir/hls2/bein1.m3u8', this)">
-                    <div class="btn-label">
-                        <i class="fa-solid fa-play"></i>
-                        <span>beIN Sports 1 (2)</span>
-                    </div>
-                    <span class="status-tag">FEED 2 (EDGE)</span>
-                </button>
-
-                <button class="channel-btn" onclick="playChannel('beIN Sports 2', 'http://z79ip.afcon.fan/live/shref-elbeshbehy2/qkWR9OAEYo/368410.m3u8', this)">
+                <button class="channel-btn" onclick="playChannel('beIN Sports 2', 'https://cp11.adabmedia.com/hls2/bein2.m3u8', this)">
                     <div class="btn-label">
                         <i class="fa-solid fa-play"></i>
                         <span>beIN Sports 2</span>
                     </div>
-                    <span class="status-tag">ARABIC</span>
+                    <span class="status-tag">LIVE</span>
                 </button>
-
-                <button class="channel-btn" onclick="playChannel('beIN Sports 3', 'http://z79ip.afcon.fan/live/shref-elbeshbehy2/qkWR9OAEYo/368409.m3u8', this)">
+                                <button class="channel-btn" onclick="playChannel('beIN Sports 3', 'https://cp11.adabmedia.com/hls2/bein3.m3u8', this)">
                     <div class="btn-label">
                         <i class="fa-solid fa-play"></i>
                         <span>beIN Sports 3</span>
                     </div>
-                    <span class="status-tag">ARABIC</span>
-                </button>
-
-                <button class="channel-btn" onclick="playChannel('beIN Sports 4', 'http://z79ip.afcon.fan/live/shref-elbeshbehy2/qkWR9OAEYo/368408.m3u8', this)">
-                    <div class="btn-label">
-                        <i class="fa-solid fa-play"></i>
-                        <span>beIN Sports 4</span>
-                    </div>
-                    <span class="status-tag">ARABIC</span>
-                </button>
-
-                <button class="channel-btn" onclick="playChannel('beIN Sports 5', 'http://z79ip.afcon.fan/live/shref-elbeshbehy2/qkWR9OAEYo/368407.m3u8', this)">
-                    <div class="btn-label">
-                        <i class="fa-solid fa-play"></i>
-                        <span>beIN Sports 5</span>
-                    </div>
-                    <span class="status-tag">ARABIC</span>
-                </button>
-
-                <button class="channel-btn" onclick="playChannel('beIN Sports 6', 'http://z79ip.afcon.fan/live/shref-elbeshbehy2/qkWR9OAEYo/368390.m3u8', this)">
-                    <div class="btn-label">
-                        <i class="fa-solid fa-play"></i>
-                        <span>beIN Sports 6</span>
-                    </div>
-                    <span class="status-tag">ARABIC</span>
-                </button>
-
-                <button class="channel-btn" onclick="playChannel('beIN Sports 7', 'http://z79ip.afcon.fan/live/shref-elbeshbehy2/qkWR9OAEYo/368389.m3u8', this)">
-                    <div class="btn-label">
-                        <i class="fa-solid fa-play"></i>
-                        <span>beIN Sports 7</span>
-                    </div>
-                    <span class="status-tag">ARABIC</span>
-                </button>
-
-                <button class="channel-btn" onclick="playChannel('beIN Sports 8', 'http://z79ip.afcon.fan/live/shref-elbeshbehy2/qkWR9OAEYo/368404.m3u8', this)">
-                    <div class="btn-label">
-                        <i class="fa-solid fa-play"></i>
-                        <span>beIN Sports 8</span>
-                    </div>
-                    <span class="status-tag">ARABIC</span>
-                </button>
-
-                <button class="channel-btn" onclick="playChannel('beIN Sports 9', 'http://z79ip.afcon.fan/live/shref-elbeshbehy2/qkWR9OAEYo/368387.m3u8', this)">
-                    <div class="btn-label">
-                        <i class="fa-solid fa-play"></i>
-                        <span>beIN Sports 9</span>
-                    </div>
-                    <span class="status-tag">ARABIC</span>
-                </button>
-
-                <button class="channel-btn" onclick="playChannel('beIN Sports 1 Premium', 'http://z79ip.afcon.fan/live/shref-elbeshbehy2/qkWR9OAEYo/368406.m3u8', this)">
-                    <div class="btn-label">
-                        <i class="fa-solid fa-play"></i>
-                        <span>beIN Sports 1 Premium</span>
-                    </div>
-                    <span class="status-tag">PREMIUM</span>
-                </button>
-
-                <button class="channel-btn" onclick="playChannel('beIN Sports 2 Premium', 'http://z79ip.afcon.fan/live/shref-elbeshbehy2/qkWR9OAEYo/368407.m3u8', this)">
-                    <div class="btn-label">
-                        <i class="fa-solid fa-play"></i>
-                        <span>beIN Sports 2 Premium</span>
-                    </div>
-                    <span class="status-tag">PREMIUM</span>
+                    <span class="status-tag">LIVE</span>
                 </button>
             </div>
         </div>
@@ -590,7 +501,7 @@
         <!-- Category 3: Star Sports -->
         <div class="category-section">
             <div class="category-header">
-                <i class="fa-solid fa-star"></i> Category 3: Star Sports
+                <i class="fa-solid fa-star"></i> Category 2: Star Sports
             </div>
             <div class="channel-buttons-grid">
                 <button class="channel-btn" onclick="playChannel('Star Sports Select 1 HD', 'https://sbsw.b-cdn.net/StarSportsHD1/720p1m/video.m3u8', this)">
@@ -598,15 +509,7 @@
                         <i class="fa-solid fa-play"></i>
                         <span>Star Sports Select 1 HD</span>
                     </div>
-                    <span class="status-tag">720p HD</span>
-                </button>
-
-                <button class="channel-btn" onclick="playChannel('Star Sports Select 1 FHD', 'https://footfytv.pro/proxy/direct?url=http://livetv.akr4m.com:8080/bdtv/restrem/40.m3u8', this)">
-                    <div class="btn-label">
-                        <i class="fa-solid fa-play"></i>
-                        <span>Star Sports Select 1 FHD</span>
-                    </div>
-                    <span class="status-tag">1080p FHD</span>
+                    <span class="status-tag">LIVE</span>
                 </button>
 
                 <button class="channel-btn" onclick="playChannel('Star Sports Select 2 HD', 'https://sbsw.b-cdn.net/StarSportsHD2/720p1m/video.m3u8', this)">
@@ -614,15 +517,7 @@
                         <i class="fa-solid fa-play"></i>
                         <span>Star Sports Select 2 HD</span>
                     </div>
-                    <span class="status-tag">720p HD</span>
-                </button>
-
-                <button class="channel-btn" onclick="playChannel('Star Sports 2 HD', 'https://tvsen5.aynascope.net/cXPB2LKkErN9/index.m3u8', this)">
-                    <div class="btn-label">
-                        <i class="fa-solid fa-play"></i>
-                        <span>Star Sports 2 HD</span>
-                    </div>
-                    <span class="status-tag">ALT FEED</span>
+                    <span class="status-tag">LIVE</span>
                 </button>
             </div>
         </div>

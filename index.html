@@ -292,7 +292,7 @@
             box-shadow: 0 0 10px rgba(0, 242, 254, 0.2);
         }
 
-        /* Categorized Channel Directory */
+        /* Unified Channel Directory */
         .category-section {
             background: var(--card-bg);
             border: 1px solid var(--glass-border);
@@ -505,37 +505,40 @@
             </div>
         </div>
 
-<!-- Category 1: beIN Sports Arabia (Video.js Player) -->
-<div class="category-section">
-    <div class="category-header">
-        <i class="fa-solid fa-globe"></i> Category 1: beIN Sports Arabia
-    </div>
-    <div class="channel-buttons-grid">
-        <button class="channel-btn active" onclick="playChannel('beIN Sports 1', 'https://cp11.adabmedia.com/hls2/bein1.m3u8', 'videojs', this)">
-            <div class="btn-label">
-                <i class="fa-solid fa-play"></i>
-                <span>beIN Sports 1</span>
+        <!-- Single Channel Directory -->
+        <div class="category-section">
+            <div class="category-header">
+                <i class="fa-solid fa-list text-cyanHighlight"></i> Channel Directory
             </div>
-            <span class="status-tag">LIVE</span>
-        </button>
-    </div>
-</div>
+            <div class="channel-buttons-grid">
+                <!-- Channel 1: beIN Sports 1 (Video.js) -->
+                <button class="channel-btn active" onclick="playChannel('beIN Sports 1', 'https://cp11.adabmedia.com/hls2/bein1.m3u8', 'videojs', this)">
+                    <div class="btn-label">
+                        <i class="fa-solid fa-play"></i>
+                        <span>beIN Sports 1</span>
+                    </div>
+                    <span class="status-tag">LIVE</span>
+                </button>
 
-<!-- Category 2: Star Sports -->
-<div class="category-section">
-    <div class="category-header">
-        <i class="fa-solid fa-star"></i> Category 2: Star Sports
-    </div>
-    <div class="channel-buttons-grid">
+                <!-- Channel 2: Star Sports Select 1 FHD (Iframe) -->
                 <button class="channel-btn" onclick="playChannel('Star Sports Select 1 FHD', 'https://sbsw.b-cdn.net/StarSportsHD1/720p1m/video.m3u8', 'iframe', this)">
-            <div class="btn-label">
-                <i class="fa-solid fa-play"></i>
-                <span>Star Sports Select 1 FHD</span>
+                    <div class="btn-label">
+                        <i class="fa-solid fa-play"></i>
+                        <span>Star Sports Select 1 FHD</span>
+                    </div>
+                    <span class="status-tag">LIVE</span>
+                </button>
+
+                <!-- Channel 3: NBC Universo (Video.js) -->
+                <button class="channel-btn" onclick="playChannel('NBC Universo', 'https://tv.topmediatv.net:25463/live/TopMediaWeb/bOteTR8ED1/88.m3u8', 'videojs', this)">
+                    <div class="btn-label">
+                        <i class="fa-solid fa-play"></i>
+                        <span>NBC Universo</span>
+                    </div>
+                    <span class="status-tag">LIVE</span>
+                </button>
             </div>
-            <span class="status-tag">LIVE</span>
-        </button>
-    </div>
-</div>
+        </div>
 
     </div>
 

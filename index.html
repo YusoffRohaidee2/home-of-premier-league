@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ms">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -410,10 +410,9 @@
             gap: 12px;
             overflow: hidden;
             white-space: nowrap;
-            width: calc(100% - 90px);
+            width: calc(100% - 85px);
         }
 
-        /* Marquee auto scroll effect for long titles */
         .channel-btn .btn-text-container {
             overflow: hidden;
             white-space: nowrap;
@@ -644,24 +643,24 @@
         
         <!-- Viewing Guide -->
         <div class="guide-box">
-            <h4><i class="fa-solid fa-circle-info"></i> Panduan Tontonan Siaran Langsung</h4>
-            <p><i class="fa-solid fa-angle-right" style="color: var(--neon-green);"></i> Gunakan saluran <strong>Star Sports Select</strong> atau <strong>USA Network</strong> untuk ulasan Bahasa Inggeris.</p>
-            <p><i class="fa-solid fa-angle-right" style="color: var(--neon-green);"></i> Gunakan saluran <strong>beIN Sports HD</strong> untuk pelbagai rangkaian perlawanan penuh.</p>
+            <h4><i class="fa-solid fa-circle-info"></i> Live Streaming Guide</h4>
+            <p><i class="fa-solid fa-angle-right" style="color: var(--neon-green);"></i> Tune in to <strong>Star Sports Select 1</strong> or <strong>USA Network</strong> for English commentary.</p>
+            <p><i class="fa-solid fa-angle-right" style="color: var(--neon-green);"></i> Select <strong>beIN Sports Arabia</strong> channels for full multi-match network coverage.</p>
         </div>
 
-        <!-- Player Wrapper -->
+        <!-- Holographic Player Wrapper -->
         <div class="player-wrapper">
             <div class="player-container">
-                <!-- 1. Video.js Player -->
+                <!-- Server 1: Video.js / HLS Player -->
                 <div id="vjs-player-box" class="player-element active-player">
                     <video id="vjs-player" class="video-js vjs-big-play-centered vjs-fluid w-full h-full" controls preload="auto" crossorigin="anonymous">
                         <p class="vjs-no-js">
-                            Sila aktifkan JavaScript untuk menonton siaran ini.
+                            Please enable JavaScript to watch this stream.
                         </p>
                     </video>
                 </div>
 
-                <!-- 2. Iframe Player -->
+                <!-- Server 2: Embed Iframe Player -->
                 <iframe id="embed-player" 
                         class="player-element"
                         src="about:blank" 
@@ -670,79 +669,79 @@
                 </iframe>
             </div>
             <div class="player-info">
-                <h3 id="current-channel-title"><i class="fa-solid fa-satellite-dish"></i> Star Sports Select 2 FHD</h3>
+                <h3 id="current-channel-title"><i class="fa-solid fa-satellite-dish"></i> Star Sports Select 1 FHD</h3>
                 <div class="badge-ultra">
-                    <i class="fa-solid fa-play-circle" style="color: var(--neon-green);"></i> <span id="player-type-label">Video.js Player</span>
+                    <i class="fa-solid fa-play-circle" style="color: var(--neon-green);"></i> <span id="player-type-label">Server 1 (HLS Engine)</span>
                 </div>
             </div>
         </div>
 
-        <!-- Channel Directory -->
+        <!-- Broadcasters List -->
         <div class="category-section">
             <div class="category-header">
-                <i class="fa-solid fa-tv"></i> Premier League & Sports Channels
+                <i class="fa-solid fa-tv"></i> Broadcasters List
             </div>
             <div class="channel-buttons-grid">
 
-                <!-- Star Sports Select HD (iCanPlay Player) -->
-                <button class="channel-btn active" onclick="playChannel('Star Sports Select 1 HD', 'https://sbsw.b-cdn.net/StarSportsHD1/720p1m/video.m3u8', 'icanplay', this)">
+                <!-- Star Sports Select 1 FHD (Server 1 - Video.js) -->
+                <button class="channel-btn active" onclick="playChannel('Star Sports Select 1 FHD', 'https://footfytv.pro/proxy/direct?url=http://103.135.253.32:8080/STAR-SPORTS-SELECT-1/index.m3u8', 'videojs', this)">
                     <div class="btn-label">
                         <i class="fa-solid fa-play"></i>
-                        <div class="btn-text-container"><span>Star Sports Select HD</span></div>
+                        <div class="btn-text-container"><span>Star Sports Select 1 FHD</span></div>
                     </div>
-                    <span class="status-tag">ONLINE</span>
+                    <span class="status-tag">SERVER 1</span>
                 </button>
-                
-                <!-- Star Sports Select 2 FHD -->
-                <button class="channel-btn" onclick="playChannel('Star Sports Select 2 FHD', 'https://streamhub.dhruvpatil681.workers.dev/1452.m3u8', 'videojs', this)">
+
+                <!-- Star Sports Select 1 FHD (Server 2 - Iframe Embed) -->
+                <button class="channel-btn" onclick="playChannel('Star Sports Select 1 FHD (Server 2)', 'https://footfytv.pro/proxy/direct?url=http://103.135.253.32:8080/STAR-SPORTS-SELECT-1/index.m3u8', 'iframe', this)">
                     <div class="btn-label">
                         <i class="fa-solid fa-play"></i>
-                        <div class="btn-text-container"><span>Star Sports Select 2 FHD</span></div>
+                        <div class="btn-text-container"><span>Star Sports Select 1 (Server 2)</span></div>
+                    </div>
+                    <span class="status-tag">SERVER 2</span>
+                </button>
+
+                <!-- USA Network -->
+                <button class="channel-btn" onclick="playChannel('USA Network', 'https://footfytv.pro/proxy/direct?url=http://4.30.180.36:8420/usa/index.m3u8?token=test', 'videojs', this)">
+                    <div class="btn-label">
+                        <i class="fa-solid fa-play"></i>
+                        <div class="btn-text-container"><span>USA Network</span></div>
                     </div>
                     <span class="status-tag">ONLINE</span>
                 </button>
 
-                <!-- USA Network FHD -->
-                <button class="channel-btn" onclick="playChannel('USA Network FHD', 'https://footfytv.pro/proxy/direct?url=http://4.30.180.36:8420/usa/index.m3u8?token=test', 'icanplay', this)">
+                <!-- beIN Sports Arabia 1 -->
+                <button class="channel-btn" onclick="playChannel('beIN Sports Arabia 1', 'https://bluesky-proxy.joseph-yusoff.workers.dev/?url=https://10sisi.s3.us-east-2.amazonaws.com/bein1/720p/manifest.m3u8', 'videojs', this)">
                     <div class="btn-label">
                         <i class="fa-solid fa-play"></i>
-                        <div class="btn-text-container"><span>USA Network FHD</span></div>
+                        <div class="btn-text-container"><span>beIN Sports Arabia 1</span></div>
                     </div>
                     <span class="status-tag">ONLINE</span>
                 </button>
 
-                <!-- beIN Sports 1 HD -->
-                <button class="channel-btn" onclick="playChannel('beIN Sports 1 Arabia HD', 'https://bluesky-proxy.joseph-yusoff.workers.dev/?url=https://10sisi.s3.us-east-2.amazonaws.com/bein1/720p/manifest.m3u8', 'videojs', this)">
+                <!-- beIN Sports Arabia 2 -->
+                <button class="channel-btn" onclick="playChannel('beIN Sports Arabia 2', 'https://bluesky-proxy.joseph-yusoff.workers.dev/?url=https://10sisi.s3.us-east-2.amazonaws.com/bein2/720p/manifest.m3u8', 'videojs', this)">
                     <div class="btn-label">
                         <i class="fa-solid fa-play"></i>
-                        <div class="btn-text-container"><span>beIN Sports 1 Arabia HD</span></div>
+                        <div class="btn-text-container"><span>beIN Sports Arabia 2</span></div>
                     </div>
                     <span class="status-tag">ONLINE</span>
                 </button>
 
-                <!-- beIN Sports 2 HD -->
-                <button class="channel-btn" onclick="playChannel('beIN Sports 2 Arabia HD', 'https://bluesky-proxy.joseph-yusoff.workers.dev/?url=https://10sisi.s3.us-east-2.amazonaws.com/bein2/720p/manifest.m3u8', 'videojs', this)">
+                <!-- beIN Sports Arabia 3 -->
+                <button class="channel-btn" onclick="playChannel('beIN Sports Arabia 3', 'https://bluesky-proxy.joseph-yusoff.workers.dev/?url=https://10sisi.s3.us-east-2.amazonaws.com/bein3/720p/manifest.m3u8', 'videojs', this)">
                     <div class="btn-label">
                         <i class="fa-solid fa-play"></i>
-                        <div class="btn-text-container"><span>beIN Sports 2 Arabia HD</span></div>
+                        <div class="btn-text-container"><span>beIN Sports Arabia 3</span></div>
                     </div>
                     <span class="status-tag">ONLINE</span>
                 </button>
 
-                <!-- beIN Sports 3 HD -->
-                <button class="channel-btn" onclick="playChannel('beIN Sports 3 Arabia HD', 'https://bluesky-proxy.joseph-yusoff.workers.dev/?url=https://10sisi.s3.us-east-2.amazonaws.com/bein3/720p/manifest.m3u8', 'videojs', this)">
+                <!-- beIN Sports Arabia 4 -->
+                <button class="channel-btn" onclick="playChannel('beIN Sports Arabia 4', 'https://bluesky-proxy.joseph-yusoff.workers.dev/?url=https://10sisi.s3.us-east-2.amazonaws.com/bein4/720p/manifest.m3u8', 'videojs', this)">
                     <div class="btn-label">
                         <i class="fa-solid fa-play"></i>
-                        <div class="btn-text-container"><span>beIN Sports 3 Arabia HD</span></div>
-                    </div>
-                    <span class="status-tag">ONLINE</span>
-                </button>
-
-                <!-- beIN Sports 4 HD -->
-                <button class="channel-btn" onclick="playChannel('beIN Sports 4 Arabia HD', 'https://bluesky-proxy.joseph-yusoff.workers.dev/?url=https://10sisi.s3.us-east-2.amazonaws.com/bein4/720p/manifest.m3u8', 'videojs', this)">
-                    <div class="btn-label">
-                        <i class="fa-solid fa-play"></i>
-                        <div class="btn-text-container"><span>beIN Sports 4 Arabia HD</span></div>
+                        <div class="btn-text-container"><span>beIN Sports Arabia 4</span></div>
                     </div>
                     <span class="status-tag">ONLINE</span>
                 </button>
@@ -750,10 +749,10 @@
             </div>
         </div>
 
-        <!-- Match Schedule Timings -->
+        <!-- Schedule -->
         <div class="category-section">
             <div class="category-header">
-                <i class="fa-solid fa-calendar-days"></i> Match Schedules & Timings
+                <i class="fa-solid fa-calendar-days"></i> Schedule — Home of Premier League
             </div>
             
             <div class="schedule-list">
@@ -770,7 +769,7 @@
                         <div class="match-channels">
                             <span class="channel-badge">Star Sports Select 1</span>
                             <span class="channel-badge">USA Network</span>
-                            <span class="channel-badge">beIN Sports 1</span>
+                            <span class="channel-badge">beIN Sports Arabia 1</span>
                         </div>
                     </div>
 
@@ -782,7 +781,7 @@
                         <div class="match-channels">
                             <span class="channel-badge">Star Sports Select 1</span>
                             <span class="channel-badge">USA Network</span>
-                            <span class="channel-badge">beIN Sports 1</span>
+                            <span class="channel-badge">beIN Sports Arabia 1</span>
                         </div>
                     </div>
 
@@ -793,6 +792,7 @@
                         </div>
                         <div class="match-channels">
                             <span class="channel-badge">USA Network</span>
+                            <span class="channel-badge">beIN Sports Arabia 2</span>
                         </div>
                     </div>
 
@@ -802,7 +802,8 @@
                             <span>Arsenal vs Hull City</span>
                         </div>
                         <div class="match-channels">
-                            <span class="channel-badge">beIN Sports 1</span>
+                            <span class="channel-badge">Star Sports Select 1</span>
+                            <span class="channel-badge">beIN Sports Arabia 1</span>
                         </div>
                     </div>
                 </div>
@@ -818,7 +819,7 @@
                         </div>
                         <div class="match-channels">
                             <span class="channel-badge">Star Sports Select 1</span>
-                            <span class="channel-badge">beIN Sports 1</span>
+                            <span class="channel-badge">beIN Sports Arabia 1</span>
                         </div>
                     </div>
 
@@ -829,6 +830,7 @@
                         </div>
                         <div class="match-channels">
                             <span class="channel-badge">USA Network</span>
+                            <span class="channel-badge">beIN Sports Arabia 3</span>
                         </div>
                     </div>
 
@@ -838,7 +840,105 @@
                             <span>Crystal Palace vs Liverpool</span>
                         </div>
                         <div class="match-channels">
-                            <span class="channel-badge">beIN Sports 1</span>
+                            <span class="channel-badge">Star Sports Select 1</span>
+                            <span class="channel-badge">beIN Sports Arabia 1</span>
+                        </div>
+                    </div>
+
+                    <div class="match-item">
+                        <div class="match-time-teams">
+                            <span class="match-time">22:00</span>
+                            <span>Brighton & Hove Albion vs Brentford</span>
+                        </div>
+                        <div class="match-channels">
+                            <span class="channel-badge">beIN Sports Arabia 4</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Monday, 9 November 2026 -->
+                <div class="match-date-group">
+                    <div class="match-date-title"><i class="fa-regular fa-calendar"></i> Monday, 9 November 2026</div>
+                    
+                    <div class="match-item">
+                        <div class="match-time-teams">
+                            <span class="match-time">00:30</span>
+                            <span>Manchester United vs Aston Villa</span>
+                        </div>
+                        <div class="match-channels">
+                            <span class="channel-badge">Star Sports Select 1</span>
+                            <span class="channel-badge">USA Network</span>
+                            <span class="channel-badge">beIN Sports Arabia 1</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Saturday, 21 November 2026 -->
+                <div class="match-date-group">
+                    <div class="match-date-title"><i class="fa-regular fa-calendar"></i> Saturday, 21 November 2026</div>
+                    
+                    <div class="match-item">
+                        <div class="match-time-teams">
+                            <span class="match-time">20:30</span>
+                            <span>Manchester City vs Fulham</span>
+                        </div>
+                        <div class="match-channels">
+                            <span class="channel-badge">Star Sports Select 1</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sunday, 22 November 2026 -->
+                <div class="match-date-group">
+                    <div class="match-date-title"><i class="fa-regular fa-calendar"></i> Sunday, 22 November 2026</div>
+                    
+                    <div class="match-item">
+                        <div class="match-time-teams">
+                            <span class="match-time">01:30</span>
+                            <span>Newcastle United vs Arsenal</span>
+                        </div>
+                        <div class="match-channels">
+                            <span class="channel-badge">Star Sports Select 1</span>
+                        </div>
+                    </div>
+
+                    <div class="match-item">
+                        <div class="match-time-teams">
+                            <span class="match-time">22:00</span>
+                            <span>Hull City vs Brighton & Hove Albion</span>
+                        </div>
+                        <div class="match-channels">
+                            <span class="channel-badge">Star Sports Select 1</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Monday, 23 November 2026 -->
+                <div class="match-date-group">
+                    <div class="match-date-title"><i class="fa-regular fa-calendar"></i> Monday, 23 November 2026</div>
+                    
+                    <div class="match-item">
+                        <div class="match-time-teams">
+                            <span class="match-time">00:30</span>
+                            <span>Liverpool vs Manchester United</span>
+                        </div>
+                        <div class="match-channels">
+                            <span class="channel-badge">Star Sports Select 1</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tuesday, 24 November 2026 -->
+                <div class="match-date-group">
+                    <div class="match-date-title"><i class="fa-regular fa-calendar"></i> Tuesday, 24 November 2026</div>
+                    
+                    <div class="match-item">
+                        <div class="match-time-teams">
+                            <span class="match-time">04:00</span>
+                            <span>Brentford vs Everton</span>
+                        </div>
+                        <div class="match-channels">
+                            <span class="channel-badge">Star Sports Select 1</span>
                         </div>
                     </div>
                 </div>
@@ -858,7 +958,7 @@
         let hlsInstance = null;
 
         document.addEventListener('DOMContentLoaded', function() {
-            // Inisialisasi Video.js Player
+            // Initialize Video.js Player
             vjsPlayer = videojs('vjs-player', {
                 autoplay: true,
                 controls: true,
@@ -867,34 +967,41 @@
                 liveui: true
             });
 
-            // Set default saluran pertama (Star Sports Select 2 FHD)
-            playChannel('Star Sports Select 1 HD', 'https://sbsw.b-cdn.net/StarSportsHD1/720p1m/video.m3u8', 'icanplay', document.querySelector('.channel-btn.active'));
+            // Set default active channel to Server 1 (Star Sports Select 1 FHD)
+            const defaultBtn = document.querySelector('.channel-btn.active');
+            playChannel(
+                'Star Sports Select 1 FHD', 
+                'https://footfytv.pro/proxy/direct?url=http://103.135.253.32:8080/STAR-SPORTS-SELECT-1/index.m3u8', 
+                'videojs', 
+                defaultBtn
+            );
         });
 
         function playChannel(channelTitle, mediaUrl, playerType, element) {
-            // Kemas kini Tajuk Saluran
+            // Update Title Label
             document.getElementById('current-channel-title').innerHTML = '<i class="fa-solid fa-satellite-dish"></i> ' + channelTitle;
 
             const vjsBox = document.getElementById('vjs-player-box');
             const iframePlayer = document.getElementById('embed-player');
             const playerLabel = document.getElementById('player-type-label');
 
-            // Destroy previous Hls.js instance if present
+            // Destroy previous Hls.js instance safely if switching away from videojs
             if (hlsInstance) {
                 hlsInstance.destroy();
                 hlsInstance = null;
             }
 
             if (playerType === 'videojs') {
+                // Hide iframe and clear its source
                 iframePlayer.classList.remove('active-player');
                 iframePlayer.src = 'about:blank';
 
+                // Show Video.js container
                 vjsBox.classList.add('active-player');
-                playerLabel.textContent = 'Video.js / HLS Player';
+                playerLabel.textContent = 'Server 1 (HLS Engine)';
 
                 const techVideoElement = vjsPlayer.tech({ IWillNotUseThisInPlugins: true }).el();
 
-                // Check for Native HLS vs Hls.js fallback
                 if (Hls.isSupported()) {
                     hlsInstance = new Hls({
                         enableWorker: true,
@@ -904,42 +1011,37 @@
                     hlsInstance.attachMedia(techVideoElement);
                     hlsInstance.on(Hls.Events.MANIFEST_PARSED, function() {
                         techVideoElement.play().catch(function(err) {
-                            console.log("Autoplay status:", err);
+                            console.log("Autoplay notification:", err);
                         });
                     });
-                    hlsInstance.on(Hls.Events.ERROR, function (event, data) {
-                        if (data.fatal) {
-                            console.warn("Hls error encountered, switching to fallback player...");
-                            playChannel(channelTitle, mediaUrl, 'icanplay', element);
-                        }
-                    });
                 } else if (techVideoElement.canPlayType('application/vnd.apple.mpegurl')) {
-                    // Safari / iOS Native support
                     vjsPlayer.src({
                         src: mediaUrl,
                         type: 'application/x-mpegURL'
                     });
                     vjsPlayer.play().catch(function(err) {
-                        console.log("Autoplay ditahan:", err);
+                        console.log("Autoplay notification:", err);
                     });
-                } else {
-                    // Fallback to iCanPlay embed iframe if browser can't parse HLS natively
-                    playChannel(channelTitle, mediaUrl, 'icanplay', element);
-                    return;
                 }
-            } else if (playerType === 'icanplay') {
+            } else if (playerType === 'iframe') {
+                // Pause video.js if playing
                 if (vjsPlayer) {
                     vjsPlayer.pause();
                 }
 
+                // Hide video.js container
                 vjsBox.classList.remove('active-player');
-                iframePlayer.classList.add('active-player');
-                playerLabel.textContent = 'iCanPlay Player';
 
+                // Show Server 2 iframe player
+                iframePlayer.classList.add('active-player');
+                playerLabel.textContent = 'Server 2 (Embed Player)';
+
+                // Load URL into embed iframe using icanplay service or direct iframe target
                 iframePlayer.src = 'https://player.icanplay.my.id/?url=' + encodeURIComponent(mediaUrl);
             }
 
-            var buttons = document.querySelectorAll('.channel-btn');
+            // Update Active button state
+            const buttons = document.querySelectorAll('.channel-btn');
             buttons.forEach(function(btn) {
                 btn.classList.remove('active');
             });
@@ -947,6 +1049,7 @@
                 element.classList.add('active');
             }
 
+            // Mobile auto-scroll to player view
             if (window.innerWidth <= 768) {
                 document.querySelector('.player-wrapper').scrollIntoView({ behavior: 'smooth' });
             }

@@ -487,86 +487,6 @@
             font-weight: 800;
         }
 
-        /* Match Schedule List Styling */
-        .schedule-list {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .match-date-group {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(0, 255, 204, 0.15);
-            border-radius: 14px;
-            padding: 16px;
-        }
-
-        .match-date-title {
-            font-family: var(--font-tech);
-            font-size: 0.95rem;
-            color: var(--neon-green);
-            margin-bottom: 12px;
-            border-bottom: 1px solid rgba(0, 255, 204, 0.1);
-            padding-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            text-shadow: 0 0 8px rgba(0,255,204,0.3);
-        }
-
-        .match-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 12px;
-            border-radius: 8px;
-            background: rgba(0, 0, 0, 0.4);
-            margin-bottom: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
-        .match-item:last-child {
-            margin-bottom: 0;
-        }
-
-        .match-time-teams {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
-
-        .match-time {
-            font-family: var(--font-tech);
-            color: var(--neon-pink);
-            font-size: 0.85rem;
-            background: rgba(255, 0, 85, 0.1);
-            padding: 4px 8px;
-            border-radius: 6px;
-            border: 1px solid rgba(255, 0, 85, 0.3);
-            box-shadow: 0 0 8px rgba(255, 0, 85, 0.2);
-        }
-
-        .match-channels {
-            display: flex;
-            gap: 6px;
-            flex-wrap: wrap;
-        }
-
-        .channel-badge {
-            font-size: 0.72rem;
-            font-family: var(--font-sub);
-            padding: 3px 8px;
-            border-radius: 5px;
-            background: rgba(0, 136, 255, 0.1);
-            border: 1px solid rgba(0, 136, 255, 0.3);
-            color: var(--text-main);
-            font-weight: 600;
-        }
-
         footer {
             margin-top: 50px;
             text-align: center;
@@ -614,10 +534,6 @@
             .channel-buttons-grid {
                 grid-template-columns: 1fr;
             }
-            .match-item {
-                flex-direction: column;
-                align-items: flex-start;
-            }
         }
     </style>
 </head>
@@ -641,11 +557,11 @@
 
     <div class="container">
         
-        <!-- Viewing Guide -->
+<!-- Viewing Guide -->
         <div class="guide-box">
             <h4><i class="fa-solid fa-circle-info"></i> Live Streaming Guide</h4>
-            <p><i class="fa-solid fa-angle-right" style="color: var(--neon-green);"></i> Tune in to <strong>Star Sports Select 1</strong> or <strong>USA Network</strong> for English commentary.</p>
-            <p><i class="fa-solid fa-angle-right" style="color: var(--neon-green);"></i> Select <strong>beIN Sports Arabia</strong> channels for full multi-match network coverage.</p>
+            <p><i class="fa-solid fa-angle-right" style="color: var(--neon-green);"></i> Tune in to <strong>Star Sports Select</strong>, <strong>TNT Sports</strong>, <strong>Hub Premier</strong>, or <strong>Sky Sports</strong> for English commentary.</p>
+            <p><i class="fa-solid fa-angle-right" style="color: var(--neon-green);"></i> Use <strong>beIN Sports Arabia (Arabic)</strong>, <strong>Telemundo (Spanish)</strong>, or <strong>IRIB Varzesh (Persian)</strong> for international commentary feeds.</p>
         </div>
 
         <!-- Holographic Player Wrapper -->
@@ -683,7 +599,7 @@
             </div>
             <div class="channel-buttons-grid">
 
-                <!-- Star Sports Select 1 FHD (Server 1 - Video.js) -->
+                <!-- Star Sports Select 1 HD -->
                 <button class="channel-btn active" onclick="playChannel('Star Sports Select 1 HD', 'https://sbsw.b-cdn.net/StarSportsHD1/720p1m/video.m3u8', 'iframe', this)">
                     <div class="btn-label">
                         <i class="fa-solid fa-play"></i>
@@ -692,7 +608,7 @@
                     <span class="status-tag">ONLINE</span>
                 </button>
 
-                <!-- Star Sports Select 1 FHD (Server 2 - Iframe Embed) -->
+                <!-- Star Sports Select 1 FHD -->
                 <button class="channel-btn" onclick="playChannel('Star Sports Select 1 FHD', 'https://allinonereborn2.online/livtest3/stream_proxy.php?url=https://livetv.shamon-cable.net:8443/Star-select-1/index.m3u8', 'iframe', this)">
                     <div class="btn-label">
                         <i class="fa-solid fa-play"></i>
@@ -701,11 +617,11 @@
                     <span class="status-tag">ONLINE</span>
                 </button>
 
-                <!-- Star Sports Select 1 FHD (Server 2 - Iframe Embed) -->
-                <button class="channel-btn" onclick="playChannel('Star Sports Select 2 FHD', 'https://allinonereborn2.online/livtest3/stream_proxy.php?url=https://livetv.shamon-cable.net:8443/Star-select-2/index.m3u8', 'iframe', this)">
+                <!-- Star Sports Select 2 (Dulu Select 3) -->
+                <button class="channel-btn" onclick="playChannel('Star Sports Select 2', 'https://allinonereborn2.online/livtest3/stream_proxy.php?url=https://livetv.shamon-cable.net:8443/Star-select-2/index.m3u8', 'iframe', this)">
                     <div class="btn-label">
                         <i class="fa-solid fa-play"></i>
-                        <div class="btn-text-container"><span>Star Sports Select 3 FHD</span></div>
+                        <div class="btn-text-container"><span>Star Sports Select 2</span></div>
                     </div>
                     <span class="status-tag">ONLINE</span>
                 </button>
@@ -719,319 +635,87 @@
                     <span class="status-tag">ONLINE</span>
                 </button>
 
-                <!-- beIN Sports Arabia 1 -->
-                <button class="channel-btn" onclick="playChannel('beIN Sports Arabia 1', 'https://bluesky-proxy.joseph-yusoff.workers.dev/?url=https://balance.footballii.ir/hls2/bein1.m3u8', 'videojs', this)">
+                <!-- beIN Server 1 -->
+                <button class="channel-btn" onclick="playChannel('beIN Server 1', 'https://allinonereborn2.online/livtest3/stream_proxy.php?url=https://cp11.adabmedia.com/hls2/bein1.m3u8', 'videojs', this)">
                     <div class="btn-label">
                         <i class="fa-solid fa-play"></i>
-                        <div class="btn-text-container"><span>beIN Sports Arabia 1</span></div>
+                        <div class="btn-text-container"><span>beIN Server 1</span></div>
                     </div>
                     <span class="status-tag">ONLINE</span>
                 </button>
 
-                <!-- beIN Sports Arabia 2 -->
-                <button class="channel-btn" onclick="playChannel('beIN Sports Arabia 2', 'https://bluesky-proxy.joseph-yusoff.workers.dev/?url=https://10sisi.s3.us-east-2.amazonaws.com/bein2/720p/manifest.m3u8', 'videojs', this)">
+                <!-- beIN Server 2 -->
+                <button class="channel-btn" onclick="playChannel('beIN Server 2', 'https://allinonereborn2.online/livtest3/stream_proxy.php?url=https://balance.footballii.ir/hls2/bein1.m3u8', 'videojs', this)">
                     <div class="btn-label">
                         <i class="fa-solid fa-play"></i>
-                        <div class="btn-text-container"><span>beIN Sports Arabia 2</span></div>
+                        <div class="btn-text-container"><span>beIN Server 2</span></div>
                     </div>
                     <span class="status-tag">ONLINE</span>
                 </button>
 
-                <!-- beIN Sports Arabia 3 -->
-                <button class="channel-btn" onclick="playChannel('beIN Sports Arabia 3', 'https://bluesky-proxy.joseph-yusoff.workers.dev/?url=https://10sisi.s3.us-east-2.amazonaws.com/bein3/720p/manifest.m3u8', 'videojs', this)">
+                <!-- TNT Sports 1 HD -->
+                <button class="channel-btn" onclick="playChannel('TNT Sports 1 HD', 'https://footfytv.pro/proxy/direct?url=https://filex.me:8443/live/1234567/7654321/495258.m3u8', 'videojs', this)">
                     <div class="btn-label">
                         <i class="fa-solid fa-play"></i>
-                        <div class="btn-text-container"><span>beIN Sports Arabia 3</span></div>
+                        <div class="btn-text-container"><span>TNT Sports 1 HD</span></div>
                     </div>
                     <span class="status-tag">ONLINE</span>
                 </button>
 
-                <!-- beIN Sports Arabia 4 -->
-                <button class="channel-btn" onclick="playChannel('beIN Sports Arabia 4', 'https://bluesky-proxy.joseph-yusoff.workers.dev/?url=https://10sisi.s3.us-east-2.amazonaws.com/bein4/720p/manifest.m3u8', 'videojs', this)">
+                <!-- Hub Premier 1 HD -->
+                <button class="channel-btn" onclick="playChannel('Hub Premier 1 HD', 'https://footfytv.pro/proxy/direct?url=https://filex.me:8443/live/1234567/7654321/495230.m3u8', 'videojs', this)">
                     <div class="btn-label">
                         <i class="fa-solid fa-play"></i>
-                        <div class="btn-text-container"><span>beIN Sports Arabia 4</span></div>
+                        <div class="btn-text-container"><span>Hub Premier 1 HD</span></div>
                     </div>
                     <span class="status-tag">ONLINE</span>
                 </button>
 
-            </div>
-        </div>
-
-        <!-- Schedule -->
-        <div class="category-section">
-            <div class="category-header">
-                <i class="fa-solid fa-calendar-days"></i> Schedule — Home of Premier League
-            </div>
-            
-            <div class="schedule-list">
-                
-                <!-- Saturday, 7 November 2026 -->
-                <div class="match-date-group">
-                    <div class="match-date-title"><i class="fa-regular fa-calendar"></i> Saturday, 7 November 2026</div>
-                    
-                    <div class="match-item">
-                        <div class="match-time-teams">
-                            <span class="match-time">04:00</span>
-                            <span>Everton vs Coventry City</span>
-                        </div>
-                        <div class="match-channels">
-                            <span class="channel-badge">Star Sports Select 1</span>
-                            <span class="channel-badge">Sky Sports Premier League</span>
-                            <span class="channel-badge">USA Network</span>
-                            <span class="channel-badge">beIN Sports Arabia 1</span>
-                        </div>
+                <!-- Hub Premier 2 UHD -->
+                <button class="channel-btn" onclick="playChannel('Hub Premier 2 UHD', 'https://footfytv.pro/proxy/direct?url=https://filex.me:8443/live/1234567/7654321/495231.m3u8', 'videojs', this)">
+                    <div class="btn-label">
+                        <i class="fa-solid fa-play"></i>
+                        <div class="btn-text-container"><span>Hub Premier 2 UHD</span></div>
                     </div>
+                    <span class="status-tag">ONLINE</span>
+                </button>
 
-                    <div class="match-item">
-                        <div class="match-time-teams">
-                            <span class="match-time">20:30</span>
-                            <span>Leeds United vs Tottenham Hotspur</span>
-                        </div>
-                        <div class="match-channels">
-                            <span class="channel-badge">Star Sports Select 1</span>
-                            <span class="channel-badge">USA Network</span>
-                            <span class="channel-badge">beIN Sports Arabia 1</span>
-                        </div>
+                <!-- Sky Sports Main Event -->
+                <button class="channel-btn" onclick="playChannel('Sky Sports Main Event', 'https://footfytv.pro/proxy/direct?url=https://filex.me:8443/live/1234567/7654321/495254.ts', 'videojs', this)">
+                    <div class="btn-label">
+                        <i class="fa-solid fa-play"></i>
+                        <div class="btn-text-container"><span>Sky Sports Main Event</span></div>
                     </div>
+                    <span class="status-tag">ONLINE</span>
+                </button>
 
-                    <div class="match-item">
-                        <div class="match-time-teams">
-                            <span class="match-time">23:00</span>
-                            <span>Fulham vs Newcastle United</span>
-                        </div>
-                        <div class="match-channels">
-                            <span class="channel-badge">Star Sports Select 2</span>
-                            <span class="channel-badge">USA Network</span>
-                            <span class="channel-badge">beIN Sports Arabia 2</span>
-                        </div>
+                <!-- Sky Sports Premier League -->
+                <button class="channel-btn" onclick="playChannel('Sky Sports Premier League', 'https://footfytv.pro/proxy/direct?url=http://stream.bottledesk.net/p/AAxBRQEBc2c/index.m3u8', 'videojs', this)">
+                    <div class="btn-label">
+                        <i class="fa-solid fa-play"></i>
+                        <div class="btn-text-container"><span>Sky Sports Premier League</span></div>
                     </div>
+                    <span class="status-tag">ONLINE</span>
+                </button>
 
-                    <div class="match-item">
-                        <div class="match-time-teams">
-                            <span class="match-time">23:00</span>
-                            <span>Arsenal vs Hull City</span>
-                        </div>
-                        <div class="match-channels">
-                            <span class="channel-badge">Star Sports Select 1</span>
-                            <span class="channel-badge">beIN Sports Arabia 1</span>
-                        </div>
+                <!-- 📺 Telemundo -->
+                <button class="channel-btn" onclick="playChannel('Telemundo', 'https://allinonereborn2.online/livtest3/stream_proxy.php?url=https://streamer1.nexgen.bz/TELEMUNDO/index.m3u8', 'videojs', this)">
+                    <div class="btn-label">
+                        <i class="fa-solid fa-play"></i>
+                        <div class="btn-text-container"><span>Telemundo</span></div>
                     </div>
-                </div>
+                    <span class="status-tag">ONLINE</span>
+                </button>
 
-                <!-- Sunday, 8 November 2026 -->
-                <div class="match-date-group">
-                    <div class="match-date-title"><i class="fa-regular fa-calendar"></i> Sunday, 8 November 2026</div>
-                    
-                    <div class="match-item">
-                        <div class="match-time-teams">
-                            <span class="match-time">01:30</span>
-                            <span>Nottingham Forest vs Manchester City</span>
-                        </div>
-                        <div class="match-channels">
-                            <span class="channel-badge">Star Sports Select 1</span>
-                            <span class="channel-badge">Sky Sports Premier League</span>
-                            <span class="channel-badge">beIN Sports Arabia 1</span>
-                        </div>
+                <!-- 📺 IRIB Varzesh -->
+                <button class="channel-btn" onclick="playChannel('IRIB Varzesh', 'https://cp11.adabmedia.com/hls2/varzeshtest.m3u8', 'videojs', this)">
+                    <div class="btn-label">
+                        <i class="fa-solid fa-play"></i>
+                        <div class="btn-text-container"><span>IRIB Varzesh</span></div>
                     </div>
+                    <span class="status-tag">ONLINE</span>
+                </button>
 
-                    <div class="match-item">
-                        <div class="match-time-teams">
-                            <span class="match-time">22:00</span>
-                            <span>Sunderland vs Chelsea</span>
-                        </div>
-                        <div class="match-channels">
-                            <span class="channel-badge">Star Sports Select 2</span>
-                            <span class="channel-badge">Sky Sports Premier League</span>
-                            <span class="channel-badge">USA Network</span>
-                            <span class="channel-badge">beIN Sports Arabia 3</span>
-                        </div>
-                    </div>
-
-                    <div class="match-item">
-                        <div class="match-time-teams">
-                            <span class="match-time">22:00</span>
-                            <span>Crystal Palace vs Liverpool</span>
-                        </div>
-                        <div class="match-channels">
-                            <span class="channel-badge">Star Sports Select 1</span>
-                            <span class="channel-badge">beIN Sports Arabia 1</span>
-                        </div>
-                    </div>
-
-                    <div class="match-item">
-                        <div class="match-time-teams">
-                            <span class="match-time">22:00</span>
-                            <span>Brighton & Hove Albion vs Brentford</span>
-                        </div>
-                        <div class="match-channels">
-                            <span class="channel-badge">beIN Sports Arabia 4</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Monday, 9 November 2026 -->
-                <div class="match-date-group">
-                    <div class="match-date-title"><i class="fa-regular fa-calendar"></i> Monday, 9 November 2026</div>
-                    
-                    <div class="match-item">
-                        <div class="match-time-teams">
-                            <span class="match-time">00:30</span>
-                            <span>Manchester United vs Aston Villa</span>
-                        </div>
-                        <div class="match-channels">
-                            <span class="channel-badge">Star Sports Select 1</span>
-                            <span class="channel-badge">Sky Sports Premier League</span>
-                            <span class="channel-badge">USA Network</span>
-                            <span class="channel-badge">beIN Sports Arabia 1</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Saturday, 21 November 2026 -->
-                <div class="match-date-group">
-                    <div class="match-date-title"><i class="fa-regular fa-calendar"></i> Saturday, 21 November 2026</div>
-                    
-                    <div class="match-item">
-                        <div class="match-time-teams">
-                            <span class="match-time">20:30</span>
-                            <span>Manchester City vs Fulham</span>
-                        </div>
-                        <div class="match-channels">
-                            <span class="channel-badge">Star Sports Select 1</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Sunday, 22 November 2026 -->
-                <div class="match-date-group">
-                    <div class="match-date-title"><i class="fa-regular fa-calendar"></i> Sunday, 22 November 2026</div>
-                    
-                    <div class="match-item">
-                        <div class="match-time-teams">
-                            <span class="match-time">01:30</span>
-                            <span>Newcastle United vs Arsenal</span>
-                        </div>
-                        <div class="match-channels">
-                            <span class="channel-badge">Star Sports Select 1</span>
-                            <span class="channel-badge">Sky Sports Premier League</span>
-                        </div>
-                    </div>
-
-                    <div class="match-item">
-                        <div class="match-time-teams">
-                            <span class="match-time">22:00</span>
-                            <span>Hull City vs Brighton & Hove Albion</span>
-                        </div>
-                        <div class="match-channels">
-                            <span class="channel-badge">Star Sports Select 1</span>
-                            <span class="channel-badge">Sky Sports Premier League</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Monday, 23 November 2026 -->
-                <div class="match-date-group">
-                    <div class="match-date-title"><i class="fa-regular fa-calendar"></i> Monday, 23 November 2026</div>
-                    
-                    <div class="match-item">
-                        <div class="match-time-teams">
-                            <span class="match-time">00:30</span>
-                            <span>Liverpool vs Manchester United</span>
-                        </div>
-                        <div class="match-channels">
-                            <span class="channel-badge">Star Sports Select 1</span>
-                            <span class="channel-badge">Sky Sports Premier League</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Tuesday, 24 November 2026 -->
-                <div class="match-date-group">
-                    <div class="match-date-title"><i class="fa-regular fa-calendar"></i> Tuesday, 24 November 2026</div>
-                    
-                    <div class="match-item">
-                        <div class="match-time-teams">
-                            <span class="match-time">04:00</span>
-                            <span>Brentford vs Everton</span>
-                        </div>
-                        <div class="match-channels">
-                            <span class="channel-badge">Star Sports Select 1</span>
-                            <span class="channel-badge">Sky Sports Premier League</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Saturday, 28 November 2026 -->
-                <div class="match-date-group">
-                    <div class="match-date-title"><i class="fa-regular fa-calendar"></i> Saturday, 28 November 2026</div>
-                    
-                    <div class="match-item">
-                        <div class="match-time-teams">
-                            <span class="match-time">04:00</span>
-                            <span>Nottingham Forest vs Chelsea</span>
-                        </div>
-                        <div class="match-channels">
-                            <span class="channel-badge">Sky Sports Premier League</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Sunday, 29 November 2026 -->
-                <div class="match-date-group">
-                    <div class="match-date-title"><i class="fa-regular fa-calendar"></i> Sunday, 29 November 2026</div>
-                    
-                    <div class="match-item">
-                        <div class="match-time-teams">
-                            <span class="match-time">01:30</span>
-                            <span>Ipswich Town vs Aston Villa</span>
-                        </div>
-                        <div class="match-channels">
-                            <span class="channel-badge">Sky Sports Premier League</span>
-                        </div>
-                    </div>
-
-                    <div class="match-item">
-                        <div class="match-time-teams">
-                            <span class="match-time">22:05</span>
-                            <span>Brighton & Hove Albion vs Newcastle United</span>
-                        </div>
-                        <div class="match-channels">
-                            <span class="channel-badge">Sky Sports Premier League</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Monday, 30 November 2026 -->
-                <div class="match-date-group">
-                    <div class="match-date-title"><i class="fa-regular fa-calendar"></i> Monday, 30 November 2026</div>
-                    
-                    <div class="match-item">
-                        <div class="match-time-teams">
-                            <span class="match-time">00:30</span>
-                            <span>Arsenal vs Manchester City</span>
-                        </div>
-                        <div class="match-channels">
-                            <span class="channel-badge">Sky Sports Premier League</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Thursday, 31 December 2026 -->
-                <div class="match-date-group">
-                    <div class="match-date-title"><i class="fa-regular fa-calendar"></i> Thursday, 31 December 2026</div>
-                    
-                    <div class="match-item">
-                        <div class="match-time-teams">
-                            <span class="match-time">04:15</span>
-                            <span>Aston Villa vs Liverpool</span>
-                        </div>
-                        <div class="match-channels">
-                            <span class="channel-badge">Sky Sports Football</span>
-                        </div>
-                    </div>
-                </div>
-    
             </div>
         </div>
 
@@ -1056,7 +740,7 @@
                 liveui: true
             });
 
-            // Set default active channel to Server 1 (Star Sports Select 1 FHD)
+            // Set default active channel to Server 1 (Star Sports Select 1 HD)
             const defaultBtn = document.querySelector('.channel-btn.active');
             playChannel(
                 'Star Sports Select 1 HD', 

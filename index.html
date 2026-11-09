@@ -557,11 +557,10 @@
 
     <div class="container">
         
-<!-- Viewing Guide -->
+        <!-- Viewing Guide -->
         <div class="guide-box">
             <h4><i class="fa-solid fa-circle-info"></i> Live Streaming Guide</h4>
-            <p><i class="fa-solid fa-angle-right" style="color: var(--neon-green);"></i> Tune in to <strong>Star Sports Select</strong>, <strong>TNT Sports</strong>, <strong>Hub Premier</strong>, or <strong>Sky Sports</strong> for English commentary.</p>
-            <p><i class="fa-solid fa-angle-right" style="color: var(--neon-green);"></i> Use <strong>beIN Sports Arabia (Arabic)</strong>, <strong>Telemundo (Spanish)</strong>, or <strong>IRIB Varzesh (Persian)</strong> for international commentary feeds.</p>
+            <p><i class="fa-solid fa-angle-right" style="color: var(--neon-green);"></i> Pilih saluran mengikut kategori bahasa di bawah untuk siaran langsung perlawanan.</p>
         </div>
 
         <!-- Holographic Player Wrapper -->
@@ -585,22 +584,30 @@
                 </iframe>
             </div>
             <div class="player-info">
-                <h3 id="current-channel-title"><i class="fa-solid fa-satellite-dish"></i> Star Sports Select 1 FHD</h3>
+                <h3 id="current-channel-title"><i class="fa-solid fa-satellite-dish"></i> MONOMAX Channel 1 EPL</h3>
                 <div class="badge-ultra">
                     <i class="fa-solid fa-play-circle" style="color: var(--neon-green);"></i> <span id="player-type-label">Server 1 (HLS Engine)</span>
                 </div>
             </div>
         </div>
 
-        <!-- Broadcasters List -->
+        <!-- CATEGORY: ENGLISH -->
         <div class="category-section">
             <div class="category-header">
-                <i class="fa-solid fa-tv"></i> Broadcasters List
+                <i class="fa-solid fa-globe"></i> English Broadcast
             </div>
             <div class="channel-buttons-grid">
+                <!-- MONOMAX Channel 1 EPL (Priority First Channel) -->
+                <button class="channel-btn active" onclick="playChannel('MONOMAX Channel 1 EPL', 'https://footfytv.pro/proxy/direct?url=http://103.253.74.210:7070/stream/1/index.m3u8', 'videojs', this)">
+                    <div class="btn-label">
+                        <i class="fa-solid fa-play"></i>
+                        <div class="btn-text-container"><span>MONOMAX Channel 1 EPL</span></div>
+                    </div>
+                    <span class="status-tag">ONLINE</span>
+                </button>
 
                 <!-- Star Sports Select 1 HD -->
-                <button class="channel-btn active" onclick="playChannel('Star Sports Select 1 HD', 'https://sbsw.b-cdn.net/StarSportsHD1/720p1m/video.m3u8', 'iframe', this)">
+                <button class="channel-btn" onclick="playChannel('Star Sports Select 1 HD', 'https://sbsw.b-cdn.net/StarSportsHD1/720p1m/video.m3u8', 'iframe', this)">
                     <div class="btn-label">
                         <i class="fa-solid fa-play"></i>
                         <div class="btn-text-container"><span>Star Sports Select 1 HD</span></div>
@@ -617,7 +624,7 @@
                     <span class="status-tag">ONLINE</span>
                 </button>
 
-                <!-- Star Sports Select 2 (Dulu Select 3) -->
+                <!-- Star Sports Select 2 -->
                 <button class="channel-btn" onclick="playChannel('Star Sports Select 2', 'https://allinonereborn2.online/livtest3/stream_proxy.php?url=https://livetv.shamon-cable.net:8443/Star-select-2/index.m3u8', 'iframe', this)">
                     <div class="btn-label">
                         <i class="fa-solid fa-play"></i>
@@ -643,7 +650,15 @@
                     </div>
                     <span class="status-tag">ONLINE</span>
                 </button>
+            </div>
+        </div>
 
+        <!-- CATEGORY: ARABIC -->
+        <div class="category-section">
+            <div class="category-header">
+                <i class="fa-solid fa-language"></i> Arabic Broadcast (beIN Sports Arabia)
+            </div>
+            <div class="channel-buttons-grid">
                 <!-- beIN Server 1 -->
                 <button class="channel-btn" onclick="playChannel('beIN Sports 1 Arabia (Server 1)', 'https://allinonereborn2.online/livtest3/stream_proxy.php?url=https://cp11.adabmedia.com/hls2/bein1.m3u8', 'videojs', this)">
                     <div class="btn-label">
@@ -661,17 +676,16 @@
                     </div>
                     <span class="status-tag">ONLINE</span>
                 </button>
+            </div>
+        </div>
 
-                <!-- 📺 Telemundo -->
-                <button class="channel-btn" onclick="playChannel('Telemundo', 'https://allinonereborn2.online/livtest3/stream_proxy.php?url=https://streamer1.nexgen.bz/TELEMUNDO/index.m3u8', 'videojs', this)">
-                    <div class="btn-label">
-                        <i class="fa-solid fa-play"></i>
-                        <div class="btn-text-container"><span>Telemundo</span></div>
-                    </div>
-                    <span class="status-tag">ONLINE</span>
-                </button>
-
-                <!-- 📺 IRIB Varzesh -->
+        <!-- CATEGORY: PERSIAN -->
+        <div class="category-section">
+            <div class="category-header">
+                <i class="fa-solid fa-globe"></i> Persian Broadcast (Iran)
+            </div>
+            <div class="channel-buttons-grid">
+                <!-- IRIB Varzesh -->
                 <button class="channel-btn" onclick="playChannel('IRIB Varzesh', 'https://cp11.adabmedia.com/hls2/varzeshtest.m3u8', 'videojs', this)">
                     <div class="btn-label">
                         <i class="fa-solid fa-play"></i>
@@ -679,7 +693,23 @@
                     </div>
                     <span class="status-tag">ONLINE</span>
                 </button>
+            </div>
+        </div>
 
+        <!-- CATEGORY: SPANISH -->
+        <div class="category-section">
+            <div class="category-header">
+                <i class="fa-solid fa-comments"></i> Spanish Broadcast
+            </div>
+            <div class="channel-buttons-grid">
+                <!-- Telemundo -->
+                <button class="channel-btn" onclick="playChannel('Telemundo', 'https://allinonereborn2.online/livtest3/stream_proxy.php?url=https://streamer1.nexgen.bz/TELEMUNDO/index.m3u8', 'videojs', this)">
+                    <div class="btn-label">
+                        <i class="fa-solid fa-play"></i>
+                        <div class="btn-text-container"><span>Telemundo</span></div>
+                    </div>
+                    <span class="status-tag">ONLINE</span>
+                </button>
             </div>
         </div>
 
@@ -704,12 +734,12 @@
                 liveui: true
             });
 
-            // Set default active channel to Server 1 (Star Sports Select 1 HD)
+            // Set default active channel to Priority First Channel (MONOMAX Channel 1 EPL)
             const defaultBtn = document.querySelector('.channel-btn.active');
             playChannel(
-                'Star Sports Select 1 HD', 
-                'https://sbsw.b-cdn.net/StarSportsHD1/720p1m/video.m3u8', 
-                'iframe', 
+                'MONOMAX Channel 1 EPL', 
+                'https://footfytv.pro/proxy/direct?url=http://103.253.74.210:7070/stream/1/index.m3u8', 
+                'videojs', 
                 defaultBtn
             );
         });
